@@ -1735,8 +1735,8 @@
 </ul>
 </details>
 <details class="example"><summary>Event</summary><ul>
-<li>A segment that starts 3 hour before an event (Sat Mar 07 2020 19:00:00 EST) and lasts for 12 hours. Note that the last part of this segment will happen during a daylight saving change on Sunday at 2am when the clock moves forward and the period 2am-3am does not exist. In this case, the segment would start on Sat Mar 07 2020 16:00:00 EST (timestamp: 1583614800000) and end on Sun Mar 08 2020 05:00:00 EST (timestamp: 1583658000000). (<code>beforeMarchEvent,1583625600000,12H,3H,-1,android</code>)</li>
-<li>A segment that starts 3 hour before an event (Sat Oct 31 2020 19:00:00 EST) and lasts for 12 hours. Note that the last part of this segment will happen during a daylight saving change on Sunday at 2am when the clock moves back and the period 1am-2am exists twice. In this case, the segment would start on Sat Oct 31 2020 16:00:00 EST (timestamp: 1604174400000) and end on Sun Nov 01 2020 03:00:00 EST (timestamp: 1604217600000). (<code>beforeNovemberEvent,1604185200000,12H,3H,-1,android</code>)</li>
+<li>A segment that starts 3 hour before an event (Sat Mar 07 2020 19:00:00 EST) and lasts for 22 hours. Note that the last part of this segment will happen during a daylight saving change on Sunday at 2am when the clock moves forward and the period 2am-3am does not exist. In this case, the segment would start on Sat Mar 07 2020 16:00:00 EST (timestamp: 1583614800000) and end on Sun Mar 08 2020 15:00:00 EST (timestamp: 1583694000000). (<code>beforeMarchEvent,1583625600000,22H,3H,-1,android</code>)</li>
+<li>A segment that starts 3 hour before an event (Sat Oct 31 2020 19:00:00 EST) and lasts for 22 hours. Note that the last part of this segment will happen during a daylight saving change on Sunday at 2am when the clock moves back and the period 1am-2am exists twice. In this case, the segment would start on Sat Oct 31 2020 16:00:00 EST (timestamp: 1604174400000) and end on Sun Nov 01 2020 13:00:00 EST (timestamp: 1604253600000). (<code>beforeNovemberEvent,1604185200000,22H,3H,-1,android</code>)</li>
 </ul>
 </details>
 <details class="example"><summary>Single time zone to test</summary><p>America/New_York</p>
@@ -1748,6 +1748,10 @@
 <li>America/Los_Angeles starting at <code>1604160000000</code> (Sat Oct 31 2020 12:00:00 EST)</li>
 <li>America/New_York starting at <code>1604250000000</code> (Sun Nov 01 2020 12:00:00 EST)</li>
 </ul>
+</details>
+<details class="hint"><summary>Understanding event segments with multi timezones</summary><p><figure>
+    <img src="../../img/testing_eventsegments_mtz.png" max-width="100%" />
+</figure></p>
 </details>
 </details>
 <details class="check"><summary><strong>Document your tests</strong></summary><ul>
@@ -1864,7 +1868,7 @@
 </li>
 <li>The <code>device_id</code> should be the same as <code>pid</code>.</li>
 </ol>
-<details class="example"><summary>Example of test data you need to create</summary><p>The <code>test_time</code> column will be automatically converted to a timestamp that fitst our testing periods in March and November by <code>tests/script/assign_test_timestamps.py</code></p>
+<details class="example"><summary>Example of test data you need to create</summary><p>The <code>test_time</code> column will be automatically converted to a timestamp that fits our testing periods in March and November by <code>tests/script/assign_test_timestamps.py</code></p>
 <div class="highlight"><pre><span></span><code>test_time,device_id,battery_level,battery_scale,battery_status
 Fri 01:00:00.000,ios,90,100,4
 Fri 01:00:30.500,ios,89,100,4
