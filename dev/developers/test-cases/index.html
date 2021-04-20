@@ -1020,6 +1020,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../features/fitbit-calories-intraday/" class="md-nav__link">
+        Fitbit Calories Intraday
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../features/fitbit-data-yield/" class="md-nav__link">
         Fitbit Data Yield
       </a>
@@ -1592,6 +1606,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fitbit-calories-intraday" class="md-nav__link">
+    Fitbit Calories Intraday
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1817,6 +1838,13 @@
         <li class="md-nav__item">
   <a href="#conversation" class="md-nav__link">
     Conversation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitbit-calories-intraday" class="md-nav__link">
+    Fitbit Calories Intraday
   </a>
   
 </li>
@@ -2192,6 +2220,79 @@
 <li>Finally, there are also additional empty data files for both
     android and iOS for testing empty data files</li>
 </ul>
+<h2 id="fitbit-calories-intraday">Fitbit Calories Intraday<a class="headerlink" href="#fitbit-calories-intraday" title="Permanent link">&para;</a></h2>
+<p>Description</p>
+<ul>
+<li>A five-minute sedentary episode on Fri 11:00:00</li>
+<li>A one-minute sedentary episode on Sun 02:00:00. It exists in November but not in February in STZ</li>
+<li>A five-minute sedentary episode on Fri 11:58:00. It is split within two 30-min segments and the morning</li>
+<li>A three-minute lightly active episode on Fri 11:10:00, a one-minute at 11:18:00 and a one-minute 11:24:00. These check for start and end times of first/last/longest episode</li>
+<li>A three-minute fairly active episode on Fri 11:40:00, a one-minute at 11:48:00 and a one-minute 11:54:00. These check for start and end times of first/last/longest episode</li>
+<li>A three-minute very active episode on Fri 12:10:00, a one-minute at 12:18:00 and a one-minute 12:24:00. These check for start and end times of first/last/longest episode</li>
+<li>A eight-minute MVPA episode with intertwined fairly and very active rows on Fri 12:30:00</li>
+<li>The above episodes contain six higmet (&gt;= 3 MET) episodes and nine lowmet episodes.</li>
+<li>One two-minute sedentary episode with a 1-minute row on Sun 09:00:00 and another on Sun 12:01:01 that are considering a single episode in multi-timezone event segments to showcase how inferring time zone data for Fitbit from phone data can produce inaccurate results around the tz change. This happens because the device was on LA time until 11:59 and switched to NY time at 12pm, in terms of actual time 09 am LA and 12 pm NY represent the same moment in time so 09:00 LA and 12:01 NY are consecutive minutes.</li>
+<li>A three-minute sedentary episode on Sat 08:59 that will be ignored for multi-timezone event segments.</li>
+<li>A three-minute sedentary episode on Sat 12:59 of which the first minute will be ignored for multi-timezone event segments since the test segment starts at 13:00</li>
+<li>A three-minute sedentary episode on Sat 16:00</li>
+<li>A four-minute sedentary episode on Sun 10:01 that will be ignored for Novembers&rsquo;s multi-timezone event segments since the test segment ends at 10am on that weekend.</li>
+<li>A three-minute very active episode on Sat 16:03. This episode and the one at 16:00 are counted as one for lowmet episodes</li>
+</ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+</tbody>
+</table>
                 
               
               
