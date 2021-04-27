@@ -1745,6 +1745,10 @@
 </tbody>
 </table>
 <h2 id="rapids-provider">RAPIDS provider<a class="headerlink" href="#rapids-provider" title="Permanent link">&para;</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Understanding RAPIDS features</p>
+<p><a href="../../img/sleep_summary_rapids.png">This diagram</a> will help you understand how sleep episodes are chunked and grouped within time segments using <code>SLEEP_SUMMARY_LAST_NIGHT_END</code> for the RAPIDS provider.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Available time segments</p>
 <ul>
@@ -1774,11 +1778,15 @@
 </tr>
 <tr>
 <td><code>[SLEEP_TYPES]</code></td>
-<td>Types of sleep to be included in the feature extraction computation. Fitbit provides 3 types of sleep: <code>main</code>, <code>nap</code>, <code>all</code>.</td>
+<td>Types of sleep to be included in the feature extraction computation. There are three sleep types: <code>main</code>, <code>nap</code>, and <code>all</code>. The <code>all</code> type means both main sleep and naps are considered.</td>
 </tr>
 <tr>
 <td><code>[FEATURES]</code></td>
 <td>Features to be computed from sleep summary data, see table below</td>
+</tr>
+<tr>
+<td><code>[FITBIT_DATA_STREAMS][data stream][SLEEP_SUMMARY_LAST_NIGHT_END]</code></td>
+<td>As an exception, the <code>LAST_NIGHT_END</code> parameter for this provider is in the data stream configuration section. This parameter controls how sleep episodes are assigned to different days and affects wake and bedtimes.</td>
 </tr>
 </tbody>
 </table>
@@ -1792,6 +1800,26 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>firstwaketimeTYPE</td>
+<td>minutes</td>
+<td>First wake time for a certain sleep type during a time segment. Wake time is number of minutes after midnight of a sleep episode&rsquo;s end time.</td>
+</tr>
+<tr>
+<td>lastwaketimeTYPE</td>
+<td>minutes</td>
+<td>Last wake time for a certain sleep type during a time segment. Wake time is number of minutes after midnight of a sleep episode&rsquo;s end time.</td>
+</tr>
+<tr>
+<td>firstbedtimeTYPE</td>
+<td>minutes</td>
+<td>First bedtime for a certain sleep type during a time segment. Bedtime is number of minutes after midnight of a sleep episode&rsquo;s start time.</td>
+</tr>
+<tr>
+<td>lastbedtimeTYPE</td>
+<td>minutes</td>
+<td>Last bedtime for a certain sleep type during a time segment. Bedtime is number of minutes after midnight of a sleep episode&rsquo;s start time.</td>
+</tr>
 <tr>
 <td>countepisodeTYPE</td>
 <td>episodes</td>
@@ -1857,18 +1885,18 @@
 <div class="admonition note">
 <p class="admonition-title">Assumptions/Observations</p>
 <ol>
-<li>
-<p>There are three sleep types (TYPE): <code>main</code>, <code>nap</code>, <code>all</code>. The <code>all</code> type contains both main sleep and naps.</p>
-</li>
-<li>
-<p>There are two versions of Fitbit’s sleep API (<a href="https://dev.fitbit.com/build/reference/web-api/sleep-v1/">version 1</a> and <a href="https://dev.fitbit.com/build/reference/web-api/sleep/">version 1.2</a>), and each provides raw sleep data in a different format:</p>
-<ul>
+<li><a href="../../img/sleep_summary_rapids.png">This diagram</a> will help you understand how sleep episodes are chunked and grouped within time segments using <code>LNE</code> for the RAPIDS provider.</li>
+<li>There are three sleep types (TYPE): <code>main</code>, <code>nap</code>, <code>all</code>. The <code>all</code> type groups both <code>main</code> sleep and <code>naps</code>. All types are based on Fitbit&rsquo;s labels.</li>
+<li>There are two versions of Fitbit’s sleep API (<a href="https://dev.fitbit.com/build/reference/web-api/sleep-v1/">version 1</a> and <a href="https://dev.fitbit.com/build/reference/web-api/sleep/">version 1.2</a>), and each provides raw sleep data in a different format:<ul>
 <li><em>Count &amp; duration summaries</em>. <code>v1</code> contains <code>count_awake</code>, <code>duration_awake</code>, <code>count_awakenings</code>, <code>count_restless</code>, and <code>duration_restless</code> fields for every sleep record but <code>v1.2</code> does not.</li>
 </ul>
 </li>
-<li>
-<p><em>API columns</em>. Features are computed based on the values provided by Fitbit’s API: <code>efficiency</code>, <code>minutes_after_wakeup</code>, <code>minutes_asleep</code>, <code>minutes_awake</code>, <code>minutes_to_fall_asleep</code>, <code>minutes_in_bed</code>, <code>is_main_sleep</code> and <code>type</code>.</p>
-</li>
+<li><em>API columns</em>. Most features are computed based on the values provided by Fitbit’s API: <code>efficiency</code>, <code>minutes_after_wakeup</code>, <code>minutes_asleep</code>, <code>minutes_awake</code>, <code>minutes_to_fall_asleep</code>, <code>minutes_in_bed</code>, <code>is_main_sleep</code> and <code>type</code>.</li>
+<li>Bed time and sleep duration are based on episodes that started between today’s LNE and tomorrow’s LNE while awake time is based on the episodes that started between yesterday’s LNE and today’s LNE</li>
+<li>The reference point for bed/awake times is today’s 00:00. You can have bedtimes larger than 24 and awake times smaller than 0</li>
+<li>These features are only available for time segments that span midnight to midnight of the same or different day.</li>
+<li>We include first and last wake and bedtimes because, when <code>LAST_NIGHT_END</code> is 10 am, the first bedtime could match a nap at 2 pm, and the last bedtime could match a main overnight sleep episode that starts at 10pm.</li>
+<li>Set the value for <code>SLEEP_SUMMARY_LAST_NIGHT_END</code> int the config parameter [FITBIT_DATA_STREAMS][data stream][SLEEP_SUMMARY_LAST_NIGHT_END].</li>
 </ol>
 </div>
                 

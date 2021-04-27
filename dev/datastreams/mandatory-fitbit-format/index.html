@@ -1774,7 +1774,7 @@
 </tr>
 <tr>
 <td>LOCAL_DATE_TIME</td>
-<td>Date time string with format <code>yyyy-mm-dd hh:mm:ss</code>, this either is a copy of LOCAL_START_DATE_TIME or LOCAL_END_DATE_TIME depending on which column is used to assign an episode to a specific day</td>
+<td>Date time string with format <code>yyyy-mm-dd 00:00:00</code>, the date is the same as the start date of a daily sleep episode if its time is after SLEEP_SUMMARY_LAST_NIGHT_END, otherwise it is the day before the start date of that sleep episode</td>
 </tr>
 <tr>
 <td>LOCAL_START_DATE_TIME</td>

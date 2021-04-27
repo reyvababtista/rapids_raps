@@ -2587,19 +2587,19 @@ fitbit999, Europe/Amsterdam,     0
   <span class="c1"># AVAILABLE:</span>
   <span class="nt">fitbitjson_mysql</span><span class="p">:</span>
     <span class="nt">DATABASE_GROUP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span>
-    <span class="nt">SLEEP_SUMMARY_EPISODE_DAY_ANCHOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">660</span>
 
   <span class="nt">fitbitjson_csv</span><span class="p">:</span>
     <span class="nt">FOLDER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/external/fitbit_csv</span>
-    <span class="nt">SLEEP_SUMMARY_EPISODE_DAY_ANCHOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">660</span>
 
   <span class="nt">fitbitparsed_mysql</span><span class="p">:</span>
     <span class="nt">DATABASE_GROUP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span>
-    <span class="nt">SLEEP_SUMMARY_EPISODE_DAY_ANCHOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">660</span>
 
   <span class="nt">fitbitparsed_csv</span><span class="p">:</span>
     <span class="nt">FOLDER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/external/fitbit_csv</span>
-    <span class="nt">SLEEP_SUMMARY_EPISODE_DAY_ANCHOR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">660</span>
 </code></pre></div>
 <div class="tabbed-set" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">fitbitjson_mysql</label><div class="tabbed-content">
 <p>This data stream process Fitbit data inside a JSON column as obtained from the Fitbit API and stored in a MySQL database. Read more about its column mappings and mutations in <a href="../../datastreams/fitbitjson-mysql#format"><code>fitbitjson_mysql</code></a>.</p>
@@ -2616,8 +2616,8 @@ fitbit999, Europe/Amsterdam,     0
 <td>A database credentials group. Read the instructions below to set it up</td>
 </tr>
 <tr>
-<td><code>[SLEEP_SUMMARY_EPISODE_DAY_ANCHOR]</code></td>
-<td>One of <code>start</code> or <code>end</code>. Summary sleep episodes are considered as events based on either the start timestamp or end timestamp (they will belong to the day where they start or end).</td>
+<td><code>[SLEEP_SUMMARY_LAST_NIGHT_END]</code></td>
+<td>Segments are assigned based on this parameter. Any sleep episodes starts between today&rsquo;s SLEEP_SUMMARY_LAST_NIGHT_END (LNE) and tomorrow&rsquo;s LNE is regarded as today&rsquo;s sleep episode. While today&rsquo;s bedtime is based on today&rsquo;s sleep episodes, today&rsquo;s wake time is based on yesterday&rsquo;s sleep episodes.</td>
 </tr>
 </tbody>
 </table>
@@ -2700,8 +2700,8 @@ fitbit999, Europe/Amsterdam,     0
 <td>Folder where you have to place a CSV file <strong>per</strong> Fitbit sensor. Each file has to contain all the data from every participant you want to process.</td>
 </tr>
 <tr>
-<td><code>[SLEEP_SUMMARY_EPISODE_DAY_ANCHOR]</code></td>
-<td>One of <code>start</code> or <code>end</code>. Summary sleep episodes are considered as events based on either the start timestamp or end timestamp (they will belong to the day where they start or end).</td>
+<td><code>[SLEEP_SUMMARY_LAST_NIGHT_END]</code></td>
+<td>Segments are assigned based on this parameter. Any sleep episodes starts between today&rsquo;s SLEEP_SUMMARY_LAST_NIGHT_END (LNE) and tomorrow&rsquo;s LNE is regarded as today&rsquo;s sleep episode. While today&rsquo;s bedtime is based on today&rsquo;s sleep episodes, today&rsquo;s wake time is based on yesterday&rsquo;s sleep episodes.</td>
 </tr>
 </tbody>
 </table>
@@ -2721,8 +2721,8 @@ fitbit999, Europe/Amsterdam,     0
 <td>A database credentials group. Read the instructions below to set it up</td>
 </tr>
 <tr>
-<td><code>[SLEEP_SUMMARY_EPISODE_DAY_ANCHOR]</code></td>
-<td>One of <code>start</code> or <code>end</code>. Summary sleep episodes are considered as events based on either the start timestamp or end timestamp (they will belong to the day where they start or end).</td>
+<td><code>[SLEEP_SUMMARY_LAST_NIGHT_END]</code></td>
+<td>Segments are assigned based on this parameter. Any sleep episodes starts between today&rsquo;s SLEEP_SUMMARY_LAST_NIGHT_END (LNE) and tomorrow&rsquo;s LNE is regarded as today&rsquo;s sleep episode. While today&rsquo;s bedtime is based on today&rsquo;s sleep episodes, today&rsquo;s wake time is based on yesterday&rsquo;s sleep episodes.</td>
 </tr>
 </tbody>
 </table>
@@ -2805,8 +2805,8 @@ fitbit999, Europe/Amsterdam,     0
 <td>Folder where you have to place a CSV file <strong>per</strong> Fitbit sensor. Each file has to contain all the data from every participant you want to process.</td>
 </tr>
 <tr>
-<td><code>[SLEEP_SUMMARY_EPISODE_DAY_ANCHOR]</code></td>
-<td>One of <code>start</code> or <code>end</code>. Summary sleep episodes are considered as events based on either the start timestamp or end timestamp (they will belong to the day where they start or end).</td>
+<td><code>[SLEEP_SUMMARY_LAST_NIGHT_END]</code></td>
+<td>Segments are assigned based on this parameter. Any sleep episodes starts between today&rsquo;s SLEEP_SUMMARY_LAST_NIGHT_END (LNE) and tomorrow&rsquo;s LNE is regarded as today&rsquo;s sleep episode. While today&rsquo;s bedtime is based on today&rsquo;s sleep episodes, today&rsquo;s wake time is based on yesterday&rsquo;s sleep episodes.</td>
 </tr>
 </tbody>
 </table>

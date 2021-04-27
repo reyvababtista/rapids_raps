@@ -1814,7 +1814,8 @@
 </li>
 <li>
 <p><strong>SCRIPTS</strong></p>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/fitbit/parse_heartrate_summary_json.py
+<div class="highlight"><pre><span></span><code>- src/data/streams/mutations/fitbit/parse_heartrate_summary_json.py
+- src/data/streams/mutations/fitbit/add_zero_timestamp.py
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note<p>All columns except <code>DEVICE_ID</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by Fitbit&rsquo;s API. See an example of the raw data RAPIDS expects for this data stream:</p>
@@ -1894,7 +1895,8 @@
 </li>
 <li>
 <p><strong>SCRIPTS</strong></p>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/fitbit/parse_heartrate_intraday_json.py
+<div class="highlight"><pre><span></span><code>- src/data/streams/mutations/fitbit/parse_heartrate_intraday_json.py
+- src/data/streams/mutations/fitbit/add_zero_timestamp.py
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note<p>All columns except <code>DEVICE_ID</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by Fitbit&rsquo;s API. See an example of the raw data RAPIDS expects for this data stream:</p>
@@ -2010,7 +2012,9 @@
 </li>
 <li>
 <p><strong>SCRIPTS</strong></p>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/fitbit/parse_sleep_summary_json.py
+<div class="highlight"><pre><span></span><code>- src/data/streams/mutations/fitbit/parse_sleep_summary_json.py
+- src/data/streams/mutations/fitbit/add_local_date_time.py
+- src/data/streams/mutations/fitbit/add_zero_timestamp.py
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2107,7 +2111,8 @@
 </li>
 <li>
 <p><strong>SCRIPTS</strong></p>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/fitbit/parse_sleep_intraday_json.py
+<div class="highlight"><pre><span></span><code>- src/data/streams/mutations/fitbit/parse_sleep_intraday_json.py
+- src/data/streams/mutations/fitbit/add_zero_timestamp.py
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2188,7 +2193,8 @@
 </li>
 <li>
 <p><strong>SCRIPTS</strong></p>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/fitbit/parse_steps_summary_json.py
+<div class="highlight"><pre><span></span><code>- src/data/streams/mutations/fitbit/parse_steps_summary_json.py
+- src/data/streams/mutations/fitbit/add_zero_timestamp.py
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note<p><code>TIMESTAMP</code>, <code>LOCAL_DATE_TIME</code>, and <code>STEPS</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by Fitbit&rsquo;s API. See an example of the raw data RAPIDS expects for this data stream:</p>
@@ -2268,7 +2274,8 @@
 </li>
 <li>
 <p><strong>SCRIPTS</strong></p>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/fitbit/parse_steps_intraday_json.py
+<div class="highlight"><pre><span></span><code>- src/data/streams/mutations/fitbit/parse_steps_intraday_json.py
+- src/data/streams/mutations/fitbit/add_zero_timestamp.py
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note<p><code>TIMESTAMP</code>, <code>LOCAL_DATE_TIME</code>, and <code>STEPS</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by <a href="https://dev.fitbit.com/build/reference/web-api/activity/#get-activity-intraday-time-series">Fitbit&rsquo;s API</a>. See an example of the raw data RAPIDS expects for this data stream:</p>

@@ -1613,6 +1613,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fitbit-sleep-summary" class="md-nav__link">
+    Fitbit Sleep Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitbit-sleep-intraday" class="md-nav__link">
+    Fitbit Sleep Intraday
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1849,6 +1863,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fitbit-sleep-summary" class="md-nav__link">
+    Fitbit Sleep Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitbit-sleep-intraday" class="md-nav__link">
+    Fitbit Sleep Intraday
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2000,6 +2028,13 @@
 <td>N</td>
 </tr>
 <tr>
+<td>Fitbit Calories Intraday</td>
+<td>RAPIDS</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
 <td>Fitbit Data Yield</td>
 <td>RAPIDS</td>
 <td>N</td>
@@ -2026,6 +2061,20 @@
 <td>N</td>
 <td>N</td>
 <td>N</td>
+</tr>
+<tr>
+<td>Fitbit Sleep Intraday</td>
+<td>RAPIDS</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Fitbit Sleep Intraday</td>
+<td>PRICE</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Fitbit Steps Summary</td>
@@ -2237,6 +2286,138 @@
 <li>A three-minute sedentary episode on Sat 16:00</li>
 <li>A four-minute sedentary episode on Sun 10:01 that will be ignored for Novembers&rsquo;s multi-timezone event segments since the test segment ends at 10am on that weekend.</li>
 <li>A three-minute very active episode on Sat 16:03. This episode and the one at 16:00 are counted as one for lowmet episodes</li>
+</ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fitbit-sleep-summary">Fitbit Sleep Summary<a class="headerlink" href="#fitbit-sleep-summary" title="Permanent link">&para;</a></h2>
+<p>Description</p>
+<ul>
+<li>A main sleep episode that starts on Fri 20:00:00 and ends on Sat 02:00:00. This episode starts after 11am (Last Night End) which will be considered as today&rsquo;s (Fri) data.</li>
+<li>A nap that starts on Sat 04:00:00 and ends on Sat 06:00:00. This episode starts before 11am (Last Night End) which will be considered as yesterday&rsquo;s (Fri) data.</li>
+<li>A nap that starts on Sat 13:00:00 and ends on Sat 15:00:00. This episode starts after 11am (Last Night End) which will be considered as today&rsquo;s (Sat) data.</li>
+<li>A main sleep that starts on Sun 01:00:00 and ends on Sun 12:00:00. This episode starts before 11am (Last Night End) which will be considered as yesterday&rsquo;s (Sat) data.</li>
+<li>A main sleep that starts on Sun 23:00:00 and ends on Mon 07:00:00. This episode starts after 11am (Last Night End) which will be considered as today&rsquo;s (Sun) data.</li>
+<li>Any segment shorter than one day will be ignored for sleep RAPIDS features.</li>
+</ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fitbit-sleep-intraday">Fitbit Sleep Intraday<a class="headerlink" href="#fitbit-sleep-intraday" title="Permanent link">&para;</a></h2>
+<p>Description</p>
+<ul>
+<li>A five-minute main sleep episode with asleep-classic level on Fri 11:00:00.</li>
+<li>An eight-hour main sleep episode on Fri 17:00:00. It is split into 2 parts for daily segment: a seven-hour sleep episode on Fri 17:00:00 and an one-hour sleep episode on Sat 00:00:00.</li>
+<li>A two-hour nap on Sat 01:00:00 that will be ignored for main sleep features.</li>
+<li>An one-hour nap on Sat 13:00:00 that will be ignored for main sleep features.</li>
+<li>An eight-hour main sleep episode on Sat 22:00:00. This episode ends on Sun 08:00:00 (NY) for March and Sun 06:00:00 (NY) for Novembers due to daylight savings. It will be considered for <code>beforeMarchEvent</code> segment and ignored for <code>beforeNovemberEvent</code> segment.</li>
+<li>A nine-hour main sleep episode on Sun 11:00:00. Start time will be assigned as NY time zone and converted to 14:00:00.</li>
+<li>A seven-hour main sleep episode on Mon 06:00:00. This episode will be split into two parts: a five-hour sleep episode on Mon 06:00:00 and a two-hour sleep episode on Mon 11:00:00. The first part will be discarded as it is before 11am (Last Night End)</li>
+<li>Any segment shorter than one day will be ignored for sleep PRICE features.</li>
 </ul>
 <p>Checklist</p>
 <table>

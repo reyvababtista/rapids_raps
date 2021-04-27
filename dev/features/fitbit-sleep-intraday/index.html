@@ -1759,6 +1759,10 @@
 </tbody>
 </table>
 <h2 id="rapids-provider">RAPIDS provider<a class="headerlink" href="#rapids-provider" title="Permanent link">&para;</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Understanding RAPIDS features</p>
+<p><a href="../../img/sleep_intraday_rapids.png">This diagram</a> will help you understand how sleep episodes are chunked and grouped within time segments for the RAPIDS provider.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Available time segments</p>
 <ul>
@@ -1795,19 +1799,11 @@
 </tr>
 <tr>
 <td><code>[SLEEP_LEVELS]</code></td>
-<td>Fitbit’s sleep API Version 1 only provides <code>CLASSIC</code> records. However, Version 1.2 provides 2 types of records: <code>CLASSIC</code> and <code>STAGES</code>. <code>STAGES</code> is only available in devices with a heart rate sensor and even those devices will fail to report it if the battery is low or the device is not tight enough. While <code>CLASSIC</code> contains 3 sleep levels (<code>awake</code>, <code>restless</code>, and <code>asleep</code>), <code>STAGES</code> contains 4 sleep levels (<code>wake</code>, <code>deep</code>, <code>light</code>, <code>rem</code>). To make it consistent, RAPIDS grouped them into 2 <code>UNIFIED</code> sleep levels: <code>awake</code> (<code>CLASSIC</code>: <code>awake</code> and <code>restless</code>; <code>STAGES</code>: <code>wake</code>) and <code>asleep</code> (<code>CLASSIC</code>: <code>asleep</code>; <code>STAGES</code>: <code>deep</code>, <code>light</code>, and <code>rem</code>).</td>
+<td>Fitbit’s sleep API Version 1 only provides <code>CLASSIC</code> records. However, Version 1.2 provides 2 types of records: <code>CLASSIC</code> and <code>STAGES</code>. <code>STAGES</code> is only available in devices with a heart rate sensor and even those devices will fail to report it if the battery is low or the device is not tight enough. While <code>CLASSIC</code> contains 3 sleep levels (<code>awake</code>, <code>restless</code>, and <code>asleep</code>), <code>STAGES</code> contains 4 sleep levels (<code>wake</code>, <code>deep</code>, <code>light</code>, <code>rem</code>). To make it consistent, RAPIDS groups them into 2 <code>UNIFIED</code> sleep levels: <code>awake</code> (<code>CLASSIC</code>: <code>awake</code> and <code>restless</code>; <code>STAGES</code>: <code>wake</code>) and <code>asleep</code> (<code>CLASSIC</code>: <code>asleep</code>; <code>STAGES</code>: <code>deep</code>, <code>light</code>, and <code>rem</code>). In this section, there is a boolean flag named <code>INCLUDE_ALL_GROUPS</code> that if set to TRUE, computes LEVELS_AND_TYPES features grouping all levels together in a single <code>all</code> category.</td>
 </tr>
 <tr>
 <td><code>[SLEEP_TYPES]</code></td>
-<td>Types of sleep to be included in the feature extraction computation. Fitbit provides 2 types of sleep: <code>main</code>, <code>nap</code>.</td>
-</tr>
-<tr>
-<td><code>[INCLUDE_SLEEP_LATER_THAN]</code></td>
-<td>All resampled sleep rows (bin interval: one minute) that started after this time will be included in the feature computation. It is a number ranging from 0 (midnight) to 1439 (23:59) which denotes the number of minutes after midnight. If a segment is longer than one day, this value is for every day.</td>
-</tr>
-<tr>
-<td><code>[REFERENCE_TIME]</code></td>
-<td>The reference point from which the <code>[ROUTINE]</code> features are to be computed. Chosen from <code>MIDNIGHT</code> and <code>START_OF_THE_SEGMENT</code>, default is <code>MIDNIGHT</code>. If you have multiple time segments per day it might be more informative to set this flag to <code>START_OF_THE_SEGMENT</code>.</td>
+<td>Types of sleep to be included in the feature extraction computation. There are three sleep types: <code>main</code>, <code>nap</code>, and <code>all</code>. The <code>all</code> type means both main sleep and naps are considered.</td>
 </tr>
 </tbody>
 </table>
@@ -1824,37 +1820,37 @@
 <tr>
 <td>countepisode<code>[LEVEL][TYPE]</code></td>
 <td>episodes</td>
-<td>Number of <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). Both <code>[LEVEL]</code>and <code>[TYPE]</code> can also be <code>all</code> when <code>LEVELS_AND_TYPES_COMBINING_ALL</code> is True, which ignores the levels and groups by sleep types.</td>
+<td>Number of <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). <code>[LEVEL]</code> can also be <code>all</code> when <code>INCLUDE_ALL_GROUPS</code> is True, which ignores the levels and groups by sleep types.</td>
 </tr>
 <tr>
 <td>sumduration<code>[LEVEL][TYPE]</code></td>
 <td>minutes</td>
-<td>Total duration of all <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). Both <code>[LEVEL]</code> and <code>[TYPE]</code>can also be <code>all</code> when <code>LEVELS_AND_TYPES_COMBINING_ALL</code> is True, which ignores the levels and groups by sleep types.</td>
+<td>Total duration of all <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). <code>[LEVEL]</code> can also be <code>all</code> when <code>INCLUDE_ALL_GROUPS</code> is True, which ignores the levels and groups by sleep types.</td>
 </tr>
 <tr>
 <td>maxduration<code>[LEVEL][TYPE]</code></td>
 <td>minutes</td>
-<td>Longest duration of any <code>[LEVEL][TYPE]</code>sleep episode. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). Both <code>[LEVEL]</code> and <code>[TYPE]</code>can also be <code>all</code> when <code>LEVELS_AND_TYPES_COMBINING_ALL</code> is True, which ignores the levels and groups by sleep types.</td>
+<td>Longest duration of any <code>[LEVEL][TYPE]</code>sleep episode. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). <code>[LEVEL]</code> can also be <code>all</code> when <code>INCLUDE_ALL_GROUPS</code> is True, which ignores the levels and groups by sleep types.</td>
 </tr>
 <tr>
 <td>minduration<code>[LEVEL][TYPE]</code></td>
 <td>minutes</td>
-<td>Shortest duration of any <code>[LEVEL][TYPE]</code>sleep episode. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). Both <code>[LEVEL]</code> and <code>[TYPE]</code>can also be <code>all</code> when <code>LEVELS_AND_TYPES_COMBINING_ALL</code> is True, which ignores the levels and groups by sleep types.</td>
+<td>Shortest duration of any <code>[LEVEL][TYPE]</code>sleep episode. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). <code>[LEVEL]</code> can also be <code>all</code> when <code>INCLUDE_ALL_GROUPS</code> is True, which ignores the levels and groups by sleep types.</td>
 </tr>
 <tr>
 <td>avgduration<code>[LEVEL][TYPE]</code></td>
 <td>minutes</td>
-<td>Average duration of all <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). Both <code>[LEVEL]</code> and <code>[TYPE]</code>can also be <code>all</code> when <code>LEVELS_AND_TYPES_COMBINING_ALL</code> is True, which ignores the levels and groups by sleep types.</td>
+<td>Average duration of all <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). <code>[LEVEL]</code> can also be <code>all</code> when <code>INCLUDE_ALL_GROUPS</code> is True, which ignores the levels and groups by sleep types.</td>
 </tr>
 <tr>
 <td>medianduration<code>[LEVEL][TYPE]</code></td>
 <td>minutes</td>
-<td>Median duration of all <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). Both <code>[LEVEL]</code> and <code>[TYPE]</code>can also be <code>all</code> when <code>LEVELS_AND_TYPES_COMBINING_ALL</code> is True, which ignores the levels and groups by sleep types.</td>
+<td>Median duration of all <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). <code>[LEVEL]</code> can also be <code>all</code> when <code>INCLUDE_ALL_GROUPS</code> is True, which ignores the levels and groups by sleep types.</td>
 </tr>
 <tr>
 <td>stdduration<code>[LEVEL][TYPE]</code></td>
 <td>minutes</td>
-<td>Standard deviation duration of all <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). Both <code>[LEVEL]</code> and <code>[TYPE]</code>can also be <code>all</code> when <code>LEVELS_AND_TYPES_COMBINING_ALL</code> is True, which ignores the levels and groups by sleep types.</td>
+<td>Standard deviation duration of all <code>[LEVEL][TYPE]</code>sleep episodes. <code>[LEVEL]</code>is one of <code>[SLEEP_LEVELS]</code> (e.g. awake-classic or rem-stages) and <code>[TYPE]</code> is one of <code>[SLEEP_TYPES]</code> (e.g. main). <code>[LEVEL]</code> can also be <code>all</code> when <code>INCLUDE_ALL_GROUPS</code> is True, which ignores the levels and groups by sleep types.</td>
 </tr>
 </tbody>
 </table>
@@ -1913,12 +1909,12 @@
 </thead>
 <tbody>
 <tr>
-<td>ratiocount<code>[TYPE]</code>within<code>[LEVEL]</code></td>
+<td>ratiocountmainwithin<code>[LEVEL]</code></td>
 <td>-</td>
 <td>Ratio between the <strong>count</strong> of episodes of a single sleep <code>[LEVEL]</code> during <code>main</code> sleep divided by the <strong>count</strong> of episodes of a single sleep <code>[LEVEL]</code> during <code>main</code> <strong>and</strong> <code>nap</code>. This answers the question: are <code>rem</code> episodes more frequent during <code>main</code> than <code>nap</code> sleep? We do not provide the ratio for <code>nap</code> because is complementary. (<span class="arithmatex">\(countepisode[remstages][main] / countepisode[remstages][all]\)</span>)</td>
 </tr>
 <tr>
-<td>ratioduration<code>[TYPE]</code>within<code>[LEVEL]</code></td>
+<td>ratiodurationmainwithin<code>[LEVEL]</code></td>
 <td>-</td>
 <td>Ratio between the <strong>duration</strong> of episodes of a single sleep <code>[LEVEL]</code> during <code>main</code> sleep divided by the <strong>duration</strong> of episodes of a single sleep <code>[LEVEL]</code> during <code>main</code> <strong>and</strong> <code>nap</code>. This answers the question: is <code>rem</code> time more frequent during <code>main</code> than <code>nap</code> sleep? We do not provide the ratio for <code>nap</code> because is complementary. (<span class="arithmatex">\(countepisode[remstages][main] / countepisode[remstages][all]\)</span>)</td>
 </tr>
@@ -1946,46 +1942,21 @@
 </tr>
 </tbody>
 </table>
-<p>Features description for <code>[FITBIT_SLEEP_INTRADAY][PROVIDERS][RAPIDS][ROUTINE]</code>:</p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>Units</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>starttimefirstmainsleep</td>
-<td>minutes</td>
-<td>Start time (in minutes since <code>REFERENCE_TIME</code>) of the first main sleep episode after <code>INCLUDE_EPISODES_LATER_THAN</code>.</td>
-</tr>
-<tr>
-<td>endtimelastmainsleep</td>
-<td>minutes</td>
-<td>End time (in minutes since <code>REFERENCE_TIME</code>) of the last main sleep episode after <code>INCLUDE_EPISODES_LATER_THAN</code>.</td>
-</tr>
-<tr>
-<td>starttimefirstnap</td>
-<td>minutes</td>
-<td>Start time (in minutes since <code>REFERENCE_TIME</code>) of the first nap episode after <code>INCLUDE_EPISODES_LATER_THAN</code>.</td>
-</tr>
-<tr>
-<td>endtimelastnap</td>
-<td>minutes</td>
-<td>End time (in minutes since <code>REFERENCE_TIME</code>) of the last nap episode after <code>INCLUDE_EPISODES_LATER_THAN</code>.</td>
-</tr>
-</tbody>
-</table>
 <div class="admonition note">
 <p class="admonition-title">Assumptions/Observations</p>
 <ol>
-<li>Deleting values from <code>[SLEEP_LEVELS]</code> or <code>[SLEEP_TYPES]</code> will only change the features you receive from <code>[LEVELS_AND_TYPES]</code>. For example if <code>STAGES</code> only contains <code>[rem, light]</code> you will not receive <code>countepisode[wake|deep][TYPE]</code> or sum, max, min, avg, median, or std <code>duration</code>. These values will not influence <code>RATIOS</code> or <code>ROUTINE</code> features.</li>
-<li>Any <code>[LEVEL]</code> grouping is done within the elements of each class <code>CLASSIC</code>, <code>STAGES</code>, and <code>UNIFIED</code>. That is, we never combine <code>CLASSIC</code> or <code>STAGES</code> types to compute features when <code>LEVELS_AND_TYPES_COMBINING_ALL</code> is True or when computing <code>RATIOS</code>.</li>
+<li><a href="../../img/sleep_intraday_rapids.png">This diagram</a> will help you understand how sleep episodes are chunked and grouped within time segments for the RAPIDS provider.</li>
+<li>Features listed in <code>[LEVELS_AND_TYPES]</code> are computed for any levels and types listed in <code>[SLEEP_LEVELS]</code> or <code>[SLEEP_TYPES]</code>. For example if <code>STAGES</code> only contains <code>[rem, light]</code> you will not get <code>countepisode[wake|deep][TYPE]</code> or sum, max, min, avg, median, or std <code>duration</code>. Levels or types in these lists do not influence <code>RATIOS</code> or <code>ROUTINE</code> features.</li>
+<li>Any <code>[LEVEL]</code> grouping is done within the elements of each class <code>CLASSIC</code>, <code>STAGES</code>, and <code>UNIFIED</code>. That is, we never combine <code>CLASSIC</code> or <code>STAGES</code> types to compute features.</li>
+<li>The categories for <code>all</code> levels (when <code>INCLUDE_ALL_GROUPS</code> is <code>True</code>) and <code>all</code> <code>SLEEP_TYPES</code> are not considered for <code>RATIOS</code> features as they are always 1.</li>
+<li>These features can be computed in time segments of any length, but only the 1-minute sleep chunks within each segment instance will be used.</li>
 </ol>
 </div>
 <h2 id="price-provider">PRICE provider<a class="headerlink" href="#price-provider" title="Permanent link">&para;</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Understanding PRICE features</p>
+<p><a href="../../img/sleep_intraday_price.png">This diagram</a> will help you understand how sleep episodes are chunked and grouped within time segments and <code>LNE-LNE</code> intervals for the PRICE provider.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Available time segments</p>
 <ul>
@@ -2021,15 +1992,15 @@
 </tr>
 <tr>
 <td><code>[SLEEP_LEVELS]</code></td>
-<td>Fitbit’s sleep API Version 1 only provides <code>CLASSIC</code> records. However, Version 1.2 provides 2 types of records: <code>CLASSIC</code> and <code>STAGES</code>. <code>STAGES</code> is only available in devices with a heart rate sensor and even those devices will fail to report it if the battery is low or the device is not tight enough. While <code>CLASSIC</code> contains 3 sleep levels (<code>awake</code>, <code>restless</code>, and <code>asleep</code>), <code>STAGES</code> contains 4 sleep levels (<code>wake</code>, <code>deep</code>, <code>light</code>, <code>rem</code>). To make it consistent, RAPIDS grouped them into 2 <code>UNIFIED</code> sleep levels: <code>awake</code> (<code>CLASSIC</code>: <code>awake</code> and <code>restless</code>; <code>STAGES</code>: <code>wake</code>) and <code>asleep</code> (<code>CLASSIC</code>: <code>asleep</code>; <code>STAGES</code>: <code>deep</code>, <code>light</code>, and <code>rem</code>).</td>
+<td>Fitbit’s sleep API Version 1 only provides <code>CLASSIC</code> records. However, Version 1.2 provides 2 types of records: <code>CLASSIC</code> and <code>STAGES</code>. <code>STAGES</code> is only available in devices with a heart rate sensor and even those devices will fail to report it if the battery is low or the device is not tight enough. While <code>CLASSIC</code> contains 3 sleep levels (<code>awake</code>, <code>restless</code>, and <code>asleep</code>), <code>STAGES</code> contains 4 sleep levels (<code>wake</code>, <code>deep</code>, <code>light</code>, <code>rem</code>). To make it consistent, RAPIDS groups them into 2 <code>UNIFIED</code> sleep levels: <code>awake</code> (<code>CLASSIC</code>: <code>awake</code> and <code>restless</code>; <code>STAGES</code>: <code>wake</code>) and <code>asleep</code> (<code>CLASSIC</code>: <code>asleep</code>; <code>STAGES</code>: <code>deep</code>, <code>light</code>, and <code>rem</code>). In this section, there is a boolean flag named <code>INCLUDE_ALL_GROUPS</code> that if set to TRUE, computes avgdurationallmain<code>[DAY_TYPE]</code> features grouping all levels together in a single <code>all</code> category.</td>
 </tr>
 <tr>
 <td><code>[DAY_TYPE]</code></td>
 <td>The features of this provider can be computed using daily averages/standard deviations that were extracted on <code>WEEKEND</code> days only, <code>WEEK</code> days only, or <code>ALL</code> days</td>
 </tr>
 <tr>
-<td><code>[GROUP_EPISODES_WITHIN]</code></td>
-<td>This parameter contains 2 values: <code>[START_TIME]</code> and <code>[LENGTH]</code>. Only <code>main</code> sleep episodes that intersect or contain the period between [<code>START_TIME</code>, <code>START_TIME</code> + <code>LENGTH</code>] are taken into account to compute the features described below. Both <code>[START_TIME]</code> and <code>[LENGTH]</code> are in minutes. <code>[START_TIME]</code> is a number ranging from 0 (midnight) to 1439 (23:59) which denotes the number of minutes after midnight. <code>[LENGTH]</code> is a number smaller than 1440 (24 hours).</td>
+<td><code>[LAST_NIGHT_END]</code></td>
+<td>Only <code>main</code> sleep episodes that start within the <code>LNE-LNE</code> interval [<code>LAST_NIGHT_END</code>, <code>LAST_NIGHT_END</code> + 23H 59M 59S] are taken into account to compute the features described below. <code>[LAST_NIGHT_END]</code> is a number ranging from 0 (midnight) to 1439 (23:59).</td>
 </tr>
 </tbody>
 </table>
@@ -2046,182 +2017,92 @@
 <tr>
 <td>avgduration<code>[LEVEL]</code>main<code>[DAY_TYPE]</code></td>
 <td>minutes</td>
-<td>Average duration of daily <code>LEVEL</code> sleep episodes. You can include daily average that were computed on weekend days, week days or both depending on the value of the <code>DAY_TYPE</code> flag.</td>
+<td>Average duration of daily sleep chunks of a <code>LEVEL</code>. Use the <code>DAY_TYPE</code> flag to include daily durations from weekend days only, weekdays, or both. Use <code>[LEVEL]</code> to group all levels in a single <code>all</code> category.</td>
 </tr>
 <tr>
 <td>avgratioduration<code>[LEVEL]</code>withinmain<code>[DAY_TYPE]</code></td>
 <td>-</td>
-<td>Average ratio between daily <code>LEVEL</code> time and in-bed time inferred from <code>main</code> sleep episodes. <code>LEVEL</code> is one of <code>SLEEP_LEVELS</code> (e.g. awake-classic or rem-stages). In-bed time is the total duration of all <code>main</code> sleep episodes for each day. You can include daily ratios that were computed on weekend days, week days or both depending on the value of the <code>DAY_TYPE</code> flag.</td>
+<td>Average of the daily ratio between the duration of sleep chunks of a <code>LEVEL</code> and total duration of all <code>main</code> sleep episodes in a day. When <code>INCLUDE_ALL_GROUPS</code> is <code>True</code> the <code>all</code> <code>LEVEL</code> is ignored since this feature is always 1. Use the <code>DAY_TYPE</code> flag to include start times from weekend days only, weekdays, or both.</td>
 </tr>
 <tr>
 <td>avgstarttimeofepisodemain<code>[DAY_TYPE]</code></td>
 <td>minutes</td>
-<td>Average start time of the first <code>main</code> sleep episode of each day in a time segment. You can include daily start times from episodes detected on weekend days, week days or both depending on the value of the <code>DAY_TYPE</code> flag.</td>
+<td>Average of all start times of the first <code>main</code> sleep episode within each <code>LNE-LNE</code> interval in a time segment. Use the <code>DAY_TYPE</code> flag to include start times from <code>LNE-LNE</code> intervals that start on weekend days only, weekdays, or both.</td>
 </tr>
 <tr>
 <td>avgendtimeofepisodemain<code>[DAY_TYPE]</code></td>
 <td>minutes</td>
-<td>Average end time of the last <code>main</code> sleep episode of each day in a time segment. You can include daily end times from episodes detected on weekend days, week days or both depending on the value of the <code>DAY_TYPE</code> flag.</td>
+<td>Average of all end times of the last <code>main</code> sleep episode within each <code>LNE-LNE</code> interval in a time segment. Use the <code>DAY_TYPE</code> flag to include end times from <code>LNE-LNE</code> intervals that start on weekend days only, weekdays, or both.</td>
 </tr>
 <tr>
 <td>avgmidpointofepisodemain<code>[DAY_TYPE]</code></td>
 <td>minutes</td>
-<td>Average mid time between the start of the first <code>main</code> sleep episode and the end of the last <code>main</code> sleep episode of each day in a time segment. You can include episodes detected on weekend days, week days or both depending on the value of the <code>DAY_TYPE</code> flag.</td>
+<td>Average of all the differences between <code>avgendtime...</code> and <code>avgstarttime..</code> in a time segment. Use the <code>DAY_TYPE</code> flag to include end times from <code>LNE-LNE</code> intervals that start on weekend days only, weekdays, or both.</td>
 </tr>
 <tr>
 <td>stdstarttimeofepisodemain<code>[DAY_TYPE]</code></td>
 <td>minutes</td>
-<td>Standard deviation of start time of the first <code>main</code> sleep episode of each day in a time segment. You can include daily start times from episodes detected on weekend days, week days or both depending on the value of the <code>DAY_TYPE</code> flag.</td>
+<td>Standard deviation of all start times of the first <code>main</code> sleep episode within each <code>LNE-LNE</code> interval in a time segment. Use the <code>DAY_TYPE</code> flag to include start times from <code>LNE-LNE</code> intervals that start on weekend days only, weekdays, or both.</td>
 </tr>
 <tr>
 <td>stdendtimeofepisodemain<code>[DAY_TYPE]</code></td>
 <td>minutes</td>
-<td>Standard deviation of end time of the last <code>main</code> sleep episode of each day in a time segment. You can include daily end times from episodes detected on weekend days, week days or both depending on the value of the <code>DAY_TYPE</code> flag.</td>
+<td>Standard deviation of all end times of the last <code>main</code> sleep episode within each <code>LNE-LNE</code> interval in a time segment. Use the <code>DAY_TYPE</code> flag to include end times from <code>LNE-LNE</code> intervals that start on weekend days only, weekdays, or both.</td>
 </tr>
 <tr>
 <td>stdmidpointofepisodemain<code>[DAY_TYPE]</code></td>
 <td>minutes</td>
-<td>Standard deviation of mid time between the start of the first <code>main</code> sleep episode and the end of the last <code>main</code> sleep episode of each day in a time segment. You can include episodes detected on weekend days, week days or both depending on the value of the <code>DAY_TYPE</code> flag.</td>
+<td>Standard deviation of all the differences between <code>avgendtime...</code> and <code>avgstarttime..</code> in a time segment. Use the <code>DAY_TYPE</code> flag to include end times from <code>LNE-LNE</code> intervals that start on weekend days only, weekdays, or both.</td>
 </tr>
 <tr>
 <td>socialjetlag</td>
 <td>minutes</td>
-<td>Difference in minutes between the avgmidpointofepisodemain (average mid time between bedtime and wake time) of weekends and weekdays.</td>
+<td>Difference in minutes between the avgmidpointofepisodemain of weekends and weekdays that belong to each time segment instance. If your time segment does not contain at least one week day and one weekend day this feature will be NA.</td>
 </tr>
 <tr>
-<td>meanssdstarttimeofepisodemain</td>
-<td>minutes squared</td>
-<td>Same as <code>avgstarttimeofepisodemain[DAY_TYPE]</code> but the average is computed over the squared differences of each pair of consecutive start times.</td>
+<td>rmssdmeanstarttimeofepisodemain</td>
+<td>minutes</td>
+<td>Square root of the <strong>mean</strong> squared successive difference (RMSSD) between today&rsquo;s and yesterday&rsquo;s <code>starttimeofepisodemain</code> values across the entire participant&rsquo;s sleep data grouped per time segment instance. It represents the mean of how someone&rsquo;s <code>starttimeofepisodemain</code> (bedtime) changed from night to night.</td>
 </tr>
 <tr>
-<td>meanssdendtimeofepisodemain</td>
-<td>minutes squared</td>
-<td>Same as <code>avgendtimeofepisodemain[DAY_TYPE]</code> but the average is computed over the squared differences of each pair of consecutive end times.</td>
+<td>rmssdmeanendtimeofepisodemain</td>
+<td>minutes</td>
+<td>Square root of the <strong>mean</strong> squared successive difference (RMSSD) between today&rsquo;s and yesterday&rsquo;s <code>endtimeofepisodemain</code> values across the entire participant&rsquo;s sleep data grouped per time segment instance. It represents the mean of how someone&rsquo;s <code>endtimeofepisodemain</code> (wake time) changed from night to night.</td>
 </tr>
 <tr>
-<td>meanssdmidpointofepisodemain</td>
-<td>minutes squared</td>
-<td>Same as <code>avgmidpointofepisodemain[DAY_TYPE]</code> but the average is computed over the squared differences of each pair of consecutive mid times.</td>
+<td>rmssdmeanmidpointofepisodemain</td>
+<td>minutes</td>
+<td>Square root of the <strong>mean</strong> squared successive difference (RMSSD) between today&rsquo;s and yesterday&rsquo;s <code>midpointofepisodemain</code> values across the entire participant&rsquo;s sleep data grouped per time segment instance. It represents the mean of how someone&rsquo;s <code>midpointofepisodemain</code> (mid time between bedtime and wake time) changed from night to night.</td>
 </tr>
 <tr>
-<td>medianssdstarttimeofepisodemain</td>
-<td>minutes squared</td>
-<td>Same as <code>avgstarttimeofepisodemain[DAY_TYPE]</code> but the median is computed over the squared differences of each pair of consecutive start times.</td>
+<td>rmssdmedianstarttimeofepisodemain</td>
+<td>minutes</td>
+<td>Square root of the <strong>median</strong> squared successive difference (RMSSD) between today&rsquo;s and yesterday&rsquo;s <code>starttimeofepisodemain</code> values across the entire participant&rsquo;s sleep data grouped per time segment instance. It represents the median of how someone&rsquo;s <code>starttimeofepisodemain</code> (bedtime) changed from night to night.</td>
 </tr>
 <tr>
-<td>medianssdendtimeofepisodemain</td>
-<td>minutes squared</td>
-<td>Same as <code>avgendtimeofepisodemain[DAY_TYPE]</code> but the median is computed over the squared differences of each pair of consecutive end times.</td>
+<td>rmssdmedianendtimeofepisodemain</td>
+<td>minutes</td>
+<td>Square root of the <strong>median</strong> squared successive difference (RMSSD) between today&rsquo;s and yesterday&rsquo;s <code>endtimeofepisodemain</code> values across the entire participant&rsquo;s sleep data grouped per time segment instance. It represents the median of how someone&rsquo;s <code>endtimeofepisodemain</code> (wake time) changed from night to night.</td>
 </tr>
 <tr>
-<td>medianssdmidpointofepisodemain</td>
-<td>minutes squared</td>
-<td>Same as <code>avgmidpointofepisodemain[DAY_TYPE]</code> but the median is computed over the squared differences of each pair of consecutive mid times.</td>
+<td>rmssdmedianmidpointofepisodemain</td>
+<td>minutes</td>
+<td>Square root of the <strong>median</strong> squared successive difference (RMSSD) between today&rsquo;s and yesterday&rsquo;s <code>midpointofepisodemain</code> values across the entire participant&rsquo;s sleep data grouped per time segment instance. It represents the median of how someone&rsquo;s <code>midpointofepisodemain</code> (average mid time between bedtime and wake time) changed from night to night.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Assumptions/Observations</p>
 <ol>
-<li>These features are based on descriptive statistics computed across daily values (start/end/mid times of sleep episodes). This is the reason why they are only available on time segments that are longer than 24 hours (we need at least 1 day to get the average).</li>
+<li><a href="../../img/sleep_intraday_price.png">This diagram</a> will help you understand how sleep episodes are chunked and grouped within time segments and <code>LNE-LNE</code> intervals for the PRICE provider.</li>
+<li>We recommend you use periodic segments that start in the morning so RAPIDS can chunk and group sleep episodes overnight. Shifted segments (as any other segments) are labelled based on their start and end date times.</li>
+<li><code>avgstarttime...</code> and <code>avgendtime...</code> are roughly equivalent to an average bed and awake time only if you are using shifted segments.</li>
+<li>The features of this provider are only available on time segments that are longer than 24 hours because they are based on descriptive statistics computed across daily values.</li>
 <li>Even though Fitbit provides 2 types of sleep episodes (<code>main</code> and <code>nap</code>), only <code>main</code> sleep episodes are considered.</li>
-<li>
-<p>How do we assign sleep episodes to specific dates?</p>
-<p><code>START_TIME</code> and <code>LENGTH</code> control the dates that sleep episodes belong to. For a pair of <code>[START_TIME]</code> and <code>[LENGTH]</code>, sleep episodes (blue boxes) can only be placed at the following places:</p>
-<p><figure>
-    <img src="../../img/features_fitbit_sleep_intraday.png" max-width="100%" />
-    <figcaption>Relationship between sleep episodes and the given times<code>([START_TIME], [LENGTH])</code></figcaption>
-</figure></p>
-<ul>
-<li>
-<p>If the end time of a sleep episode is before <code>[START_TIME]</code>, it will belong to the day before its start date (e.g. sleep episode #1).</p>
-</li>
-<li>
-<p>if (1) the start time or the end time of a sleep episode are between (overlap) <code>[START_TIME]</code> and <code>[START_TIME] + [LENGTH]</code> or (2) the start time is before <code>[START_TIME]</code> and the end time is after <code>[START_TIME] + [LENGTH]</code>, it will belong to its start date (e.g. sleep episode #2, #3, #4, #5).</p>
-</li>
-<li>
-<p>If the start time of a sleep episode is after <code>START_TIME] + [LENGTH]</code>, it will belong to the day after its start date (e.g. sleep episode #6).</p>
-</li>
-</ul>
-<p>Only <code>main</code> sleep episodes that intersect or contain the period between <code>[START_TIME]</code> and <code>[START_TIME] + [LENGTH]</code> will be included in the feature computation. If we process the following <code>main</code> sleep episodes: </p>
-<table>
-<thead>
-<tr>
-<th>episode</th>
-<th>start</th>
-<th>end</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>2021-02-01 12:00</td>
-<td>2021-02-01 15:00</td>
-</tr>
-<tr>
-<td>2</td>
-<td>2021-02-01 21:00</td>
-<td>2021-02-02 03:00</td>
-</tr>
-<tr>
-<td>3</td>
-<td>2021-02-02 05:00</td>
-<td>2021-02-02 08:00</td>
-</tr>
-<tr>
-<td>4</td>
-<td>2021-02-02 11:00</td>
-<td>2021-02-02 14:00</td>
-</tr>
-<tr>
-<td>5</td>
-<td>2021-02-02 19:00</td>
-<td>2021-02-03 06:00</td>
-</tr>
-</tbody>
-</table>
-<p>And our parameters:</p>
-<ul>
-<li>
-<p><code>[INCLUDE_EPISODES_INTERSECTING][START_TIME]</code> = 1320 (today&rsquo;s 22:00)</p>
-</li>
-<li>
-<p><code>[INCLUDE_EPISODES_INTERSECTING][LENGTH]</code> = 720 (tomorrow&rsquo;s 10:00, or 22:00 + 12 hours)</p>
-</li>
-</ul>
-<p>Only sleep episodes 2, 3,and 5 would be considered.</p>
-</li>
-<li>
-<p>Time related features represent the number of minutes between the start/end/midpoint of sleep episodes and the assigned day&rsquo;s midnight.</p>
-</li>
-<li>
-<p>All <code>main</code> sleep episodes are chunked within the requested <a href="../../setup/configuration/#time-segments">time segments</a> which need to be at least 24 hours or more long (1, 2, 3, 7 days, etc.). Then, daily features will be extracted and averaged across the length of the time segment, for example:</p>
-<p>The daily features extracted on 2021-02-01 will be:</p>
-<ul>
-<li>
-<p>starttimeofepisodemain (bedtime) is <code>21 * 60</code> (episode 2 start time 2021-02-01 21:00)</p>
-</li>
-<li>
-<p>endtimeofepisodemain (wake time) is <code>32 * 60</code>(episode 3 end time 2021-02-02 08:00 + 24)</p>
-</li>
-<li>
-<p>midpointofepisodemain (midpoint sleep) is <code>[(21 * 60) + (32 * 60)] / 2</code></p>
-</li>
-</ul>
-<p>The daily features extracted on 2021-02-02 will be:</p>
-<ul>
-<li>
-<p>starttimeofepisodemain (bedtime) is <code>19 * 60</code> (episode 5 start time 2021-02-01 19:00)</p>
-</li>
-<li>
-<p>endtimeofepisodemain (wake time) is <code>30 * 60</code>(episode 5 end time 2021-02-03 06:00 + 24)</p>
-</li>
-<li>
-<p>midpointofepisodemain (midpoint sleep) is <code>[(19 * 60) + (30 * 60)] / 2</code></p>
-</li>
-</ul>
-<p>And <code>avgstarttimeofepisodemain[DAY_TYPE]</code> will be <code>([21 * 60] + [19 * 60]) / 2</code> </p>
-</li>
+<li>The reference point for all times is 00:00 of the first day in the LNE-LNE interval.</li>
+<li>Sleep episodes are formed by 1-minute chunks that we group overnight starting from today’s LNE and ending on tomorrow’s LNE or the end of that segment (whatever is first). </li>
+<li>The features <code>avgstarttime...</code> and <code>avgendtime...</code> are the average of the first and last sleep episode across every LNE-LNE interval within a segment (<code>avgmidtime...</code> is the mid point between start and end). Therefore, only segments longer than 24hrs will be averaged across more than one LNE-LNE interval.</li>
+<li><code>socialjetlag</code> is only available on segment instances equal or longer than 48hrs that contain at least one weekday day and one weekend day, for example seven-day (weekly) segments.</li>
 </ol>
 </div>
                 
