@@ -1718,9 +1718,79 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition info">
+<p class="admonition-title">File Sequence</p>
+<div class="highlight"><pre><span></span><code>- data/raw/<span class="o">{</span>pid<span class="o">}</span>/phone_keyboard_raw.csv
+- data/raw/<span class="o">{</span>pid<span class="o">}</span>/phone_keyboard_with_datetime.csv
+- data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_keyboard_features/phone_keyboard_<span class="o">{</span>language<span class="o">}</span>_<span class="o">{</span>provider_key<span class="o">}</span>.csv
+- data/processed/features/<span class="o">{</span>pid<span class="o">}</span>/phone_keyboard.csv
+</code></pre></div>
+</div>
+<p>Features description for <code>[PHONE_KEYBOARD]</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Units</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessioncount</td>
+<td>-</td>
+<td>Number of typing sessions in a time segment. A session begins with any keypress and finishes until 5 seconds have elapsed since the last key was pressed or the application that the user was typing on changes.</td>
+</tr>
+<tr>
+<td>averagesessionlength</td>
+<td>milliseconds</td>
+<td>Average length of all sessions in a time segment instance</td>
+</tr>
+<tr>
+<td>averageinterkeydelay</td>
+<td>milliseconds</td>
+<td>The average time between keystrokes measured in milliseconds.</td>
+</tr>
+<tr>
+<td>changeintextlengthlessthanminusone</td>
+<td></td>
+<td>Number of times a keyboard typing or swiping event changed the length of the current text to less than one fewer character.</td>
+</tr>
+<tr>
+<td>changeintextlengthequaltominusone</td>
+<td></td>
+<td>Number of times a keyboard typing or swiping event changed the length of the current text in exactly one fewer character.</td>
+</tr>
+<tr>
+<td>changeintextlengthequaltoone</td>
+<td></td>
+<td>Number of times a keyboard typing or swiping event changed the length of the current text in exactly one more character.</td>
+</tr>
+<tr>
+<td>changeintextlengthmorethanone</td>
+<td></td>
+<td>Number of times a keyboard typing or swiping event changed the length of the current text to more than one character.</td>
+</tr>
+<tr>
+<td>maxtextlength</td>
+<td></td>
+<td>Length in characters of the longest sentence(s) contained in the typing text box of any app during the time segment.</td>
+</tr>
+<tr>
+<td>lastmessagelength</td>
+<td></td>
+<td>Length of the last text in characters of the sentence(s) contained in the typing text box of any app during the time segment.</td>
+</tr>
+<tr>
+<td>totalkeyboardtouches</td>
+<td></td>
+<td>Average number of typing events across all sessions in a time segment instance.</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>No feature providers have been implemented for this sensor yet, however you can use its key (<code>PHONE_KEYBOARD</code>) to improve <a href="../phone-data-yield"><code>PHONE_DATA_YIELD</code></a> or you can <a href="../add-new-features">implement your own features</a>.</p>
+<p>We did not find a reliable way to distinguish between AutoCorrect or AutoComplete changes, since both can be applied with a single touch or swipe event and can decrease or increase the length of the text by an arbitrary number of characters.</p>
 </div>
                 
               

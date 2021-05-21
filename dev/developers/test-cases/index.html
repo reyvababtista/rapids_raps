@@ -1625,6 +1625,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#keyboard" class="md-nav__link">
+    Keyboard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fitbit-calories-intraday" class="md-nav__link">
     Fitbit Calories Intraday
   </a>
@@ -1870,6 +1877,13 @@
         <li class="md-nav__item">
   <a href="#conversation" class="md-nav__link">
     Conversation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyboard" class="md-nav__link">
+    Keyboard
   </a>
   
 </li>
@@ -2286,6 +2300,32 @@
     <code>plugin_studentlife_audio_raw.csv</code> respectively).</li>
 <li>Finally, there are also additional empty data files for both
     android and iOS for testing empty data files</li>
+</ul>
+<h2 id="keyboard">Keyboard<a class="headerlink" href="#keyboard" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The raw keyboard data file contains data for 4 days.</li>
+<li>
+<p>The raw keyboard data contains records with difference in <code>timestamp</code> ranging from
+  milliseconds to seconds.  </p>
+</li>
+<li>
+<p>With difference in timestamps between consecutive records more than 5 seconds helps us to create separate 
+  sessions within the usage of the same app. This helps to verify the case where sessions have to be different. </p>
+</li>
+<li>
+<p>The raw keyboard data contains records where the difference in text is less 
+  than 5 seconds which makes it into 1 session but because of difference of app
+  new session starts. This edge case determines the behaviour within particular app
+  and also within 5 seconds.</p>
+</li>
+<li>
+<p>The raw keyboard data also contains the records where length of <code>current_text</code> varies between consecutive rows. This helps us to tests on the cases where input text is entered by auto-suggested
+  or auto-correct operations.</p>
+</li>
+<li>
+<p>One three-minute episode with a 1-minute row on Sun 08:59:54.65 and 09:00:00,another on Sun 12:01:02 that are considering a single episode in multi-timezone event segments to showcase how
+ inferring time zone data for Keyboard from phone data can produce inaccurate results around the tz change. This happens because the device was on LA time until 11:59 and switched to NY time at 12pm, in terms of actual time 09 am LA and 12 pm NY represent the same moment in time so 09:00 LA and 12:01 NY are consecutive minutes.</p>
+</li>
 </ul>
 <h2 id="fitbit-calories-intraday">Fitbit Calories Intraday<a class="headerlink" href="#fitbit-calories-intraday" title="Permanent link">&para;</a></h2>
 <p>Description</p>
