@@ -1760,6 +1760,10 @@
 <td><code>[CONTAINER]</code></td>
 <td>Container where your steps intraday data is stored, depending on the data stream you are using this can be a database table, a CSV file, etc.</td>
 </tr>
+<tr>
+<td><code>[EXCLUDE_SLEEP]</code></td>
+<td>Step data will be excluded if it was logged during sleep periods when at least one <code>[EXCLUDE]</code> flag is set to <code>True</code>. Sleep can be delimited by (1) a fixed period that repeats on every day if <code>[TIME_BASED][EXCLUDE]</code> is True or (2) by Fitbit summary sleep episodes if <code>[FITBIT_BASED][EXCLUDE]</code> is True. If both are True (3), we use all Fitbit sleep episodes as well as the time-based episodes that do not overlap with any Fitbit episodes. If <code>[TIME_BASED][EXCLUDE]</code> is True, make sure Fitbit sleep summary container points to a valid table or file.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="rapids-provider">RAPIDS provider<a class="headerlink" href="#rapids-provider" title="Permanent link">&para;</a></h2>
@@ -1773,6 +1777,8 @@
 <p class="admonition-title">File Sequence</p>
 <div class="highlight"><pre><span></span><code>- data/raw/<span class="o">{</span>pid<span class="o">}</span>/fitbit_steps_intraday_raw.csv
 - data/raw/<span class="o">{</span>pid<span class="o">}</span>/fitbit_steps_intraday_with_datetime.csv
+- data/raw/<span class="o">{</span>pid<span class="o">}</span>/fitbit_sleep_summary_raw.csv <span class="o">(</span>Only when <span class="o">[</span>EXCLUDE_SLEEP<span class="o">][</span>EXCLUDE<span class="o">]=</span>True and <span class="o">[</span>EXCLUDE_SLEEP<span class="o">][</span>TYPE<span class="o">]=</span>FITBIT_BASED<span class="o">)</span>
+- data/interim/<span class="o">{</span>pid<span class="o">}</span>/fitbit_steps_intraday_with_datetime_exclude_sleep.csv <span class="o">(</span>Only when <span class="o">[</span>EXCLUDE_SLEEP<span class="o">][</span>EXCLUDE<span class="o">]=</span>True<span class="o">)</span>
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/fitbit_steps_intraday_features/fitbit_steps_intraday_<span class="o">{</span>language<span class="o">}</span>_<span class="o">{</span>provider_key<span class="o">}</span>.csv
 - data/processed/features/<span class="o">{</span>pid<span class="o">}</span>/fitbit_steps_intraday.csv
 </code></pre></div>
