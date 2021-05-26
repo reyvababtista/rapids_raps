@@ -1969,7 +1969,7 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <div class="highlight"><pre><span></span><code>- data/raw/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_raw.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime.csv
-- data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime_with_home.csv
+- data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime_with_doryab_columns.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_features/phone_locations_<span class="o">{</span>language<span class="o">}</span>_<span class="o">{</span>provider_key<span class="o">}</span>.csv
 - data/processed/features/<span class="o">{</span>pid<span class="o">}</span>/phone_locations.csv
 </code></pre></div>
@@ -2009,23 +2009,23 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 </tr>
 <tr>
 <td><code>[MAXIMUM_ROW_GAP]</code></td>
-<td>The maximum gap (in seconds) allowed between any two consecutive rows for them to be considered part of the same displacement. If this threshold is too high, it can throw speed and distance calculations off for periods when the phone was not sensing.</td>
-</tr>
-<tr>
-<td><code>[MAXIMUM_ROW_DURATION]</code></td>
-<td>The time difference between any two consecutive rows <code>A</code> and <code>B</code> is considered as the time a participant spent in <code>A</code>. If this difference is bigger than MAXIMUM_ROW_GAP we substitute it with <code>MAXIMUM_ROW_DURATION</code>.</td>
+<td>The maximum gap (in seconds) allowed between any two consecutive rows for them to be considered part of the same displacement. If this threshold is too high, it can throw speed and distance calculations off for periods when the phone was not sensing. This value must be larger than your GPS sampling interval when <code>[LOCATIONS_TO_USE]</code> is <code>ALL</code> or <code>GPS</code>, otherwise all the stationary-related features will be NA. If <code>[LOCATIONS_TO_USE]</code> is <code>ALL_RESAMPLED</code> or <code>FUSED_RESAMPLED</code>, you can use the default value as every row will be resampled at 1-minute intervals.</td>
 </tr>
 <tr>
 <td><code>[MINUTES_DATA_USED]</code></td>
 <td>Set to <code>True</code> to include an extra column in the final location feature file containing the number of minutes used to compute the features on each time segment. Use this for quality control purposes; the more data minutes exist for a period, the more reliable its features should be. For fused location, a single minute can contain more than one coordinate pair if the participant is moving fast enough.</td>
 </tr>
 <tr>
-<td><code>[SAMPLING_FREQUENCY]</code></td>
-<td>Expected time difference between any two location rows in minutes. If set to <code>0</code>, the sampling frequency will be inferred automatically as the median of all the differences between two consecutive row timestamps (recommended if you are using <code>FUSED_RESAMPLED</code> data). This parameter impacts all the time calculations.</td>
+<td><code>[CLUSTER_ON]</code></td>
+<td>Set this flag to <code>PARTICIPANT_DATASET</code> to create clusters based on the entire participant&rsquo;s dataset or to <code>TIME_SEGMENT</code> to create clusters based on all the instances of the corresponding time segment (e.g. all mornings) or to <code>TIME_SEGMENT_INSTANCE</code> to create clusters based on a single instance (e.g. 2020-05-20&rsquo;s morning).</td>
 </tr>
 <tr>
-<td><code>[CLUSTER_ON]</code></td>
-<td>Set this flag to <code>PARTICIPANT_DATASET</code> to create clusters based on the entire participant&rsquo;s dataset or to <code>TIME_SEGMENT</code> to create clusters based on all the instances of the corresponding time segment (e.g. all mornings).</td>
+<td><code>[INFER_HOME_LOCATION_STRATEGY]</code></td>
+<td>The strategy applied to infer home locations. Set to <code>DORYAB_STRATEGY</code> to infer one home location for the entire dataset of each participant or to <code>SUN_LI_VEGA_STRATEGY</code> to infer one home location per day per participant. See Observations below to know more.</td>
+</tr>
+<tr>
+<td><code>[MINIMUM_DAYS_TO_DETECT_HOME_CHANGES]</code></td>
+<td>The minimum number of consecutive days a new home location candidate has to repeat before it is considered the participant&rsquo;s new home. This parameter will be used only when <code>[INFER_HOME_LOCATION_STRATEGY]</code> is set to <code>SUN_LI_VEGA_STRATEGY</code>.</td>
 </tr>
 <tr>
 <td><code>[CLUSTERING_ALGORITHM]</code></td>
@@ -2063,7 +2063,7 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <td>Total distance traveled in a time segment using the haversine formula.</td>
 </tr>
 <tr>
-<td>averagespeed</td>
+<td>avgspeed</td>
 <td>km/hr</td>
 <td>Average speed in a time segment considering only the instances labeled as Moving.</td>
 </tr>
@@ -2075,7 +2075,7 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <tr>
 <td><del class="critic">circadianmovement</del></td>
 <td>-</td>
-<td>Not suggested for use now; see Observations below.  &ldquo;It encodes the extent to which a person&rsquo;s location patterns follow a 24-hour circadian cycle." <a href="../../citation#doryab-locations">Doryab et al.</a>.</td>
+<td>Deprecated, see Observations below.  &ldquo;It encodes the extent to which a person&rsquo;s location patterns follow a 24-hour circadian cycle." <a href="../../citation#doryab-locations">Doryab et al.</a>.</td>
 </tr>
 <tr>
 <td>numberofsignificantplaces</td>
@@ -2110,12 +2110,12 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <tr>
 <td>movingtostaticratio</td>
 <td>-</td>
-<td>Ratio between stationary time and total location sensed time. A lat/long coordinate pair is labeled as stationary if its speed (distance/time) to the next coordinate pair is less than 1km/hr. A higher value represents a more stationary routine. These times are computed using timeInSeconds feature.</td>
+<td>Ratio between stationary time and total location sensed time. A lat/long coordinate pair is labeled as stationary if its speed (distance/time) to the next coordinate pair is less than 1km/hr. A higher value represents a more stationary routine.</td>
 </tr>
 <tr>
 <td>outlierstimepercent</td>
 <td>-</td>
-<td>Ratio between the time spent in non-significant clusters divided by the time spent in all clusters (total location sensed time). A higher value represents more time spent in non-significant clusters. These times are computed using timeInSeconds feature.</td>
+<td>Ratio between the time spent in non-significant clusters divided by the time spent in all clusters (stationary time. Only stationary samples are clustered). A higher value represents more time spent in non-significant clusters.</td>
 </tr>
 <tr>
 <td>maxlengthstayatclusters</td>
@@ -2128,7 +2128,7 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <td>Minimum time spent in a cluster (significant location).</td>
 </tr>
 <tr>
-<td>meanlengthstayatclusters</td>
+<td>avglengthstayatclusters</td>
 <td>minutes</td>
 <td>Average time spent in a cluster (significant location).</td>
 </tr>
@@ -2152,6 +2152,11 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <td>minutes</td>
 <td>Time spent at home (see Observations below for a description on how we compute home).</td>
 </tr>
+<tr>
+<td>homelabel</td>
+<td>-</td>
+<td>An integer that represents a different home location. It will be a constant number (1) for all participants when <code>[INFER_HOME_LOCATION_STRATEGY]</code> is set to <code>DORYAB_STRATEGY</code> or an incremental index if the strategy is set to <code>SUN_LI_VEGA_STRATEGY</code>.</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -2163,9 +2168,33 @@ Note Feb 3 2021. It seems the implementation of this feature is not correct; we 
 <p><strong>Fine-Tuning Clustering Parameters</strong>
 Based on an experiment where we collected fused location data for 7 days with a mean accuracy of 86 &amp; SD of 350.874635, we determined that <code>EPS/MAX_EPS</code>=100 produced closer clustering results to reality. Higher values (&gt;100) missed out on some significant places, like a short grocery visit, while lower values (&lt;100) picked up traffic lights and stop signs while driving as significant locations. We recommend you set <code>EPS</code> based on your location data&rsquo;s accuracy (the more accurate your data is, the lower you should be able to set EPS).</p>
 <p><strong>Duration Calculation</strong>
-To calculate the time duration component for our features, we compute the difference between consecutive rows&rsquo; timestamps to take into account sampling rate variability. If this time difference is larger than a threshold (300 seconds by default), we replace it with a maximum duration (60 seconds by default, i.e., we assume a participant spent at least 60 seconds in their last known location)</p>
-<p><strong>Home location</strong>
-Home is calculated using all location data of a participant between 12 am and 6 am, then applying a clustering algorithm (<code>DB_SCAN</code> or <code>OPTICS</code>) and considering the center of the biggest cluster home for that participant.</p>
+To calculate the time duration component for our features, we compute the difference between consecutive rows&rsquo; timestamps to take into account sampling rate variability. If this time difference is larger than a threshold (300 seconds by default), we replace it with NA and label that row as Moving.</p>
+<p><strong>Home location</strong></p>
+<ul>
+<li>
+<p><code>DORYAB_STRATEGY</code>: home is calculated using all location data of a participant between 12 am and 6 am, then applying a clustering algorithm (<code>DBSCAN</code> or <code>OPTICS</code>) and considering the center of the biggest cluster home for that participant.</p>
+</li>
+<li>
+<p><code>SUN_LI_VEGA_STRATEGY</code>: home is calculated using all location data of a participant between 12 am and 6 am, then applying a clustering algorithm (<code>DBSCAN</code> or <code>OPTICS</code>). The following steps are used to infer the home location per day for that participant:</p>
+<ol>
+<li>
+<p>if there are records within [03:30:00, 04:30:00] for that night:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;we choose the most common cluster during that period as a home candidate for that day.<br>
+    elif there are records within [midnight, 03:30:00) for that night:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;we choose the last valid cluster during that period as a home candidate for that day.<br>
+    elif there are records within (04:30:00, 06:00:00] for that night:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;we choose the first valid cluster during that period as a home candidate for that day.<br>
+    else:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;the home location is NA (missing) for that day.</p>
+</li>
+<li>
+<p>If the count of consecutive days with the same candidate home location cluster label is larger or equal to <code>[MINIMUM_DAYS_TO_DETECT_HOME_CHANGES]</code>,
+    the candidate will be regarded as the home cluster; otherwise, the home cluster will be the last valid day&rsquo;s cluster.
+    If there are no valid clusters before that day, the first home location in the days after is used.</p>
+</li>
+</ol>
+</li>
+</ul>
 </div>
                 
               
