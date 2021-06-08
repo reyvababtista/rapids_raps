@@ -15,7 +15,7 @@
         
       
       <link rel="icon" href="../../img/logo.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6+insiders-2.9.1">
+      <meta name="generator" content="mkdocs-1.2, mkdocs-material-7.1.6+insiders-2.9.1">
     
     
       
@@ -1778,13 +1778,28 @@
 </li>
 <li>
 <p><em>Optional</em>. You can edit RAPIDS files with <code>vim</code> but we recommend using <code>Visual Studio Code</code> and its <code>Remote Containers</code> extension</p>
-<details class="info"><summary>How to configure Remote Containers extension</summary><ul>
-<li>Make sure RAPIDS container is running</li>
-<li>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Remote - Containers extension</a></li>
-<li>Go to the <code>Remote Explorer</code> panel on the left hand sidebar</li>
-<li>On the top right dropdown menu choose <code>Containers</code></li>
-<li>Double click on the <code>moshiresearch/rapids</code> container in the<code>CONTAINERS</code> tree</li>
-<li>A new VS Code session should open on RAPIDS main folder inside the container.</li>
+<details class="info"><summary>How to configure the Remote Containers extension</summary><ul>
+<li>
+<p>Make sure RAPIDS Docker container is running</p>
+</li>
+<li>
+<p>Install VS Code and its <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Remote - Containers extension</a></p>
+</li>
+<li>
+<p>Click the <code>Remote Explorer</code> icon on the left-hand sidebar (the icon is a computer monitor)</p>
+</li>
+<li>
+<p>On the top right dropdown menu, choose <code>Containers</code></p>
+</li>
+<li>
+<p>Right-click on the <code>moshiresearch/rapids</code> container in the <code>CONTAINERS</code> tree and select <code>Attach to Container</code>. A new VS Code window should open</p>
+</li>
+<li>
+<p>In the new window, open the <code>/rapids/</code> folder via the <code>File/Open...</code> menu</p>
+</li>
+<li>
+<p>Run RAPIDS inside a terminal in VS Code. Open one with the <code>Terminal/New Terminal</code> menu</p>
+</li>
 </ul>
 </details>
 </li>
