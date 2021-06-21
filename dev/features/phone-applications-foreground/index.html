@@ -1854,6 +1854,10 @@
 <td>Set to <code>True</code> to extract <code>PHONE_APPLICATIONS_FOREGROUND</code> features from the <code>RAPIDS</code> provider</td>
 </tr>
 <tr>
+<td><code>[INCLUDE_EPISODE_FEATURES]</code></td>
+<td>Set to <code>True</code> to extract application episode features as well from the <code>RAPIDS</code> provider</td>
+</tr>
+<tr>
 <td><code>[FEATURES]</code></td>
 <td>Features to be computed, see table below</td>
 </tr>
@@ -1909,6 +1913,26 @@
 <td>nats</td>
 <td>The entropy of the used apps within a category during a <code>time_segment</code> (each app is seen as a unique event, the more apps were used, the higher the entropy). This is especially relevant when computed over all apps. Entropy cannot be obtained for a single app</td>
 </tr>
+<tr>
+<td>minduration</td>
+<td>minutes</td>
+<td>For a <code>time_segment</code>, the minimum duration an application was used in minutes</td>
+</tr>
+<tr>
+<td>maxduration</td>
+<td>minutes</td>
+<td>For a <code>time_segment</code>, the maximum duration an application was used in minutes</td>
+</tr>
+<tr>
+<td>meanduration</td>
+<td>minutes</td>
+<td>For a <code>time_segment</code>, the mean duration of all the applications used in minutes</td>
+</tr>
+<tr>
+<td>sumduration</td>
+<td>minutes</td>
+<td>For a <code>time_segment</code>, the sum duration of all the applications used in minutes</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
@@ -1916,6 +1940,7 @@
 <p>Features can be computed by app, by apps grouped under a single category (genre) and by multiple categories grouped together (meta-categories). For example, we can get features for <code>Facebook</code> (single app), for <code>Social Network</code> apps (a category including Facebook and other social media apps) or for <code>Social</code> (a meta-category formed by <code>Social Network</code> and <code>Social Media Tools</code> categories).</p>
 <p>Apps installed by default like YouTube are considered systems apps on some phones. We do an exact match to exclude apps where &ldquo;genre&rdquo; == <code>EXCLUDED_CATEGORIES</code> or &ldquo;package_name&rdquo; == <code>EXCLUDED_APPS</code>.</p>
 <p>We provide three ways of classifying and app within a category (genre): a) by automatically scraping its official category from the Google Play Store, b) by using the catalogue created by Stachl et al. which we provide in RAPIDS (<code>data/external/stachl_application_genre_catalogue.csv</code>), or c) by manually creating a personalized catalogue. You can choose a, b or c by modifying <code>[APPLICATION_GENRES]</code> keys and values (see the Sensor parameters description table above).</p>
+<p>The application episodes are calculated using the application foreground and screen unlock episode data. An application episode starts when the application is launched and ends when either, a new application is launched or the screen is locked.</p>
 </div>
                 
               
