@@ -2029,9 +2029,9 @@
 <tr>
 <td>Phone Activity Recognition</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Phone Applications Foreground</td>
@@ -2484,7 +2484,7 @@ When generating test data, all traces for iOS device need to be unique otherwise
 </table>
 <h2 id="wifi">WIFI<a class="headerlink" href="#wifi" title="Permanent link">&para;</a></h2>
 <p>There are two wifi features (<code>phone wifi connected</code> and <code>phone wifi visible</code>). The raw test data are seperatly stored in the <code>phone_wifi_connected_raw.csv</code> and <code>phone_wifi_visible_raw.csv</code>.</p>
-<p>Description</p>
+<p>Description </p>
 <ul>
 <li>One episode for each <code>epoch</code> (<code>night</code>, <code>morining</code>, <code>afternoon</code> and <code>evening</code>)</li>
 <li>Two two episodes in the same time segment (<code>daily</code> and <code>30-min</code>)</li>
@@ -2640,31 +2640,81 @@ When generating test data, all traces for iOS device need to be unique otherwise
     (i.e. for iPhone) are empty data files.</li>
 </ul>
 <h2 id="activity-recognition">Activity Recognition<a class="headerlink" href="#activity-recognition" title="Permanent link">&para;</a></h2>
+<p>Description</p>
 <ul>
-<li>The raw Activity Recognition data file contains data for 1 day.</li>
-<li>The raw Activity Recognition data each <code>epoch</code> period contains
-    rows that records 2 - 5 different <code>activity_types</code>. The is such
-    that durations of activities can be tested. Additionally, there
-    are records that mimic the duration of an activity over the time
-    boundary of neighboring epochs. (For example, there a set of
-    records that mimic the participant <code>in_vehicle</code> from <code>afternoon</code>
-    into <code>evening</code>)</li>
-<li>There is one file each with raw Activity Recognition data for
-    testing both iOS and Android data formats.
-    (plugin_google_activity_recognition_raw.csv for android and
-    plugin_ios_activity_recognition_raw.csv for iOS)</li>
-<li>There is also an additional empty data file for both android and
-    iOS for testing empty data files.</li>
+<li>The 4-day raw conversation data is contained in <code>plugin_google_activity_recognition_raw.csv</code> and <code>plugin_ios_activity_recognition_raw.csv</code>.</li>
+<li>Two episodes locate in the same 30-min segment (<code>Fri 04:01:54</code> and <code>Fri 04:13:52</code>)</li>
+<li>One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>)</li>
+<li>Two episodes locate in the same daily segment (<code>Fri  05:03:09</code> and <code>Fri 05:50:36</code>)</li>
+<li>Two episodes with the time difference less than <code>5 mins</code> threshold (<code>Fri 07:14:21</code> and <code>Fri 07:18:50</code>)</li>
+<li>One episode before the time switch (<code>Sun 00:46:00</code>) and one episode after the time switch (<code>Sun 03:42:00</code>)</li>
 </ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, iOS</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, iOS</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, iOS</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, iOS</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, iOS</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, iOS</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, iOS</td>
+</tr>
+</tbody>
+</table>
 <h2 id="conversation">Conversation<a class="headerlink" href="#conversation" title="Permanent link">&para;</a></h2>
 <p>The 4-day raw conversation data is contained in <code>phone_conversation_raw.csv</code>. The different <code>inference</code> records are 
 randomly distributed throughout the <code>epoch</code>. </p>
-<p>Description
-- One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>) on each day
-- Two episodes near the transition of the daily segment, one starts at the end of the afternoon, <code>Fri 17:10:00</code> and another one starts at the beginning of the evening, <code>Fri 18:01:00</code>
-- One episode across two segments, <code>daily</code> and <code>30-mins</code>, (from <code>Fri 05:55:00</code> to <code>Fri 06:00:41</code>)
-- Two episodes locate in the same daily segment (<code>Sat 12:45:36</code> and <code>Sat 16:48:22</code>)
-- One episode before the time switch, <code>Sun 00:15:06</code>, and one episode after the time switch, <code>Sun 06:01:00</code></p>
+<p>Description</p>
+<ul>
+<li>One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>) on each day</li>
+<li>Two episodes near the transition of the daily segment, one starts at the end of the afternoon, <code>Fri 17:10:00</code> and another one starts at the beginning of the evening, <code>Fri 18:01:00</code></li>
+<li>One episode across two segments, <code>daily</code> and <code>30-mins</code>, (from <code>Fri 05:55:00</code> to <code>Fri 06:00:41</code>)</li>
+<li>Two episodes locate in the same daily segment (<code>Sat 12:45:36</code> and <code>Sat 16:48:22</code>)</li>
+<li>One episode before the time switch, <code>Sun 00:15:06</code>, and one episode after the time switch, <code>Sun 06:01:00</code></li>
+</ul>
 <p>Data format</p>
 <table>
 <thead>
