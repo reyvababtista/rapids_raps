@@ -2036,9 +2036,9 @@
 <tr>
 <td>Phone Applications Foreground</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Phone Battery</td>
@@ -2606,7 +2606,7 @@ When generating test data, all traces for iOS device need to be unique otherwise
 <h2 id="light">Light<a class="headerlink" href="#light" title="Permanent link">&para;</a></h2>
 <p>Description</p>
 <ul>
-<li>The 4-day raw data is contained in <code>phone_light_raw.csv</code></li>
+<li>The 4-day raw light data is contained in <code>phone_light_raw.csv</code></li>
 <li>One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>)</li>
 <li>Two episodes locate in the same 30-min segment (<code>Fri 00:07:27.000</code> and <code>Fri 00:12:00.000</code>)</li>
 <li>Two episodes locate in the same daily segment (<code>Fri 01:00:01.000</code> and <code>Fri 03:59:59.654</code>)</li>
@@ -2677,25 +2677,72 @@ When generating test data, all traces for iOS device need to be unique otherwise
 </ul>
 <h2 id="application-foreground">Application Foreground<a class="headerlink" href="#application-foreground" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The raw application foreground data file contains data for 1 day.</li>
-<li>The raw application foreground data contains 7 - 9 rows of data
-    for each <code>epoch</code>. The records for each <code>epoch</code> contains apps that
-    are randomly selected from a list of apps that are from the
-    <code>MULTIPLE_CATEGORIES</code> and <code>SINGLE_CATEGORIES</code> (See
-    <a href="">testing_config.yaml</a>). There are also records in each epoch
-    that have apps randomly selected from a list of apps that are from
-    the <code>EXCLUDED_CATEGORIES</code> and <code>EXCLUDED_APPS</code>. This is to test
-    that these apps are actually being excluded from the calculations
-    of features. There are also records to test <code>SINGLE_APPS</code>
-    calculations.</li>
-<li>Since application foreground is only available for Android there
-    is only one file that contains data for Android. All other files
-    (i.e. for iPhone) are empty data files.</li>
+<li>The 4-day raw application data is contained in <code>phone_applications_foreground_raw.csv</code></li>
+<li>One episode for each daily segment (night, morning, afternoon and evening)</li>
+<li>Two episodes locate in the same 30-min segment (<code>Fri 10:12:56.385</code> and <code>Fri 10:18:48.895</code>)</li>
+<li>Two episodes locate in the same daily segment (<code>Fri 11:57:56.385</code> and <code>Fri 12:02:56.385</code>)</li>
+<li>One episode before the time switch (<code>Sun 00:07:48.001</code>) and one episode after the time switch (<code>Sun 05:10:30.001</code>)</li>
+<li>Two custom category (<code>Dating</code>) episode, one at <code>Fri 06:05:10.385</code>, another one at <code>Fri 11:53:00.385</code></li>
 </ul>
+<p>Checklist:</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>Android</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>Android</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>Android</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>Android</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>Android</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>Android</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>Android</td>
+</tr>
+</tbody>
+</table>
 <h2 id="activity-recognition">Activity Recognition<a class="headerlink" href="#activity-recognition" title="Permanent link">&para;</a></h2>
 <p>Description</p>
 <ul>
-<li>The 4-day raw conversation data is contained in <code>plugin_google_activity_recognition_raw.csv</code> and <code>plugin_ios_activity_recognition_raw.csv</code>.</li>
+<li>The 4-day raw activity data is contained in <code>plugin_google_activity_recognition_raw.csv</code> and <code>plugin_ios_activity_recognition_raw.csv</code>.</li>
 <li>Two episodes locate in the same 30-min segment (<code>Fri 04:01:54</code> and <code>Fri 04:13:52</code>)</li>
 <li>One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>)</li>
 <li>Two episodes locate in the same daily segment (<code>Fri  05:03:09</code> and <code>Fri 05:50:36</code>)</li>

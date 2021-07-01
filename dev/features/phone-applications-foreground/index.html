@@ -1866,6 +1866,10 @@
 <td>An array of app categories to be <em>included</em> in the feature extraction computation. The special keyword <code>all</code> represents a category with all the apps from each participant. By default we use the category catalogue pointed by <code>[APPLICATION_CATEGORIES][CATALOGUE_FILE]</code> (see the Sensor parameters description table above)</td>
 </tr>
 <tr>
+<td><code>[CUSTOM_CATEGORIES]</code></td>
+<td>An array of collections representing your own app categories. They key of each element is the name of the in-house category and the value is an array of the package names (apps) included in that category.</td>
+</tr>
+<tr>
 <td><code>[MULTIPLE_CATEGORIES]</code></td>
 <td>An array of collections representing meta-categories (a group of categories). They key of each element is the name of the <code>meta-category</code> and the value is an array of member app categories. By default we use the category catalogue pointed by <code>[APPLICATION_CATEGORIES][CATALOGUE_FILE]</code> (see the Sensor parameters description table above)</td>
 </tr>
@@ -1940,6 +1944,7 @@
 <p>Features can be computed by app, by apps grouped under a single category (genre) and by multiple categories grouped together (meta-categories). For example, we can get features for <code>Facebook</code> (single app), for <code>Social Network</code> apps (a category including Facebook and other social media apps) or for <code>Social</code> (a meta-category formed by <code>Social Network</code> and <code>Social Media Tools</code> categories).</p>
 <p>Apps installed by default like YouTube are considered systems apps on some phones. We do an exact match to exclude apps where &ldquo;genre&rdquo; == <code>EXCLUDED_CATEGORIES</code> or &ldquo;package_name&rdquo; == <code>EXCLUDED_APPS</code>.</p>
 <p>We provide three ways of classifying and app within a category (genre): a) by automatically scraping its official category from the Google Play Store, b) by using the catalogue created by Stachl et al. which we provide in RAPIDS (<code>data/external/stachl_application_genre_catalogue.csv</code>), or c) by manually creating a personalized catalogue. You can choose a, b or c by modifying <code>[APPLICATION_GENRES]</code> keys and values (see the Sensor parameters description table above).</p>
+<p>We count <code>episodes</code> and <code>events</code> seperatly. Events are single logs, but episodes will span from a start to and end date time and they will be chunked across any overlapping time segments. And we also compute <code>top1global</code> seperatly. <code>top1global</code> of <code>episodes</code> might not be the same as the <code>top1global</code> of <code>events</code>.</p>
 <p>The application episodes are calculated using the application foreground and screen unlock episode data. An application episode starts when the application is launched and ends when either, a new application is launched or the screen is locked.</p>
 </div>
                 
