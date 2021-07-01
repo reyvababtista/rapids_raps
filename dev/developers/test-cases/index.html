@@ -2087,7 +2087,7 @@
 <td>RAPIDS</td>
 <td>Y</td>
 <td>Y</td>
-<td>N</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Phone Locations</td>
@@ -2604,16 +2604,69 @@ When generating test data, all traces for iOS device need to be unique otherwise
 </tbody>
 </table>
 <h2 id="light">Light<a class="headerlink" href="#light" title="Permanent link">&para;</a></h2>
+<p>Description</p>
 <ul>
-<li>The raw light data file contains data for 1 day.</li>
-<li>The raw light data contains 3 or 4 rows of data for each <code>epoch</code>
-    except <code>night</code>. The single row of data for <code>night</code> is for testing
-    features for single values inputs. (Example testing the standard
-    deviation of one input value)</li>
-<li>Since light is only available for Android there is only one file
-    that contains data for Android. All other files (i.e. for iPhone)
-    are empty data files.</li>
+<li>The 4-day raw data is contained in <code>phone_light_raw.csv</code></li>
+<li>One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>)</li>
+<li>Two episodes locate in the same 30-min segment (<code>Fri 00:07:27.000</code> and <code>Fri 00:12:00.000</code>)</li>
+<li>Two episodes locate in the same daily segment (<code>Fri 01:00:01.000</code> and <code>Fri 03:59:59.654</code>)</li>
+<li>One episode before the time switch (<code>Sun 00:08:00.000</code>) and one episode after the time switch (<code>Sun 05:36:00.000</code>)</li>
 </ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>android</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>android</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>android</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>android</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>android</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>android</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>android</td>
+</tr>
+</tbody>
+</table>
 <h2 id="locations">Locations<a class="headerlink" href="#locations" title="Permanent link">&para;</a></h2>
 <p>Description</p>
 <ul>
