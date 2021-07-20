@@ -1708,6 +1708,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fitbit-heartrate-summary" class="md-nav__link">
+    Fitbit Heartrate Summary
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1980,6 +1987,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fitbit-heartrate-summary" class="md-nav__link">
+    Fitbit Heartrate Summary
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2148,9 +2162,9 @@
 <tr>
 <td>Fitbit Heart Rate Summary</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Fitbit Heart Rate Intraday</td>
@@ -3132,6 +3146,67 @@ screen unlock session. In the screen unlock episode starting from Fri 05:56:51, 
 <li>A nine-hour main sleep episode on Sun 11:00:00. Start time will be assigned as NY time zone and converted to 14:00:00.</li>
 <li>A seven-hour main sleep episode on Mon 06:00:00. This episode will be split into two parts: a five-hour sleep episode on Mon 06:00:00 and a two-hour sleep episode on Mon 11:00:00. The first part will be discarded as it is before 11am (Last Night End)</li>
 <li>Any segment shorter than one day will be ignored for sleep PRICE features.</li>
+</ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fitbit-heartrate-summary">Fitbit Heartrate Summary<a class="headerlink" href="#fitbit-heartrate-summary" title="Permanent link">&para;</a></h2>
+<p>Description</p>
+<ul>
+<li>The 4-day raw heartrate summary data is contained in <code>fitbit_heartrate_summary_raw.csv</code>.</li>
+<li>As heartrate summary is periodic, it only generates results in periodic feature, there will be no result in frequency and event. </li>
 </ul>
 <p>Checklist</p>
 <table>
