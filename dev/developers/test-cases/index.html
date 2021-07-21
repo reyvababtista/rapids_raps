@@ -1695,6 +1695,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#fitbit-heartrate-intraday" class="md-nav__link">
+    Fitbit Heartrate intraday
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fitbit-sleep-summary" class="md-nav__link">
     Fitbit Sleep Summary
   </a>
@@ -1974,6 +1981,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#fitbit-heartrate-intraday" class="md-nav__link">
+    Fitbit Heartrate intraday
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fitbit-sleep-summary" class="md-nav__link">
     Fitbit Sleep Summary
   </a>
@@ -2169,9 +2183,9 @@
 <tr>
 <td>Fitbit Heart Rate Intraday</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Fitbit Sleep Summary</td>
@@ -3014,6 +3028,71 @@ screen unlock session. In the screen unlock episode starting from Fri 05:56:51, 
 <li>A three-minute sedentary episode on Sat 16:00</li>
 <li>A four-minute sedentary episode on Sun 10:01 that will be ignored for Novembers&rsquo;s multi-timezone event segments since the test segment ends at 10am on that weekend.</li>
 <li>A three-minute very active episode on Sat 16:03. This episode and the one at 16:00 are counted as one for lowmet episodes</li>
+</ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fitbit-heartrate-intraday">Fitbit Heartrate intraday<a class="headerlink" href="#fitbit-heartrate-intraday" title="Permanent link">&para;</a></h2>
+<p>Description:</p>
+<ul>
+<li>The 4-day raw heartrate data is contained in <code>fitbit_heartrate_intraday_raw.csv</code></li>
+<li>One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>)</li>
+<li>Two episodes locate in the same 30-min segment (<code>Fri 00:49:00</code> and <code>Fri 00:52:00</code>)</li>
+<li>Two different types of heartrate zone episodes locate in the same 30-min segment (<code>Fri 05:49:00 outofrange</code> and <code>Fri 05:57:00 fatburn</code>)</li>
+<li>Two episodes locate in the same daily segment (<code>Fri 12:02:00</code> and <code>Fri 19:38:00</code>)</li>
+<li>One episode before the time switch, <code>Sun 00:08:00</code>, and one episode after the time switch, <code>Sun 07:28:00</code></li>
 </ul>
 <p>Checklist</p>
 <table>
