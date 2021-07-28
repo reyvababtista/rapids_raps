@@ -1722,6 +1722,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fitbit-step-intraday" class="md-nav__link">
+    Fitbit Step Intraday
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitbit-step-summary" class="md-nav__link">
+    Fitbit Step Summary
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2008,6 +2022,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fitbit-step-intraday" class="md-nav__link">
+    Fitbit Step Intraday
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitbit-step-summary" class="md-nav__link">
+    Fitbit Step Summary
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2211,16 +2239,16 @@
 <tr>
 <td>Fitbit Steps Summary</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Fitbit Steps Intraday</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 </tbody>
 </table>
@@ -3285,6 +3313,132 @@ screen unlock session. In the screen unlock episode starting from Fri 05:56:51, 
 <p>Description</p>
 <ul>
 <li>The 4-day raw heartrate summary data is contained in <code>fitbit_heartrate_summary_raw.csv</code>.</li>
+<li>As heartrate summary is periodic, it only generates results in periodic feature, there will be no result in frequency and event. </li>
+</ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fitbit-step-intraday">Fitbit Step Intraday<a class="headerlink" href="#fitbit-step-intraday" title="Permanent link">&para;</a></h2>
+<p>Description</p>
+<ul>
+<li>The 4-day raw heartrate summary data is contained in <code>fitbit_steps_intraday_raw.csv</code></li>
+<li>One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>) on each day</li>
+<li>Two episodes within the same 30-min segment (<code>Fri 05:58:00</code> and <code>Fri 05:59:00</code>)</li>
+<li>A one-min episode at <code>2020-03-07 09:00:00</code> that will be converted to New York time <code>2020-03-07 12:00:00</code></li>
+<li>One episode before the time switch, <code>Sun 00:19:00</code>, and one episode after the time switch, <code>Sun 09:01:00</code></li>
+<li>Episodes cross two 30-min segments (<code>Fri 11:59:00</code> and <code>Fri 12:00:00</code>)</li>
+</ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fitbit-step-summary">Fitbit Step Summary<a class="headerlink" href="#fitbit-step-summary" title="Permanent link">&para;</a></h2>
+<p>Description</p>
+<ul>
+<li>The 4-day raw heartrate summary data is contained in <code>fitbit_steps_summary_raw.csv</code>.</li>
 <li>As heartrate summary is periodic, it only generates results in periodic feature, there will be no result in frequency and event. </li>
 </ul>
 <p>Checklist</p>
