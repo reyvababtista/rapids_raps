@@ -1597,6 +1597,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#accelerometer" class="md-nav__link">
+    Accelerometer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#messages-sms" class="md-nav__link">
     Messages (SMS)
   </a>
@@ -1688,6 +1695,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#data-yield" class="md-nav__link">
+    Data Yield
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fitbit-calories-intraday" class="md-nav__link">
     Fitbit Calories Intraday
   </a>
@@ -1732,6 +1746,13 @@
         <li class="md-nav__item">
   <a href="#fitbit-step-summary" class="md-nav__link">
     Fitbit Step Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitbit-data-yield" class="md-nav__link">
+    Fitbit Data Yield
   </a>
   
 </li>
@@ -1897,6 +1918,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#accelerometer" class="md-nav__link">
+    Accelerometer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#messages-sms" class="md-nav__link">
     Messages (SMS)
   </a>
@@ -1988,6 +2016,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#data-yield" class="md-nav__link">
+    Data Yield
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fitbit-calories-intraday" class="md-nav__link">
     Fitbit Calories Intraday
   </a>
@@ -2036,6 +2071,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fitbit-data-yield" class="md-nav__link">
+    Fitbit Data Yield
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2071,16 +2113,16 @@
 <tr>
 <td>Phone Accelerometer</td>
 <td>Panda</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Phone Accelerometer</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Phone Activity Recognition</td>
@@ -2134,9 +2176,9 @@
 <tr>
 <td>Phone Data Yield</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Phone Light</td>
@@ -2197,9 +2239,9 @@
 <tr>
 <td>Fitbit Data Yield</td>
 <td>RAPIDS</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
 </tr>
 <tr>
 <td>Fitbit Heart Rate Summary</td>
@@ -2252,9 +2294,75 @@
 </tr>
 </tbody>
 </table>
-<h2 id="messages-sms">Messages (SMS)<a class="headerlink" href="#messages-sms" title="Permanent link">&para;</a></h2>
+<h2 id="accelerometer">Accelerometer<a class="headerlink" href="#accelerometer" title="Permanent link">&para;</a></h2>
+<p>Description</p>
 <ul>
-<li>The raw message data file, <code>phone_messages_raw.csv</code>, contains data for 4 separate days.</li>
+<li>The raw accelerometer data file, <code>phone_accelerometer_raw.csv</code>, contains data for 4 separate days</li>
+<li>One episode for each daily segment (night, morning, afternoon and evening)</li>
+<li>Two episodes locate in the same 30-min segment (<code>Fri 00:15:00</code> and <code>Fri 00:21:21</code>)</li>
+<li>Two episodes locate in the same daily segment (<code>Fri 00:15:00</code> and <code>Fri 18:12:00</code>)</li>
+<li>One episode before the time switch (<code>Sun 00:02:00</code>) and one episode after the time switch (<code>Sun 04:18:00</code>)</li>
+<li>Multiple episodes within one min which cause variance in magnitude (<code>Fri 00:10:25</code>, <code>Fri 00:10:27</code> and <code>Fri 00:10:46</code>)</li>
+</ul>
+<p>Checklist:</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+</tbody>
+</table>
+<h2 id="messages-sms">Messages (SMS)<a class="headerlink" href="#messages-sms" title="Permanent link">&para;</a></h2>
+<p>Description</p>
+<ul>
+<li>The raw message data file, <code>phone_messages_raw.csv</code>, contains data for 4 separate days</li>
 <li>One episode for each daily segment (night, morning, afternoon and evening)</li>
 <li>Two <code>sent</code> episodes locate in the same 30-min segment (<code>Fri 16:08:03.000</code> and <code>Fri 16:19:35.000</code>)</li>
 <li>Two <code>received</code> episodes locate in the same 30-min segment (<code>Sat 06:45:05.000</code> and <code>Fri 06:45:05.000</code>)</li>
@@ -3039,6 +3147,66 @@ screen unlock session. In the screen unlock episode starting from Fri 05:56:51, 
 <li>The screen unlock episode starting from Mon 21:05:00 and Sat 17:48:01 checks if the screen lock marks the end of episode for that particular app which was launched a few milliseconds to 8 mins before the screen lock.</li>
 <li>Finally, since application foreground is only for Android devices, this feature is also for Android devices only. All other files are empty data files</li>
 </ul>
+<h2 id="data-yield">Data Yield<a class="headerlink" href="#data-yield" title="Permanent link">&para;</a></h2>
+<p>Description</p>
+<ul>
+<li>Two sensors were picked for testing, <code>phone_screen</code> and <code>phone_light</code>. <code>phone_screen</code> is event based and <code>phone_light</code> is sampling at regular frequency</li>
+</ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>android, ios</td>
+</tr>
+</tbody>
+</table>
 <h2 id="fitbit-calories-intraday">Fitbit Calories Intraday<a class="headerlink" href="#fitbit-calories-intraday" title="Permanent link">&para;</a></h2>
 <p>Description</p>
 <ul>
@@ -3441,6 +3609,62 @@ screen unlock session. In the screen unlock episode starting from Fri 05:56:51, 
 <li>The 4-day raw heartrate summary data is contained in <code>fitbit_steps_summary_raw.csv</code>.</li>
 <li>As heartrate summary is periodic, it only generates results in periodic feature, there will be no result in frequency and event. </li>
 </ul>
+<p>Checklist</p>
+<table>
+<thead>
+<tr>
+<th>time segment</th>
+<th>single tz</th>
+<th>multi tz</th>
+<th>platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30min</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>morning</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>daily</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>threeday</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>weekend</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeMarchEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+<tr>
+<td>beforeNovemberEvent</td>
+<td>OK</td>
+<td>OK</td>
+<td>fitbit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fitbit-data-yield">Fitbit Data Yield<a class="headerlink" href="#fitbit-data-yield" title="Permanent link">&para;</a></h2>
 <p>Checklist</p>
 <table>
 <thead>
