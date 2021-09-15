@@ -1836,6 +1836,10 @@
 <td>Set to <code>True</code> to extract <code>PHONE_CALLS</code> features from the <code>RAPIDS</code> provider</td>
 </tr>
 <tr>
+<td><code>[FEATURES_TYPE]</code></td>
+<td>Set to <code>EPISODES</code> to extract features based on call episodes or <code>EVENTS</code> to extract features based on events.</td>
+</tr>
+<tr>
 <td><code>[CALL_TYPES]</code></td>
 <td>The particular call_type that will be analyzed. The options for this parameter are incoming, outgoing or missed.</td>
 </tr>
@@ -1959,7 +1963,7 @@
 <ol>
 <li>Traces for iOS calls are unique even for the same contact calling a participant more than once which renders <code>countmostfrequentcontact</code> meaningless and <code>distinctcontacts</code> equal to the total number of traces. </li>
 <li><code>[CALL_TYPES]</code> and <code>[FEATURES]</code> keys in <code>config.yaml</code> need to match. For example, <code>[CALL_TYPES]</code> <code>outgoing</code> matches the <code>[FEATURES]</code> key <code>outgoing</code></li>
-<li>iOS calls data is transformed to match Android calls data format. See our <a href="algorithms/phone-algorithms.md#phone-calls">algorithm</a></li>
+<li>iOS calls data is transformed to match Android calls data format.</li>
 </ol>
 </div>
                 
