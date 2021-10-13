@@ -15,7 +15,7 @@
         
       
       <link rel="icon" href="../../img/logo.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.6+insiders-2.9.1">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.1.6+insiders-2.9.1">
     
     
       
@@ -1824,11 +1824,15 @@
 </tr>
 <tr>
 <td><code>[FUSED_RESAMPLED_CONSECUTIVE_THRESHOLD]</code></td>
-<td>if <code>ALL_RESAMPLED</code> or <code>FUSED_RESAMPLED</code> is used, the original fused data has to be resampled, a location row is resampled to the next valid timestamp (see the Assumptions/Observations below) only if the time difference between them is less or equal than this threshold (in minutes).</td>
+<td>If <code>ALL_RESAMPLED</code> or <code>FUSED_RESAMPLED</code> is used, the original fused data has to be resampled. A location row is resampled to the next valid timestamp (see the Assumptions/Observations below) only if the time difference between them is less or equal than this threshold (in minutes).</td>
 </tr>
 <tr>
 <td><code>[FUSED_RESAMPLED_TIME_SINCE_VALID_LOCATION]</code></td>
-<td>if <code>ALL_RESAMPLED</code> or <code>FUSED_RESAMPLED</code> is used, the original fused data has to be resampled, a location row is resampled at most for this long (in minutes)</td>
+<td>If <code>ALL_RESAMPLED</code> or <code>FUSED_RESAMPLED</code> is used, the original fused data has to be resampled. A location row is resampled at most for this long (in minutes).</td>
+</tr>
+<tr>
+<td><code>[ACCURACY_LIMIT]</code></td>
+<td>An integer in meters, any location rows with an accuracy higher or equal than this is dropped. This number means there&rsquo;s a 68% probability the actual location is within this radius.</td>
 </tr>
 </tbody>
 </table>
@@ -1840,9 +1844,9 @@ Android and iOS clients can collect location coordinates through the phone&rsquo
 <li>If you want to use only the GPS provider, set <code>[LOCATIONS_TO_USE]</code> to <code>GPS</code></li>
 <li>If you want to use all providers, set <code>[LOCATIONS_TO_USE]</code> to <code>ALL</code></li>
 <li>If you collected location data from different providers, including the fused API, use <code>ALL_RESAMPLED</code></li>
-<li>If your mobile client was configured to use fused location only or want to focus only on this provider, set <code>[LOCATIONS_TO_USE]</code> to <code>RESAMPLE_FUSED</code>.</li>
+<li>If your mobile client was configured to use fused location only or want to focus only on this provider, set <code>[LOCATIONS_TO_USE]</code> to <code>FUSED_RESAMPLED</code>.</li>
 </ul>
-<p><code>ALL_RESAMPLED</code> and <code>RESAMPLE_FUSED</code> take the original location coordinates and replicate each pair forward in time as long as the phone was sensing data as indicated by the joined timestamps of <a href="../phone-data-yield/"><code>[PHONE_DATA_YIELD][SENSORS]</code></a>. This is done because Google&rsquo;s API only logs a new location coordinate pair when it is sufficiently different in time or space from the previous one and because GPS and network providers can log data at variable rates.</p>
+<p><code>ALL_RESAMPLED</code> and <code>FUSED_RESAMPLED</code> take the original location coordinates and replicate each pair forward in time as long as the phone was sensing data as indicated by the joined timestamps of <a href="../phone-data-yield/"><code>[PHONE_DATA_YIELD][SENSORS]</code></a>. This is done because Google&rsquo;s API only logs a new location coordinate pair when it is sufficiently different in time or space from the previous one and because GPS and network providers can log data at variable rates.</p>
 <p>There are two parameters associated with resampling fused location.</p>
 <ol>
 <li><code>FUSED_RESAMPLED_CONSECUTIVE_THRESHOLD</code> (in minutes, default 30) controls the maximum gap between any two coordinate pairs to replicate the last known pair. For example, participant A&rsquo;s phone did not collect data between 10.30 am and 10:50 am and between 11:05am and 11:40am, the last known coordinate pair is replicated during the first period but not the second. In other words, we assume that we cannot longer guarantee the participant stayed at the last known location if the phone did not sense data for more than 30 minutes. </li>
@@ -1864,6 +1868,7 @@ Android and iOS clients can collect location coordinates through the phone&rsquo
 <div class="highlight"><pre><span></span><code>- data/raw/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_raw.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime.csv
+- data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_barnett_daily.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_features/phone_locations_<span class="o">{</span>language<span class="o">}</span>_<span class="o">{</span>provider_key<span class="o">}</span>.csv
 - data/processed/features/<span class="o">{</span>pid<span class="o">}</span>/phone_locations.csv
 </code></pre></div>
@@ -1884,10 +1889,6 @@ Android and iOS clients can collect location coordinates through the phone&rsquo
 <tr>
 <td><code>[FEATURES]</code></td>
 <td>Features to be computed, see table below</td>
-</tr>
-<tr>
-<td><code>[ACCURACY_LIMIT]</code></td>
-<td>An integer in meters, any location rows with an accuracy higher than this is dropped. This number means there&rsquo;s a 68% probability the actual location is within this radius</td>
 </tr>
 <tr>
 <td><code>[IF_MULTIPLE_TIMEZONES]</code></td>
@@ -2013,7 +2014,9 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <div class="highlight"><pre><span></span><code>- data/raw/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_raw.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime.csv
-- data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime_with_doryab_columns.csv
+- data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime_with_doryab_columns_episodes.csv
+- data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime_with_doryab_columns_episodes_resampled.csv
+- data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_processed_with_datetime_with_doryab_columns_episodes_resampled_with_datetime.csv
 - data/interim/<span class="o">{</span>pid<span class="o">}</span>/phone_locations_features/phone_locations_<span class="o">{</span>language<span class="o">}</span>_<span class="o">{</span>provider_key<span class="o">}</span>.csv
 - data/processed/features/<span class="o">{</span>pid<span class="o">}</span>/phone_locations.csv
 </code></pre></div>
@@ -2029,15 +2032,11 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <tbody>
 <tr>
 <td><code>[COMPUTE]</code></td>
-<td>Set to <code>True</code> to extract <code>PHONE_LOCATIONS</code> features from the <code>BARNETT</code> provider</td>
+<td>Set to <code>True</code> to extract <code>PHONE_LOCATIONS</code> features from the <code>DORYAB</code> provider</td>
 </tr>
 <tr>
 <td><code>[FEATURES]</code></td>
 <td>Features to be computed, see table below</td>
-</tr>
-<tr>
-<td><code>[ACCURACY_LIMIT]</code></td>
-<td>An integer in meters, any location rows with an accuracy higher than this will be dropped. This number means there&rsquo;s a 68% probability the true location is within this radius</td>
 </tr>
 <tr>
 <td><code>[DBSCAN_EPS]</code></td>
@@ -2109,12 +2108,12 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <tr>
 <td>avgspeed</td>
 <td>km/hr</td>
-<td>Average speed in a time segment considering only the instances labeled as Moving.</td>
+<td>Average speed in a time segment considering only the instances labeled as Moving. This feature is 0 when the participant is stationary during a time segment.</td>
 </tr>
 <tr>
 <td>varspeed</td>
 <td>km/hr</td>
-<td>Speed variance in a time segment considering only the instances labeled as Moving.</td>
+<td>Speed variance in a time segment considering only the instances labeled as Moving. This feature is 0 when the participant is stationary during a time segment.</td>
 </tr>
 <tr>
 <td><del class="critic">circadianmovement</del></td>
@@ -2206,7 +2205,7 @@ For a detailed description of how this is calculated, see <a href="../../citatio
 <div class="admonition note">
 <p class="admonition-title">Assumptions/Observations</p>
 <p><strong>Significant Locations Identified</strong>
-Significant locations are determined using DBSCAN clustering on locations that a patient visit over the course of the period of data collection.</p>
+Significant locations are determined using <code>DBSCAN</code> or <code>OPTICS</code> clustering on locations that a participant visited over the course of the period of data collection. The most significant location is the place where the participant stayed for the longest time.</p>
 <p><strong>Circadian Movement Calculation</strong>
 Note Feb 3 2021. It seems the implementation of this feature is not correct; we suggest not to use this feature until a fix is in place. For a detailed description of how this should be calculated, see <a href="https://pubmed.ncbi.nlm.nih.gov/28344895/">Saeb et al</a>.</p>
 <p><strong>Fine-Tuning Clustering Parameters</strong>
@@ -2239,6 +2238,8 @@ To calculate the time duration component for our features, we compute the differ
 </ol>
 </li>
 </ul>
+<p><strong>Clustering algorithms</strong>
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html"><code>DBSCAN</code></a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html#r2c55e37003fe-1"><code>OPTICS</code></a> algorithms are available currently. Duplicated locations are discarded while clustering. The <code>DBSCAN</code> algorithm takes the time spent at each location into consideration. However, the <code>OPTICS</code> algorithm ignores it as it is not supported in the current <a href="https://github.com/scikit-learn/scikit-learn/issues/12394">scikit-learn</a> implementation.</p>
 </div>
                 
               
