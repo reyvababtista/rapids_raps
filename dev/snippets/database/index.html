@@ -1711,7 +1711,9 @@
                 
                   <h1>Database</h1>
                 
-                <details class="info"><summary>Setting up a DATABASE_GROUP and its connection credentials.</summary><ol>
+                <details class="info">
+<summary>Setting up a DATABASE_GROUP and its connection credentials.</summary>
+<ol>
 <li>
 <p>If you haven&rsquo;t done so, create an empty file called <code class="highlight">credentials.yaml</code> in your RAPIDS root directory: </p>
 </li>
@@ -1740,7 +1742,9 @@
 </ol>
 </li>
 </ol>
-<details class="hint"><summary>Upgrading from <code>./.env</code> from RAPIDS 0.x</summary><p>In RAPIDS versions 0.x, database credentials were stored in a <code>./.env</code> file. If you are migrating from that type of file, you have two options:</p>
+<details class="hint">
+<summary>Upgrading from <code>./.env</code> from RAPIDS 0.x</summary>
+<p>In RAPIDS versions 0.x, database credentials were stored in a <code>./.env</code> file. If you are migrating from that type of file, you have two options:</p>
 <ol>
 <li>
 <p>Migrate your credentials by hand:</p>
@@ -1771,7 +1775,9 @@
 </li>
 </ol>
 </details>
-<details class="hint"><summary>Connecting to localhost (host machine) from inside our docker container.</summary><p>If you are using RAPIDS&rsquo; docker container and Docker-for-mac or Docker-for-Windows 18.03+, you can connect to a MySQL database in your host machine using <code>host.docker.internal</code> instead of <code>127.0.0.1</code> or <code>localhost</code>. In a Linux host, you need to run our docker container using <code>docker run --network="host" -d moshiresearch/rapids:latest</code> and then <code>127.0.0.1</code> will point to your host machine.</p>
+<details class="hint">
+<summary>Connecting to localhost (host machine) from inside our docker container.</summary>
+<p>If you are using RAPIDS&rsquo; docker container and Docker-for-mac or Docker-for-Windows 18.03+, you can connect to a MySQL database in your host machine using <code>host.docker.internal</code> instead of <code>127.0.0.1</code> or <code>localhost</code>. In a Linux host, you need to run our docker container using <code>docker run --network="host" -d moshiresearch/rapids:latest</code> and then <code>127.0.0.1</code> will point to your host machine.</p>
 </details>
 </details>
                 

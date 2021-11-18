@@ -1791,7 +1791,9 @@
                 <h1 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h1>
 <p>The following is a simple guide to run RAPIDS&rsquo; tests. All files necessary for testing are stored in the <code>./tests/</code> directory</p>
 <h2 id="steps-for-testing">Steps for Testing<a class="headerlink" href="#steps-for-testing" title="Permanent link">&para;</a></h2>
-<details class="check"><summary><strong>Testing Overview</strong></summary><ol>
+<details class="check">
+<summary><strong>Testing Overview</strong></summary>
+<ol>
 <li>You have to create a single four day test dataset for the sensor you are working on. </li>
 <li>You will adjust your dataset with <code>tests/script/assign_test_timestamps.py</code> to fit <code>Fri March 6th 2020 - Mon March 9th 2020</code> and <code>Fri Oct 30th 2020 - Mon Nov 2nd 2020</code>. We test daylight saving times with these dates.</li>
 <li>We have one test participant per platform (<code>pids</code>: <code>android</code>, <code>ios</code>, <code>fitbit</code>, <code>empatica</code>, <code>empty</code>). The data <code>device_id</code> should be equal to the <code>pid</code>.</li>
@@ -1799,25 +1801,35 @@
 <li>You will have to create your test data to cover as many corner cases as possible. These cases depend on the sensor you are working on.</li>
 <li>The time segments and time zones to be tested are:</li>
 </ol>
-<details class="example"><summary>Frequency</summary><ul>
+<details class="example">
+<summary>Frequency</summary>
+<ul>
 <li>30 minutes (<code>30min,30</code>)</li>
 </ul>
 </details>
-<details class="example"><summary>Periodic</summary><ul>
+<details class="example">
+<summary>Periodic</summary>
+<ul>
 <li>morning (<code>morning,06:00:00,5H 59M 59S,every_day,0</code>)</li>
 <li>daily (<code>daily,00:00:00,23H 59M 59S,every_day,0</code>)</li>
 <li>three-day segments that repeat every day (<code>threeday,00:00:00,71H 59M 59S,every_day,0</code>)</li>
 <li>three-day segments that repeat every Friday (<code>weekend,00:00:00,71H 59M 59S,wday,5</code>)</li>
 </ul>
 </details>
-<details class="example"><summary>Event</summary><ul>
+<details class="example">
+<summary>Event</summary>
+<ul>
 <li>A segment that starts 3 hour before an event (Sat Mar 07 2020 19:00:00 EST) and lasts for 22 hours. Note that the last part of this segment will happen during a daylight saving change on Sunday at 2am when the clock moves forward and the period 2am-3am does not exist. In this case, the segment would start on Sat Mar 07 2020 16:00:00 EST (timestamp: 1583614800000) and end on Sun Mar 08 2020 15:00:00 EST (timestamp: 1583694000000). (<code>beforeMarchEvent,1583625600000,22H,3H,-1,android</code>)</li>
 <li>A segment that starts 3 hour before an event (Sat Oct 31 2020 19:00:00 EST) and lasts for 22 hours. Note that the last part of this segment will happen during a daylight saving change on Sunday at 2am when the clock moves back and the period 1am-2am exists twice. In this case, the segment would start on Sat Oct 31 2020 16:00:00 EST (timestamp: 1604174400000) and end on Sun Nov 01 2020 13:00:00 EST (timestamp: 1604253600000). (<code>beforeNovemberEvent,1604185200000,22H,3H,-1,android</code>)</li>
 </ul>
 </details>
-<details class="example"><summary>Single time zone to test</summary><p>America/New_York</p>
+<details class="example">
+<summary>Single time zone to test</summary>
+<p>America/New_York</p>
 </details>
-<details class="example"><summary>Multi time zones to test</summary><ul>
+<details class="example">
+<summary>Multi time zones to test</summary>
+<ul>
 <li>America/New_York starting at <code>0</code></li>
 <li>America/Los_Angeles starting at <code>1583600400000</code> (Sat Mar 07 2020 12:00:00 EST)</li>
 <li>America/New_York starting at <code>1583683200000</code> (Sun Mar 08 2020 12:00:00 EST)</li>
@@ -1825,12 +1837,16 @@
 <li>America/New_York starting at <code>1604250000000</code> (Sun Nov 01 2020 12:00:00 EST)</li>
 </ul>
 </details>
-<details class="hint"><summary>Understanding event segments with multi timezones</summary><p><figure>
+<details class="hint">
+<summary>Understanding event segments with multi timezones</summary>
+<p><figure>
     <img src="../../img/testing_eventsegments_mtz.png" max-width="100%" />
 </figure></p>
 </details>
 </details>
-<details class="check"><summary><strong>Document your tests</strong></summary><ul>
+<details class="check">
+<summary><strong>Document your tests</strong></summary>
+<ul>
 <li>Before you start implementing any test data you need to document your tests. </li>
 <li>The documentation of your tests should be added to <code>docs/developers/test-cases.md</code> under the corresponding sensor. </li>
 <li>You will need to add two subsections <code>Description</code> and the <code>Checklist</code></li>
@@ -1839,7 +1855,9 @@
 <li>Only add tests for iOS if the raw data format is different than Android&rsquo;s (for example for screen)</li>
 <li>Create specific tests for Sunday before and after 02:00. These will test daylight saving switches, in March 02:00 to 02:59 do not exist, and in November 01:00 to 01:59 exist twice (read below how <code>tests/script/assign_test_timestamps.py</code> handles this)</li>
 </ul>
-<details class="example"><summary>Example of Description</summary><p><code>Description</code> is a list and every item describes the different scenarios your test data is covering. For example, if we are testing PHONE_BATTERY:</p>
+<details class="example">
+<summary>Example of Description</summary>
+<p><code>Description</code> is a list and every item describes the different scenarios your test data is covering. For example, if we are testing PHONE_BATTERY:</p>
 <div class="highlight"><pre><span></span><code>- We test 24 discharge episodes, 24 charge episodes and 2 episodes with a 0 discharge rate
 - One episode is shorter than 30 minutes (`start timestamp` to `end timestamp`)
 - One episode is 120 minutes long from 11:00 to 13:00 (`start timestamp` to `end timestamp`). This one covers the case when an episode has to be chunked for 30min frequency segments and for morning segments
@@ -1852,7 +1870,9 @@
 </code></pre></div>
 <p>Describe your test cases in as much detail as possible so in the future if we find a bug in RAPIDS, we know what test case we did not include and should add.</p>
 </details>
-<details class="example"><summary>Example of Checklist</summary><p><code>Checklist</code> is a table where you confirm you have verified the output of your dataset for the different time segments and time zones</p>
+<details class="example">
+<summary>Example of Checklist</summary>
+<p><code>Checklist</code> is a table where you confirm you have verified the output of your dataset for the different time segments and time zones</p>
 <table>
 <thead>
 <tr>
@@ -1909,7 +1929,9 @@
 </table>
 </details>
 </details>
-<details class="check"><summary><strong>Add raw input data.</strong></summary><ol>
+<details class="check">
+<summary><strong>Add raw input data.</strong></summary>
+<ol>
 <li>Add the raw test data to the corresponding sensor CSV file in <code>tests/data/manual/aware_csv/SENSOR_raw.csv</code>. Create the CSV if it does not exist.</li>
 <li>The test data you create will have the same columns as normal raw data except <code>test_time</code> replaces <code>timestamp</code>. To make your life easier, you can place a test data row in time using the <code>test_time</code> column with the following format: <code>Day HH:MM:SS.XXX</code>, for example <code>Fri 22:54:30.597</code>.</li>
 <li>
@@ -1932,7 +1954,9 @@
 </li>
 <li>The <code>device_id</code> should be the same as <code>pid</code>.</li>
 </ol>
-<details class="example"><summary>Example of test data you need to create</summary><p>The <code>test_time</code> column will be automatically converted to a timestamp that fits our testing periods in March and November by <code>tests/script/assign_test_timestamps.py</code></p>
+<details class="example">
+<summary>Example of test data you need to create</summary>
+<p>The <code>test_time</code> column will be automatically converted to a timestamp that fits our testing periods in March and November by <code>tests/script/assign_test_timestamps.py</code></p>
 <div class="highlight"><pre><span></span><code>test_time,device_id,battery_level,battery_scale,battery_status
 Fri 01:00:00.000,ios,90,100,4
 Fri 01:00:30.500,ios,89,100,4
@@ -1945,7 +1969,9 @@ Sat 08:02:00.000,ios,49,100,4
 </code></pre></div>
 </details>
 </details>
-<details class="check"><summary><strong>Add expected output data.</strong></summary><ol>
+<details class="check">
+<summary><strong>Add expected output data.</strong></summary>
+<ol>
 <li>Add or update the expected output feature file of the participant and sensor you are testing:
 <div class="highlight"><pre><span></span><code>tests/data/processed/features/<span class="o">{</span>type_of_time_segment<span class="o">}</span>/<span class="o">{</span>pid<span class="o">}</span>/device_sensor.csv 
 
@@ -1957,7 +1983,9 @@ tests/data/processed/features/mtz_periodic/android/phone_sensor.csv
 </code></pre></div></li>
 </ol>
 </details>
-<details class="check"><summary><strong>Edit the config file(s).</strong></summary><ol>
+<details class="check">
+<summary><strong>Edit the config file(s).</strong></summary>
+<ol>
 <li>Activate the sensor provider you are testing if it isn&rsquo;t already. Set <code>[SENSOR][PROVIDER][COMPUTE]</code> to <code>TRUE</code> in the <code>config.yaml</code> of the time segments and time zones you are testing:
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tests/settings/stz_frequency_config.yaml</span> <span class="c1"># For single-timezone frequency time segments</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tests/settings/stz_periodic_config.yaml</span> <span class="c1"># For single-timezone periodic time segments</span>
@@ -1969,7 +1997,9 @@ tests/data/processed/features/mtz_periodic/android/phone_sensor.csv
 </code></pre></div></li>
 </ol>
 </details>
-<details class="check"><summary><strong>Run the pipeline and tests.</strong></summary><ol>
+<details class="check">
+<summary><strong>Run the pipeline and tests.</strong></summary>
+<ol>
 <li>You can run all six segment pipelines and their tests
 <div class="highlight"><pre><span></span><code>bash tests/scripts/run_tests.sh -t all
 </code></pre></div></li>
@@ -1981,10 +2011,14 @@ tests/data/processed/features/mtz_periodic/android/phone_sensor.csv
 bash tests/scripts/run_tests.sh -t stz_frequency -a <span class="nb">test</span>
 </code></pre></div></li>
 </ol>
-<details class="hint"><summary>How does the test execution work?</summary><p>This bash script <code>tests/scripts/run_tests.sh</code> executes one or all test pipelines for different time segment types (<code>frequency</code>, <code>periodic</code>, and <code>events</code>) and single or multiple timezones.</p>
+<details class="hint">
+<summary>How does the test execution work?</summary>
+<p>This bash script <code>tests/scripts/run_tests.sh</code> executes one or all test pipelines for different time segment types (<code>frequency</code>, <code>periodic</code>, and <code>events</code>) and single or multiple timezones.</p>
 <p>The python script <code>tests/scripts/run_tests.py</code> runs the tests. It parses the involved participants and active sensor providers in the <code>config.yaml</code> file of the time segment type and time zone being tested. We test that the output file we expect exists and that its content matches the expected values.</p>
 </details>
-<details class="example"><summary>Output Example</summary><p>The following is a snippet of the output you should see after running your test.</p>
+<details class="example">
+<summary>Output Example</summary>
+<p>The following is a snippet of the output you should see after running your test.</p>
 <div class="highlight"><pre><span></span><code>test_sensors_files_exist <span class="o">(</span>test_sensor_features.TestSensorFeatures<span class="o">)</span> ... stz_periodic
 ok
 test_sensors_features_calculations <span class="o">(</span>test_sensor_features.TestSensorFeatures<span class="o">)</span> ... stz_periodic

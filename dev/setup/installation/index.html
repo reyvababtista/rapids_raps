@@ -1778,7 +1778,9 @@
 </li>
 <li>
 <p><em>Optional</em>. You can edit RAPIDS files with <code>vim</code> but we recommend using <code>Visual Studio Code</code> and its <code>Remote Containers</code> extension</p>
-<details class="info"><summary>How to configure the Remote Containers extension</summary><ul>
+<details class="info">
+<summary>How to configure the Remote Containers extension</summary>
+<ul>
 <li>
 <p>Make sure RAPIDS Docker container is running</p>
 </li>
@@ -1811,7 +1813,9 @@
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">MacOS</label><div class="tabbed-content">
 <p>We tested these instructions in Catalina and Big Sur</p>
-<details class="info"><summary>M1 Macs</summary><p>RAPIDS can run on M1 Macs, the only changes as of Feb 21, 2021 are:</p>
+<details class="info">
+<summary>M1 Macs</summary>
+<p>RAPIDS can run on M1 Macs, the only changes as of Feb 21, 2021 are:</p>
 <ul>
 <li>R needs to be installed via brew under Rosetta (x86 arch) due to incompatibility issues with some R libraries. To do this, run your terminal <a href="https://www.youtube.com/watch?v=nv2ylxro7rM&amp;t=138s">via Rosetta</a>, then proceed with the usual brew installation command. Use x86 brew to install R and restore RAPIDS&rsquo; packages (<code>snakemake -j1 renv_install &amp; snakemake -j1 renv_restore</code>). </li>
 <li>There is a bug related to timezone codes. We set the correct <code>TZ_DIR</code> in <code>renv/activate.R</code> (line #19) <code>Sys.setenv("TZDIR" = file.path(R.home(), "share", "zoneinfo"))</code> (RAPIDS does this automatically).</li>

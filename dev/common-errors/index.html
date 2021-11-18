@@ -2014,7 +2014,9 @@
                 
                 <h1 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">&para;</a></h1>
 <h2 id="cannot-connect-to-your-mysql-server">Cannot connect to your MySQL server<a class="headerlink" href="#cannot-connect-to-your-mysql-server" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><div class="highlight"><pre><span></span><code>**Error <span class="k">in</span> .local<span class="o">(</span>drv, <span class="se">\.</span>..<span class="o">)</span> :** **Failed to connect to database: Error:
+<details class="failure" open="open">
+<summary>Problem</summary>
+<div class="highlight"><pre><span></span><code>**Error <span class="k">in</span> .local<span class="o">(</span>drv, <span class="se">\.</span>..<span class="o">)</span> :** **Failed to connect to database: Error:
 Can<span class="se">\&#39;</span>t initialize character <span class="nb">set</span> unknown <span class="o">(</span>path: compiled<span class="se">\_</span>in<span class="o">)</span>** :
 
 Calls: dbConnect -&gt; dbConnect -&gt; .local -&gt; .Call
@@ -2033,33 +2035,49 @@ Shutting down, this might take some time.
 Exiting because a job execution failed. Look above <span class="k">for</span> error message
 </code></pre></div>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>Please make sure the <code>DATABASE_GROUP</code> in <code>config.yaml</code> matches your DB credentials group in <code>.env</code>.</p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>Please make sure the <code>DATABASE_GROUP</code> in <code>config.yaml</code> matches your DB credentials group in <code>.env</code>.</p>
 </details>
 <hr />
 <h2 id="cannot-start-mysql-in-linux-via-brew-services-start-mysql">Cannot start mysql in linux via <code>brew services start mysql</code><a class="headerlink" href="#cannot-start-mysql-in-linux-via-brew-services-start-mysql" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>Cannot start mysql in linux via <code>brew services start mysql</code></p>
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>Cannot start mysql in linux via <code>brew services start mysql</code></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>Use <code>mysql.server start</code></p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>Use <code>mysql.server start</code></p>
 </details>
 <hr />
 <h2 id="every-time-i-run-force-the-download_dataset-rule-all-rules-are-executed">Every time I run force the download_dataset rule all rules are executed<a class="headerlink" href="#every-time-i-run-force-the-download_dataset-rule-all-rules-are-executed" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>When running <code>snakemake -j1 -R pull_phone_data</code> or <code>./rapids -j1 -R pull_phone_data</code> all the rules and files are re-computed</p>
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>When running <code>snakemake -j1 -R pull_phone_data</code> or <code>./rapids -j1 -R pull_phone_data</code> all the rules and files are re-computed</p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>This is expected behavior. The advantage of using <code>snakemake</code> under the hood is that every time a file containing data is modified every rule that depends on that file will be re-executed to update their results. In this case, since <code>download_dataset</code> updates all the raw data, and you are forcing the rule with the flag <code>-R</code> every single rule that depends on those raw files will be executed.</p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>This is expected behavior. The advantage of using <code>snakemake</code> under the hood is that every time a file containing data is modified every rule that depends on that file will be re-executed to update their results. In this case, since <code>download_dataset</code> updates all the raw data, and you are forcing the rule with the flag <code>-R</code> every single rule that depends on those raw files will be executed.</p>
 </details>
 <hr />
 <h2 id="error-table-xxx-doesnt-exist-while-running-the-download_phone_data-or-download_fitbit_data-rule">Error <code>Table XXX doesn't exist</code> while running the <code>download_phone_data</code> or <code>download_fitbit_data</code> rule.<a class="headerlink" href="#error-table-xxx-doesnt-exist-while-running-the-download_phone_data-or-download_fitbit_data-rule" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><div class="highlight"><pre><span></span><code>Error <span class="k">in</span> .local<span class="o">(</span>conn, statement, ...<span class="o">)</span> : 
+<details class="failure" open="open">
+<summary>Problem</summary>
+<div class="highlight"><pre><span></span><code>Error <span class="k">in</span> .local<span class="o">(</span>conn, statement, ...<span class="o">)</span> : 
   could not run statement: Table <span class="s1">&#39;db_name.table_name&#39;</span> doesn<span class="err">&#39;</span>t exist
 Calls: colnames ... .local -&gt; dbSendQuery -&gt; dbSendQuery -&gt; .local -&gt; .Call
 Execution halted
 </code></pre></div>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>Please make sure the sensors listed in <code>[PHONE_VALID_SENSED_BINS][PHONE_SENSORS]</code> and the <code>[CONTAINER]</code> of each sensor you activated in <code>config.yaml</code>  match your database tables or files.</p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>Please make sure the sensors listed in <code>[PHONE_VALID_SENSED_BINS][PHONE_SENSORS]</code> and the <code>[CONTAINER]</code> of each sensor you activated in <code>config.yaml</code>  match your database tables or files.</p>
 </details>
 <hr />
 <h2 id="how-do-i-install-rapids-on-ubuntu-1604">How do I install RAPIDS on Ubuntu 16.04<a class="headerlink" href="#how-do-i-install-rapids-on-ubuntu-1604" title="Permanent link">&para;</a></h2>
-<details class="done" open="open"><summary>Solution</summary><ol>
+<details class="done" open="open">
+<summary>Solution</summary>
+<ol>
 <li>
 <p>Install dependencies (Homebrew - if not installed):</p>
 <ul>
@@ -2113,54 +2131,78 @@ Execution halted
 </details>
 <hr />
 <h2 id="mysqlh-cannot-be-found"><code>mysql.h</code> cannot be found<a class="headerlink" href="#mysqlh-cannot-be-found" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><div class="highlight"><pre><span></span><code>--------------------------<span class="o">[</span> ERROR MESSAGE <span class="o">]</span>----------------------------
+<details class="failure" open="open">
+<summary>Problem</summary>
+<div class="highlight"><pre><span></span><code>--------------------------<span class="o">[</span> ERROR MESSAGE <span class="o">]</span>----------------------------
 &lt;stdin&gt;:1:10: fatal error: mysql.h: No such file or directory
 compilation terminated.
 -----------------------------------------------------------------------
 ERROR: configuration failed <span class="k">for</span> package <span class="s1">&#39;RMySQL&#39;</span>
 </code></pre></div>
 </details>
-<details class="done" open="open"><summary>Solution</summary><div class="highlight"><pre><span></span><code>sudo apt install libmariadbclient-dev
+<details class="done" open="open">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code>sudo apt install libmariadbclient-dev
 </code></pre></div>
 </details>
 <hr />
 <h2 id="no-package-libcurl-found">No package <code>libcurl</code> found<a class="headerlink" href="#no-package-libcurl-found" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p><code>libcurl</code> cannot be found</p>
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p><code>libcurl</code> cannot be found</p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>Install <code>libcurl</code>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>Install <code>libcurl</code>
 <div class="highlight"><pre><span></span><code>sudo apt install libcurl4-openssl-dev
 </code></pre></div></p>
 </details>
 <hr />
 <h2 id="configuration-failed-because-openssl-was-not-found">Configuration failed because <code>openssl</code> was not found.<a class="headerlink" href="#configuration-failed-because-openssl-was-not-found" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p><code>openssl</code> cannot be found</p>
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p><code>openssl</code> cannot be found</p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>Install <code>openssl</code>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>Install <code>openssl</code>
 <div class="highlight"><pre><span></span><code>sudo apt install libssl-dev
 </code></pre></div></p>
 </details>
 <hr />
 <h2 id="configuration-failed-because-libxml-20-was-not-found">Configuration failed because <code>libxml-2.0</code> was not found<a class="headerlink" href="#configuration-failed-because-libxml-20-was-not-found" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p><code>libxml-2.0</code> cannot be found</p>
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p><code>libxml-2.0</code> cannot be found</p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>Install <code>libxml-2.0</code>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>Install <code>libxml-2.0</code>
 <div class="highlight"><pre><span></span><code>sudo apt install libxml2-dev
 </code></pre></div></p>
 </details>
 <hr />
 <h2 id="ssl-connection-error-when-running-rapids">SSL connection error when running RAPIDS<a class="headerlink" href="#ssl-connection-error-when-running-rapids" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>You are getting the following error message when running RAPIDS:
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>You are getting the following error message when running RAPIDS:
 <div class="highlight"><pre><span></span><code>Error: Failed to connect: SSL connection error: error:1425F102:SSL routines:ssl_choose_client_version:unsupported protocol.
 </code></pre></div></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>This is a bug in Ubuntu 20.04 when trying to connect to an old MySQL server with MySQL client 8.0. You should get the same error message if you try to connect from the command line. There you can add the option <code>--ssl-mode=DISABLED</code> but we can't do this from the R connector.</p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>This is a bug in Ubuntu 20.04 when trying to connect to an old MySQL server with MySQL client 8.0. You should get the same error message if you try to connect from the command line. There you can add the option <code>--ssl-mode=DISABLED</code> but we can't do this from the R connector.</p>
 <p>If you can't update your server, the quickest solution would be to import your database to another server or to a local environment. Alternatively, you could replace <code>mysql-client</code> and <code>libmysqlclient-dev</code> with <code>mariadb-client</code> and <code>libmariadbclient-dev</code> and reinstall renv. More info about this issue <a href="https://bugs.launchpad.net/ubuntu/+source/mysql-8.0/+bug/1872541">here</a></p>
 </details>
 <hr />
 <h2 id="db_tables-key-not-found"><code>DB_TABLES</code> key not found<a class="headerlink" href="#db_tables-key-not-found" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>If you get the following error <code>KeyError in line 43 of preprocessing.smk: 'PHONE_SENSORS'</code>, it means that the indentation of the key <code>[PHONE_SENSORS]</code> is not matching the other child elements of <code>PHONE_VALID_SENSED_BINS</code></p>
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>If you get the following error <code>KeyError in line 43 of preprocessing.smk: 'PHONE_SENSORS'</code>, it means that the indentation of the key <code>[PHONE_SENSORS]</code> is not matching the other child elements of <code>PHONE_VALID_SENSED_BINS</code></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>You need to add or remove any leading whitespaces as needed on that line.</p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>You need to add or remove any leading whitespaces as needed on that line.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">PHONE_VALID_SENSED_BINS</span><span class="p">:</span>
     <span class="nt">COMPUTE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span> <span class="c1"># This flag is automatically ignored (set to True) if you are extracting PHONE_VALID_SENSED_DAYS or screen or Barnett&#39;s location features</span>
     <span class="nt">BIN_SIZE</span><span class="p">:</span> <span class="nl">&amp;bin_size</span> <span class="l l-Scalar l-Scalar-Plain">5</span> <span class="c1"># (in minutes)</span>
@@ -2169,7 +2211,9 @@ ERROR: configuration failed <span class="k">for</span> package <span class="s1">
 </details>
 <hr />
 <h2 id="error-while-updating-your-conda-environment-in-ubuntu">Error while updating your conda environment in Ubuntu<a class="headerlink" href="#error-while-updating-your-conda-environment-in-ubuntu" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>You get the following error:
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>You get the following error:
 <div class="highlight"><pre><span></span><code>CondaMultiError: CondaVerificationError: The package <span class="k">for</span> tk located at /home/ubuntu/miniconda2/pkgs/tk-8.6.9-hed695b0_1003
     appears to be corrupted. The path <span class="s1">&#39;include/mysqlStubs.h&#39;</span>
     specified <span class="k">in</span> the package manifest cannot be found.
@@ -2178,15 +2222,21 @@ ClobberError: This transaction has incompatible packages due to a shared path.
     path: <span class="s1">&#39;lib/libiomp5.so&#39;</span>
 </code></pre></div></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>Reinstall conda</p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>Reinstall conda</p>
 </details>
 <h2 id="embedded-nul-in-string">Embedded nul in string<a class="headerlink" href="#embedded-nul-in-string" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>You get the following error when downloading sensor data:
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>You get the following error when downloading sensor data:
 <div class="highlight"><pre><span></span><code>Error <span class="k">in</span> result_fetch<span class="o">(</span>res@ptr, <span class="nv">n</span> <span class="o">=</span> n<span class="o">)</span> : 
   embedded nul <span class="k">in</span> string:
 </code></pre></div></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>This problem is due to the way <code>RMariaDB</code> handles a mismatch between data types in R and MySQL (see <a href="https://github.com/r-dbi/RMariaDB/issues/121">this issue</a>). Since it seems this problem won&rsquo;t be handled by <code>RMariaDB</code>, you have two options:</p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>This problem is due to the way <code>RMariaDB</code> handles a mismatch between data types in R and MySQL (see <a href="https://github.com/r-dbi/RMariaDB/issues/121">this issue</a>). Since it seems this problem won&rsquo;t be handled by <code>RMariaDB</code>, you have two options:</p>
 <ol>
 <li>Remove the the null character from the conflictive table cell(s). You can adapt the following query on a MySQL server 8.0 or older
     <div class="highlight"><pre><span></span><code><span class="k">update</span> <span class="n">YOUR_TABLE</span> <span class="k">set</span> <span class="n">YOUR_COLUMN</span> <span class="o">=</span> <span class="n">regexp_replace</span><span class="p">(</span><span class="n">YOUR_COLUMN</span><span class="p">,</span> <span class="s1">&#39;\0&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
@@ -2202,36 +2252,52 @@ ClobberError: This transaction has incompatible packages due to a shared path.
 </ol>
 </details>
 <h2 id="there-is-no-package-called-rmariadb">There is no package called <code>RMariaDB</code><a class="headerlink" href="#there-is-no-package-called-rmariadb" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>You get the following error when executing RAPIDS:
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>You get the following error when executing RAPIDS:
 <div class="highlight"><pre><span></span><code>Error <span class="k">in</span> library<span class="o">(</span>RMariaDB<span class="o">)</span> : there is no package called <span class="s1">&#39;RMariaDB&#39;</span>
 Execution halted
 </code></pre></div></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>In RAPIDS v0.1.0 we replaced <code>RMySQL</code> R package with <code>RMariaDB</code>, this error means your R virtual environment is out of date, to update it run <code>snakemake -j1 renv_restore</code></p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>In RAPIDS v0.1.0 we replaced <code>RMySQL</code> R package with <code>RMariaDB</code>, this error means your R virtual environment is out of date, to update it run <code>snakemake -j1 renv_restore</code></p>
 </details>
 <h2 id="unrecognized-output-timezone-americanew_york">Unrecognized output timezone &ldquo;America/New_York&rdquo;<a class="headerlink" href="#unrecognized-output-timezone-americanew_york" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>When running RAPIDS with R 4.0.3 on MacOS on M1, lubridate may throw an error associated with the timezone.
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>When running RAPIDS with R 4.0.3 on MacOS on M1, lubridate may throw an error associated with the timezone.
 <div class="highlight"><pre><span></span><code>Error <span class="k">in</span> C_force_tz<span class="o">(</span>time, <span class="nv">tz</span> <span class="o">=</span> tzone, roll<span class="o">)</span>:
    CCTZ: Unrecognized output timezone: <span class="s2">&quot;America/New_York&quot;</span>
 Calls: get_timestamp_filter ... .parse_date_time -&gt; .strptime -&gt; force_tz -&gt; C_force_tz
 </code></pre></div></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary></details>
+<details class="done" open="open">
+<summary>Solution</summary>
+</details>
 <p>This is because R timezone library is not set. Please add <code>Sys.setenv(“TZDIR” = file.path(R.home(), “share”, “zoneinfo”))</code> to the file active.R in renv folder to set the timezone library. For further details on how to test if <code>TZDIR</code> is properly set, please refer to <code>https://github.com/tidyverse/lubridate/issues/928#issuecomment-720059233</code>. </p>
 <h2 id="unimplemented-max_no_field_types">Unimplemented MAX_NO_FIELD_TYPES<a class="headerlink" href="#unimplemented-max_no_field_types" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>You get the following error when downloading Fitbit data:
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>You get the following error when downloading Fitbit data:
 <div class="highlight"><pre><span></span><code>Error: Unimplemented MAX_NO_FIELD_TYPES
 Execution halted
 </code></pre></div></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>At the moment RMariaDB <a href="https://github.com/r-dbi/RMariaDB/issues/127">cannot handle</a> MySQL columns of JSON type. Change the type of your Fitbit data column to <code>longtext</code> (note that the content will not change and will still be a JSON object just interpreted as a string).</p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>At the moment RMariaDB <a href="https://github.com/r-dbi/RMariaDB/issues/127">cannot handle</a> MySQL columns of JSON type. Change the type of your Fitbit data column to <code>longtext</code> (note that the content will not change and will still be a JSON object just interpreted as a string).</p>
 </details>
 <h2 id="running-rapids-on-apple-silicon-m1-mac">Running RAPIDS on Apple Silicon M1 Mac<a class="headerlink" href="#running-rapids-on-apple-silicon-m1-mac" title="Permanent link">&para;</a></h2>
-<details class="failure" open="open"><summary>Problem</summary><p>You get the following error when installing pandoc or running rapids:
+<details class="failure" open="open">
+<summary>Problem</summary>
+<p>You get the following error when installing pandoc or running rapids:
  <div class="highlight"><pre><span></span><code>MoSHI/rapids/renv/staging/1/00LOCK-KernSmooth/00new/KernSmooth/libs/KernSmooth.so: mach-0, but wrong architecture
 </code></pre></div></p>
 </details>
-<details class="done" open="open"><summary>Solution</summary><p>As of Feb 2020 in M1 macs, R needs to be installed via brew under Rosetta (x86 arch) due to some incompatibility with selected R libraries. To do this, run your terminal <a href="https://www.youtube.com/watch?v=nv2ylxro7rM&amp;t=138s">via Rosetta</a>, then proceed with the usual brew installation command. x86 homebrew should be installed in <code>/usr/local/bin/brew</code>, you can check which brew you are using by typing <code>which brew</code>. Then use x86 homebrew to install R and restore RAPIDS packages (<code>renv_restore</code>). </p>
+<details class="done" open="open">
+<summary>Solution</summary>
+<p>As of Feb 2020 in M1 macs, R needs to be installed via brew under Rosetta (x86 arch) due to some incompatibility with selected R libraries. To do this, run your terminal <a href="https://www.youtube.com/watch?v=nv2ylxro7rM&amp;t=138s">via Rosetta</a>, then proceed with the usual brew installation command. x86 homebrew should be installed in <code>/usr/local/bin/brew</code>, you can check which brew you are using by typing <code>which brew</code>. Then use x86 homebrew to install R and restore RAPIDS packages (<code>renv_restore</code>). </p>
 </details>
                 
               

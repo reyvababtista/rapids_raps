@@ -1810,7 +1810,9 @@
 <p class="admonition-title">Warning</p>
 <p>The CSV files have to use <code>,</code> as separator, <code>\</code> as escape character (do not escape <code>"</code> with <code>""</code>), and wrap any string columns with <code>"</code>.</p>
 <p>See examples in the CSV files inside <a href="https://osf.io/wbg23/">rapids_example_csv.zip</a></p>
-<details class="example"><summary>Example of a valid CSV file</summary><div class="highlight"><pre><span></span><code>&quot;_id&quot;,&quot;timestamp&quot;,&quot;device_id&quot;,&quot;activities&quot;,&quot;confidence&quot;,&quot;stationary&quot;,&quot;walking&quot;,&quot;running&quot;,&quot;automotive&quot;,&quot;cycling&quot;,&quot;unknown&quot;,&quot;label&quot;
+<details class="example">
+<summary>Example of a valid CSV file</summary>
+<div class="highlight"><pre><span></span><code>&quot;_id&quot;,&quot;timestamp&quot;,&quot;device_id&quot;,&quot;activities&quot;,&quot;confidence&quot;,&quot;stationary&quot;,&quot;walking&quot;,&quot;running&quot;,&quot;automotive&quot;,&quot;cycling&quot;,&quot;unknown&quot;,&quot;label&quot;
 1,1587528000000,&quot;13dbc8a3-dae3-4834-823a-4bc96a7d459d&quot;,&quot;[\&quot;stationary\&quot;]&quot;,2,1,0,0,0,0,0,&quot;&quot;
 2,1587528060000,&quot;13dbc8a3-dae3-4834-823a-4bc96a7d459d&quot;,&quot;[\&quot;stationary\&quot;]&quot;,2,1,0,0,0,0,0,&quot;supplement&quot;
 3,1587528120000,&quot;13dbc8a3-dae3-4834-823a-4bc96a7d459d&quot;,&quot;[\&quot;stationary\&quot;]&quot;,2,1,0,0,0,0,0,&quot;supplement&quot;
@@ -1837,7 +1839,9 @@
 <p class="admonition-title">Hint</p>
 <p>The mappings in this stream (RAPIDS/Stream) are the same names because AWARE data was the first stream RAPIDS supported, meaning that it considers AWARE column names the default.</p>
 </div>
-<details class="info"><summary>PHONE_ACCELEROMETER</summary><div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_ACCELEROMETER</summary>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -1880,7 +1884,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_ACTIVITY_RECOGNITION</summary><div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_ACTIVITY_RECOGNITION</summary>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -1998,7 +2004,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_APPLICATIONS_CRASHES</summary><div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_APPLICATIONS_CRASHES</summary>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2057,7 +2065,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_APPLICATIONS_FOREGROUND</summary><div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_APPLICATIONS_FOREGROUND</summary>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2100,7 +2110,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_APPLICATIONS_NOTIFICATIONS</summary><div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_APPLICATIONS_NOTIFICATIONS</summary>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2159,7 +2171,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_BATTERY</summary><div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_BATTERY</summary>
+<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2266,7 +2280,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_BLUETOOTH</summary><div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_BLUETOOTH</summary>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2309,7 +2325,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_CALLS</summary><div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_CALLS</summary>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2469,7 +2487,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_CONVERSATION</summary><div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_CONVERSATION</summary>
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2585,7 +2605,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_KEYBOARD</summary><div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_KEYBOARD</summary>
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2632,7 +2654,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_LIGHT</summary><div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_LIGHT</summary>
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2671,7 +2695,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_LOCATIONS</summary><div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_LOCATIONS</summary>
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2730,7 +2756,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_LOG</summary><div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_LOG</summary>
+<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2765,7 +2793,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_MESSAGES</summary><div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_MESSAGES</summary>
+<div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2804,7 +2834,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_SCREEN</summary><div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_SCREEN</summary>
+<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2891,7 +2923,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_WIFI_CONNECTED</summary><div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_WIFI_CONNECTED</summary>
+<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
@@ -2934,7 +2968,9 @@
 </div>
 </div>
 </details>
-<details class="info"><summary>PHONE_WIFI_VISIBLE</summary><div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">ANDROID</label><div class="tabbed-content">
+<details class="info">
+<summary>PHONE_WIFI_VISIBLE</summary>
+<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">ANDROID</label><div class="tabbed-content">
 <p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>

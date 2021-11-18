@@ -1813,7 +1813,9 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The CSV files have to use <code>,</code> as separator, <code>\</code> as escape character (do not escape <code>"</code> with <code>""</code>), and wrap any string columns with <code>"</code>.</p>
-<details class="example"><summary>Example of a valid CSV file</summary><div class="highlight"><pre><span></span><code>&quot;device_id&quot;,&quot;heartrate&quot;,&quot;heartrate_zone&quot;,&quot;local_date_time&quot;,&quot;timestamp&quot;
+<details class="example">
+<summary>Example of a valid CSV file</summary>
+<div class="highlight"><pre><span></span><code>&quot;device_id&quot;,&quot;heartrate&quot;,&quot;heartrate_zone&quot;,&quot;local_date_time&quot;,&quot;timestamp&quot;
 &quot;a748ee1a-1d0b-4ae9-9074-279a2b6ba524&quot;,69,&quot;outofrange&quot;,&quot;2020-04-23 00:00:00&quot;,0
 &quot;a748ee1a-1d0b-4ae9-9074-279a2b6ba524&quot;,69,&quot;outofrange&quot;,&quot;2020-04-23 00:01:00&quot;,0
 &quot;a748ee1a-1d0b-4ae9-9074-279a2b6ba524&quot;,67,&quot;outofrange&quot;,&quot;2020-04-23 00:02:00&quot;,0
@@ -1832,7 +1834,9 @@
 </code></pre></div>
 <p>If you want to use this stream with your data, modify every sensor in <code>format.yaml</code> to map all columns except <code>TIMESTAMP</code> in <code>[RAPIDS_COLUMN_MAPPINGS]</code> to your raw data column names.</p>
 <p>All columns are mandatory; however, all except <code>device_id</code> and <code>local_date_time</code> can be empty if you don&rsquo;t have that data. Just have in mind that some features will be empty if some of these columns are empty.</p>
-<details class="info"><summary>FITBIT_HEARTRATE_SUMMARY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_HEARTRATE_SUMMARY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -1889,7 +1893,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>add_zero_timestamp</code> adds an all-zero column called <code>timestamp</code> that will be filled in later in the pipeline by <code>readable_time.R</code> converting LOCAL_DATE_TIME to a unix timestamp taking into account single or multiple time zones.</p>
-<details class="example"><summary>Example of the raw data RAPIDS expects for this data stream</summary><table>
+<details class="example">
+<summary>Example of the raw data RAPIDS expects for this data stream</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -1934,7 +1940,9 @@
 </details>
 </div>
 </details>
-<details class="info"><summary>FITBIT_HEARTRATE_INTRADAY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_HEARTRATE_INTRADAY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -1979,7 +1987,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>add_zero_timestamp</code> adds an all-zero column called <code>timestamp</code> that will be filled in later in the pipeline by <code>readable_time.R</code> converting LOCAL_DATE_TIME to a unix timestamp taking into account single or multiple time zones.</p>
-<details class="example"><summary>Example of the raw data RAPIDS expects for this data stream</summary><table>
+<details class="example">
+<summary>Example of the raw data RAPIDS expects for this data stream</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -2012,7 +2022,9 @@
 </details>
 </div>
 </details>
-<details class="info"><summary>FITBIT_SLEEP_SUMMARY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_SLEEP_SUMMARY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -2091,7 +2103,9 @@
 <p class="admonition-title">Note</p>
 <p><code>add_zero_timestamp</code> adds an all-zero column called <code>timestamp</code> that will be filled in later in the pipeline by <code>readable_time.R</code> converting LOCAL_DATE_TIME to a unix timestamp taking into account single or multiple time zones.</p>
 <p>Fitbit API has two versions for sleep data, v1 and v1.2. We support both but ignore v1&rsquo;s <code>count_awake</code>, <code>duration_awake</code>, and <code>count_awakenings</code>, <code>count_restless</code>, <code>duration_restless</code> columns.</p>
-<details class="example"><summary>Example of the expected raw data</summary><table>
+<details class="example">
+<summary>Example of the expected raw data</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -2165,7 +2179,9 @@
 </details>
 </div>
 </details>
-<details class="info"><summary>FITBIT_SLEEP_INTRADAY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_SLEEP_INTRADAY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -2223,7 +2239,9 @@
 <p class="admonition-title">Note</p>
 <p><code>add_zero_timestamp</code> adds an all-zero column called <code>timestamp</code> that will be filled in later in the pipeline by <code>readable_time.R</code> converting LOCAL_DATE_TIME to a unix timestamp taking into account single or multiple time zones.</p>
 <p>Fitbit API has two versions for sleep data, v1 and v1.2, we support both.</p>
-<details class="example"><summary>Example of the expected raw data</summary><table>
+<details class="example">
+<summary>Example of the expected raw data</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -2295,7 +2313,9 @@
 </details>
 </div>
 </details>
-<details class="info"><summary>FITBIT_STEPS_SUMMARY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_STEPS_SUMMARY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -2336,7 +2356,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>add_zero_timestamp</code> adds an all-zero column called <code>timestamp</code> that will be filled in later in the pipeline by <code>readable_time.R</code> converting LOCAL_DATE_TIME to a unix timestamp taking into account single or multiple time zones.</p>
-<details class="example"><summary>Example of the expected raw data</summary><table>
+<details class="example">
+<summary>Example of the expected raw data</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -2365,7 +2387,9 @@
 </details>
 </div>
 </details>
-<details class="info"><summary>FITBIT_STEPS_INTRADAY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_STEPS_INTRADAY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -2406,7 +2430,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>add_zero_timestamp</code> adds an all-zero column called <code>timestamp</code> that will be filled in later in the pipeline by <code>readable_time.R</code> converting LOCAL_DATE_TIME to a unix timestamp taking into account single or multiple time zones.</p>
-<details class="example"><summary>Example of the expected raw data</summary><table>
+<details class="example">
+<summary>Example of the expected raw data</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>

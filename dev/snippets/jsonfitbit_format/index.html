@@ -1715,7 +1715,9 @@
 <div class="highlight"><pre><span></span><code>src/data/streams/fitbitjson_csv/format.yaml
 </code></pre></div>
 <p>If you want RAPIDS to process Fitbit sensor data using this stream, you will need to map <code>DEVICE_ID</code> and <code>JSON_FITBIT_COLUMN</code> to your own raw data columns inside <strong>each sensor</strong> section in <code>format.yaml</code>.</p>
-<details class="info"><summary>FITBIT_HEARTRATE_SUMMARY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_HEARTRATE_SUMMARY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -1781,7 +1783,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All columns except <code>DEVICE_ID</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by Fitbit&rsquo;s API. See an example of the raw data RAPIDS expects for this data stream:</p>
-<details class="example"><summary>Example of the raw data RAPIDS expects for this data stream</summary><table>
+<details class="example">
+<summary>Example of the raw data RAPIDS expects for this data stream</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -1808,7 +1812,9 @@
 </li>
 </ul>
 </details>
-<details class="info"><summary>FITBIT_HEARTRATE_INTRADAY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_HEARTRATE_INTRADAY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -1862,7 +1868,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All columns except <code>DEVICE_ID</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by Fitbit&rsquo;s API. See an example of the raw data RAPIDS expects for this data stream:</p>
-<details class="example"><summary>Example of the raw data RAPIDS expects for this data stream</summary><table>
+<details class="example">
+<summary>Example of the raw data RAPIDS expects for this data stream</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -1889,7 +1897,9 @@
 </li>
 </ul>
 </details>
-<details class="info"><summary>FITBIT_SLEEP_SUMMARY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_SLEEP_SUMMARY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -1981,7 +1991,9 @@
 <p class="admonition-title">Note</p>
 <p>Fitbit API has two versions for sleep data, v1 and v1.2. We support both but ignore v1&rsquo;s <code>count_awake</code>, <code>duration_awake</code>, and <code>count_awakenings</code>, <code>count_restless</code>, <code>duration_restless</code> columns.</p>
 <p>All columns except <code>DEVICE_ID</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by Fitbit&rsquo;s API. See an example of the raw data RAPIDS expects for this data stream:</p>
-<details class="example"><summary>Example of the expected raw data</summary><table>
+<details class="example">
+<summary>Example of the expected raw data</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -2008,7 +2020,9 @@
 </li>
 </ul>
 </details>
-<details class="info"><summary>FITBIT_SLEEP_INTRADAY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_SLEEP_INTRADAY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -2079,7 +2093,9 @@
 <p class="admonition-title">Note</p>
 <p>Fitbit API has two versions for sleep data, v1 and v1.2, we support both.</p>
 <p>All columns except <code>DEVICE_ID</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by Fitbit&rsquo;s API. See an example of the raw data RAPIDS expects for this data stream:</p>
-<details class="example"><summary>Example of the expected raw data</summary><table>
+<details class="example">
+<summary>Example of the expected raw data</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -2106,7 +2122,9 @@
 </li>
 </ul>
 </details>
-<details class="info"><summary>FITBIT_STEPS_SUMMARY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_STEPS_SUMMARY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -2160,7 +2178,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>TIMESTAMP</code>, <code>LOCAL_DATE_TIME</code>, and <code>STEPS</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by Fitbit&rsquo;s API. See an example of the raw data RAPIDS expects for this data stream:</p>
-<details class="example"><summary>Example of the expected raw data</summary><table>
+<details class="example">
+<summary>Example of the expected raw data</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>
@@ -2187,7 +2207,9 @@
 </li>
 </ul>
 </details>
-<details class="info"><summary>FITBIT_STEPS_INTRADAY</summary><p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
+<details class="info">
+<summary>FITBIT_STEPS_INTRADAY</summary>
+<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
 <table>
 <thead>
 <tr>
@@ -2241,7 +2263,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>TIMESTAMP</code>, <code>LOCAL_DATE_TIME</code>, and <code>STEPS</code> are parsed from <code>JSON_FITBIT_COLUMN</code>. <code>JSON_FITBIT_COLUMN</code> is a string column containing the JSON objects returned by <a href="https://dev.fitbit.com/build/reference/web-api/activity/#get-activity-intraday-time-series">Fitbit&rsquo;s API</a>. See an example of the raw data RAPIDS expects for this data stream:</p>
-<details class="example"><summary>Example of the expected raw data</summary><table>
+<details class="example">
+<summary>Example of the expected raw data</summary>
+<table>
 <thead>
 <tr>
 <th>device_id</th>

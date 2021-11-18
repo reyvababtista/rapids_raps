@@ -1845,6 +1845,10 @@
 <td>Features to be computed from steps intraday data, see table below</td>
 </tr>
 <tr>
+<td><code>[REFERENCE_HOUR]</code></td>
+<td>The reference point from which <code>firststeptime</code> or <code>laststeptime</code> is to be computed, default is midnight</td>
+</tr>
+<tr>
 <td><code>[THRESHOLD_ACTIVE_BOUT]</code></td>
 <td>Every minute with Fitbit steps data wil be labelled as <code>sedentary</code> if its step count is below this threshold, otherwise, <code>active</code>.</td>
 </tr>
@@ -1888,6 +1892,16 @@
 <td>stdsteps</td>
 <td>steps</td>
 <td>The standard deviation of step count during a time segment.</td>
+</tr>
+<tr>
+<td>firststeptime</td>
+<td>minutes</td>
+<td>Minutes until the first non-zero step count.</td>
+</tr>
+<tr>
+<td>laststeptime</td>
+<td>minutes</td>
+<td>Minutes until the last non-zero step count.</td>
 </tr>
 <tr>
 <td>countepisodesedentarybout</td>

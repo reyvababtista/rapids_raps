@@ -1873,7 +1873,9 @@
 <li><a href="#implement-your-feature-extraction-code">Implement</a> your features extraction code</li>
 </ol>
 <p>As a tutorial, we will add a new provider for <code>PHONE_ACCELEROMETER</code> called <code>VEGA</code> that extracts <code>feature1</code>, <code>feature2</code>, <code>feature3</code> with a Python script that requires a parameter from the user called <code>MY_PARAMETER</code>.</p>
-<details class="info"><summary>Existing Sensors</summary><p>An existing sensor of any device with a configuration entry in <code>config.yaml</code>:</p>
+<details class="info">
+<summary>Existing Sensors</summary>
+<p>An existing sensor of any device with a configuration entry in <code>config.yaml</code>:</p>
 <p>Smartphone (AWARE)</p>
 <ul>
 <li>Phone Accelerometer</li>
@@ -1918,7 +1920,9 @@
 </details>
 <h3 id="modify-the-configyaml-file">Modify the <code>config.yaml</code> file<a class="headerlink" href="#modify-the-configyaml-file" title="Permanent link">&para;</a></h3>
 <p>In this step, you need to add your provider configuration section under the relevant sensor in <code>config.yaml</code>. See our example for our tutorial&rsquo;s <code>VEGA</code> provider for  <code>PHONE_ACCELEROMETER</code>:</p>
-<details class="example"><summary>Example configuration for a new accelerometer provider <code>VEGA</code></summary><div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span>
+<details class="example">
+<summary>Example configuration for a new accelerometer provider <code>VEGA</code></summary>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span>
     <span class="nt">CONTAINER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">accelerometer</span>
     <span class="nt">PROVIDERS</span><span class="p">:</span>
         <span class="nt">RAPIDS</span><span class="p">:</span> <span class="c1"># this is a feature provider</span>
@@ -2017,11 +2021,15 @@
 </tbody>
 </table>
 <p>The next step is to implement the code that computes your behavioral features in your provider script&rsquo;s function. As with any other script, this function can call other auxiliary methods, but in general terms, it should have three stages:</p>
-<details class="info"><summary>1. Read a participant&rsquo;s data by loading the CSV data stored in the file pointed by <code>sensor_data_files</code></summary><div class="highlight"><pre><span></span><code><span class="n">acc_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">sensor_data_files</span><span class="p">[</span><span class="s2">&quot;sensor_data&quot;</span><span class="p">])</span>
+<details class="info">
+<summary>1. Read a participant&rsquo;s data by loading the CSV data stored in the file pointed by <code>sensor_data_files</code></summary>
+<div class="highlight"><pre><span></span><code><span class="n">acc_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">sensor_data_files</span><span class="p">[</span><span class="s2">&quot;sensor_data&quot;</span><span class="p">])</span>
 </code></pre></div>
 <p>Note that the phone&rsquo;s battery, screen, and activity recognition data are given as episodes instead of event rows (for example, start and end timestamps of the periods the phone screen was on)</p>
 </details>
-<details class="info"><summary>2. Filter your data to process only those rows that belong to <code>time_segment</code></summary><p>This step is only one line of code, but keep reading to understand why we need it.
+<details class="info">
+<summary>2. Filter your data to process only those rows that belong to <code>time_segment</code></summary>
+<p>This step is only one line of code, but keep reading to understand why we need it.
 <div class="highlight"><pre><span></span><code><span class="n">acc_data</span> <span class="o">=</span> <span class="n">filter_data_by_segment</span><span class="p">(</span><span class="n">acc_data</span><span class="p">,</span> <span class="n">time_segment</span><span class="p">)</span>
 </code></pre></div></p>
 <p>You should use the <code>filter_data_by_segment()</code> function to process and group those rows that belong to each of the <a href="../../setup/configuration/#time-segments">time segments RAPIDS could be configured with</a>.</p>
@@ -2037,14 +2045,18 @@
 </code></pre></div>
 <p>The reason RAPIDS does not filter the participant&rsquo;s data set for you is because your code might need to compute something based on a participant&rsquo;s complete dataset before computing their features. For example, you might want to identify the number that called a participant the most throughout the study before computing a feature with the number of calls the participant received from that number.</p>
 </details>
-<details class="info"><summary>3. Return a data frame with your features</summary><p>After filtering, grouping your data, and computing your features, your provider function should return a data frame that has:</p>
+<details class="info">
+<summary>3. Return a data frame with your features</summary>
+<p>After filtering, grouping your data, and computing your features, your provider function should return a data frame that has:</p>
 <ul>
 <li>One row per time segment instance (e.g., 14 our <code>p01</code>&lsquo;s <code>my_days</code> example)</li>
 <li>The <code>local_segment</code> column added by <code>filter_data_by_segment()</code></li>
 <li>One column per feature. The name of your features should only contain letters or numbers (<code>feature1</code>) by convention. RAPIDS automatically adds the correct sensor and provider prefix; in our example, this prefix is <code>phone_accelerometr_vega_</code>.</li>
 </ul>
 </details>
-<details class="example"><summary><code>PHONE_ACCELEROMETER</code> Provider Example</summary><p>For your reference, this our own provider (<code>RAPIDS</code>) for <code>PHONE_ACCELEROMETER</code> that computes five acceleration features</p>
+<details class="example">
+<summary><code>PHONE_ACCELEROMETER</code> Provider Example</summary>
+<p>For your reference, this our own provider (<code>RAPIDS</code>) for <code>PHONE_ACCELEROMETER</code> that computes five acceleration features</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 

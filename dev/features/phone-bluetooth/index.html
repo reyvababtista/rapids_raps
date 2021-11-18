@@ -1998,7 +1998,11 @@
 <li>When searching for the most frequent device across 30-minute segments, the search range is equivalent to the sum of all segments of the same time period. For instance, the <code>countscansmostfrequentdeviceacrosssegments</code> for the time segment (<code>Fri 00:00:00, Fri 00:29:59</code>) will get the count in that segment of the most frequent device found within all (<code>00:00:00, 00:29:59</code>) time segments. To find <code>countscansmostfrequentdeviceacrosssegments</code> for <code>other</code> devices, the search range needs to filter out all <code>own</code> devices. But no need to do so for <code>countscansmostfrequentdeviceacrosssedataset</code>. The most frequent device across the dataset stays the same for <code>countscansmostfrequentdeviceacrossdatasetall</code>, <code>countscansmostfrequentdeviceacrossdatasetown</code> and <code>countscansmostfrequentdeviceacrossdatasetother</code>. Same rule applies to the least frequent device across the dataset. </li>
 <li>The most and least frequent devices will be the same across time segment instances and across the entire dataset when every time segment instance covers every hour of a dataset. For example, daily segments (00:00 to 23:59) fall in this category but morning segments (06:00am to 11:59am) or periodic 30-minute segments don&rsquo;t.</li>
 </ul>
-<details class="info"><summary>Example</summary><details class="example"><summary>Simplified raw bluetooth data</summary><p>The following is a simplified example with bluetooth data from three days and two time segments: morning and afternoon. There are two <code>own</code> devices: <code>5C836F5-487E-405F-8E28-21DBD40FA4FF</code> detected seven times across two days and <code>499A1EAF-DDF1-4657-986C-EA5032104448</code> detected eight times on a single day.
+<details class="info">
+<summary>Example</summary>
+<details class="example">
+<summary>Simplified raw bluetooth data</summary>
+<p>The following is a simplified example with bluetooth data from three days and two time segments: morning and afternoon. There are two <code>own</code> devices: <code>5C836F5-487E-405F-8E28-21DBD40FA4FF</code> detected seven times across two days and <code>499A1EAF-DDF1-4657-986C-EA5032104448</code> detected eight times on a single day.
 <div class="highlight"><pre><span></span><code>local_date  segment     bt_address                              own_device
 2016-11-29  morning     55C836F5-487E-405F-8E28-21DBD40FA4FF              1
 2016-11-29  morning     55C836F5-487E-405F-8E28-21DBD40FA4FF              1
@@ -2029,7 +2033,9 @@
 2017-05-07  afternoon   499A1EAF-DDF1-4657-986C-EA5032104448              1
 </code></pre></div></p>
 </details>
-<details class="example"><summary>The most and least frequent <code>OTHER</code> devices (<code>own_device == 0</code>) during morning segments</summary><p>The most and least frequent <code>ALL</code>|<code>OWN</code>|<code>OTHER</code> devices are computed within each time segment instance, across time segment instances of the same type and across the entire dataset of each person. These are the most and least frequent devices for <code>OTHER</code> devices during morning segments.
+<details class="example">
+<summary>The most and least frequent <code>OTHER</code> devices (<code>own_device == 0</code>) during morning segments</summary>
+<p>The most and least frequent <code>ALL</code>|<code>OWN</code>|<code>OTHER</code> devices are computed within each time segment instance, across time segment instances of the same type and across the entire dataset of each person. These are the most and least frequent devices for <code>OTHER</code> devices during morning segments.
 <div class="highlight"><pre><span></span><code>most frequent device across 2016-11-29 morning:   &#39;48872A52-68DE-420D-98DA-73339A1C4685&#39;  (this device is the only one in this instance)
 least frequent device across 2016-11-29 morning:  &#39;48872A52-68DE-420D-98DA-73339A1C4685&#39;  (this device is the only one in this instance)
 most frequent device across 2016-11-30 morning:   &#39;5B1E6981-2E50-4D9A-99D8-67AED430C5A8&#39;
@@ -2044,7 +2050,9 @@ most frequent across dataset:                     &#39;499A1EAF-DDF1-4657-986C-E
 least frequent across dataset:                    &#39;4DC7A22D-9F1F-4DEF-8576-086910AABCB5&#39; (when tied, the first occurance is chosen)
 </code></pre></div></p>
 </details>
-<details class="example"><summary>Bluetooth features for  <code>OTHER</code> devices and morning segments</summary><p>For brevity we only show the following features for morning segments:
+<details class="example">
+<summary>Bluetooth features for  <code>OTHER</code> devices and morning segments</summary>
+<p>For brevity we only show the following features for morning segments:
 <div class="highlight"><pre><span></span><code><span class="nt">OTHER</span><span class="p">:</span> 
     <span class="nt">DEVICES</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;countscans&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;uniquedevices&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;meanscans&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;stdscans&quot;</span><span class="p p-Indicator">]</span>
     <span class="nt">SCANS_MOST_FREQUENT_DEVICE</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;withinsegments&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;acrosssegments&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;acrossdataset&quot;</span><span class="p p-Indicator">]</span>
