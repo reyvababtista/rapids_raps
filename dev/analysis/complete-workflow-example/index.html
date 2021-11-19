@@ -9,7 +9,7 @@
       
       
       
-        <link rel="canonical" href="https://www.rapids.science/dev/snippets/aware_format/">
+        <link rel="canonical" href="https://www.rapids.science/dev/analysis/complete-workflow-example/">
       
       
         
@@ -19,7 +19,7 @@
     
     
       
-        <title>Aware format - RAPIDS</title>
+        <title>Complete Workflow Example - RAPIDS</title>
       
     
     
@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#analysis-workflow-example" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Aware format
+              Complete Workflow Example
             
           </span>
         </div>
@@ -280,7 +285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analysis/minimal/" class="md-nav__link">
+      <a href="../minimal/" class="md-nav__link">
         Minimal Example
       </a>
     </li>
@@ -1407,14 +1412,16 @@
 
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
       
       
       
@@ -1437,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analysis/data-cleaning/" class="md-nav__link">
+      <a href="../data-cleaning/" class="md-nav__link">
         Data Cleaning
       </a>
     </li>
@@ -1449,11 +1456,79 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../analysis/complete-workflow-example/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Complete Workflow Example
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Complete Workflow Example
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-should-i-integrate-my-analysis-in-rapids" class="md-nav__link">
+    Why should I integrate my analysis in RAPIDS?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-workflow-structure" class="md-nav__link">
+    Analysis workflow structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description-of-the-study-modeled-in-our-analysis-workflow-example" class="md-nav__link">
+    Description of the study modeled in our analysis workflow example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-and-run-the-analysis-workflow-example" class="md-nav__link">
+    Configure and run the analysis workflow example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules-of-our-analysis-workflow-example" class="md-nav__link">
+    Modules of our analysis workflow example
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1712,1210 +1787,164 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-should-i-integrate-my-analysis-in-rapids" class="md-nav__link">
+    Why should I integrate my analysis in RAPIDS?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-workflow-structure" class="md-nav__link">
+    Analysis workflow structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description-of-the-study-modeled-in-our-analysis-workflow-example" class="md-nav__link">
+    Description of the study modeled in our analysis workflow example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-and-run-the-analysis-workflow-example" class="md-nav__link">
+    Configure and run the analysis workflow example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules-of-our-analysis-workflow-example" class="md-nav__link">
+    Modules of our analysis workflow example
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/carissalow/rapids/edit/master/docs/snippets/aware_format.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/carissalow/rapids/edit/master/docs/analysis/complete-workflow-example.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
                 
-                  <h1>Aware format</h1>
-                
-                <p>If you collected sensor data with the vanilla (original) AWARE mobile clients, you shouldn&rsquo;t need to modify this format (described below). </p>
-<p>Remember that a format maps and transforms columns in your raw data stream to the <a href="../mandatory-phone-format">mandatory columns RAPIDS needs</a>.</p>
-<p>The yaml file that describes the format of this data stream is at:
-<div class="highlight"><pre><span></span><code>src/data/streams/aware_csv/format.yaml
-</code></pre></div></p>
-<p>For some sensors, we need to transform iOS data into Android format; you can refer to <a href="../../datastreams/add-new-data-streams/#os-complex-mapping">OS complex mapping</a> for learn how this works.</p>
+                <h1 id="analysis-workflow-example">Analysis Workflow Example<a class="headerlink" href="#analysis-workflow-example" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">TL;DR</p>
+<ul>
+<li>In addition to using RAPIDS to extract behavioral features, create plots, and clean sensor features, you can structure your data analysis within RAPIDS (i.e. creating ML/statistical models and evaluating your models)</li>
+<li>We include an analysis example in RAPIDS that covers raw data processing, feature extraction, cleaning, machine learning modeling, and evaluation</li>
+<li>Use this example as a guide to structure your own analysis within RAPIDS</li>
+<li>RAPIDS analysis workflows are compatible with your favorite data science tools and libraries</li>
+<li>RAPIDS analysis workflows are reproducible and we encourage you to publish them along with your research papers</li>
+</ul>
+</div>
+<h2 id="why-should-i-integrate-my-analysis-in-rapids">Why should I integrate my analysis in RAPIDS?<a class="headerlink" href="#why-should-i-integrate-my-analysis-in-rapids" title="Permanent link">&para;</a></h2>
+<p>Even though the bulk of RAPIDS current functionality is related to the computation of behavioral features, we recommend RAPIDS as a complementary tool to create a mobile data analysis workflow. This is because the cookiecutter data science file organization guidelines, the use of Snakemake, the provided behavioral features, and the reproducible R and Python development environments allow researchers to divide an analysis workflow into small parts that can be audited, shared in an online repository, reproduced in other computers, and understood by other people as they follow a familiar and consistent structure. We believe these advantages outweigh the time needed to learn how to create these workflows in RAPIDS.</p>
+<p>We clarify that to create analysis workflows in RAPIDS, researchers can still use any data manipulation tools, editors, libraries or languages they are already familiar with. RAPIDS is meant to be the final destination of analysis code that was developed in interactive notebooks or stand-alone scripts. For example, a user can compute call and location features using RAPIDS, then, they can use Jupyter notebooks to explore feature cleaning approaches and once the cleaning code is final, it can be moved to RAPIDS as a new step in the pipeline. In turn, the output of this cleaning step can be used to explore machine learning models and once a model is finished, it can also be transferred to RAPIDS as a step of its own. The idea is that when it is time to publish a piece of research, a RAPIDS workflow can be shared in a public repository as is.</p>
+<p>In the following sections we share an example of how we structured an analysis workflow in RAPIDS.</p>
+<h2 id="analysis-workflow-structure">Analysis workflow structure<a class="headerlink" href="#analysis-workflow-structure" title="Permanent link">&para;</a></h2>
+<p>To accurately reflect the complexity of a real-world modeling scenario, we decided not to oversimplify this example. Importantly, every step in this example follows a basic structure: an input file and parameters are manipulated by an R or Python script that saves the results to an output file. Input files, parameters, output files and scripts are grouped into Snakemake rules that are described on <code>smk</code> files in the rules folder (we point the reader to the relevant rule(s) of each step). </p>
+<p>Researchers can use these rules and scripts as a guide to create their own as it is expected every modeling project will have different requirements, data and goals but ultimately most follow a similar chainned pattern.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>The mappings in this stream (RAPIDS/Stream) are the same names because AWARE data was the first stream RAPIDS supported, meaning that it considers AWARE column names the default.</p>
+<p>The example&rsquo;s config file is <code>example_profile/example_config.yaml</code> and its Snakefile is in <code>example_profile/Snakefile</code>. The config file is already configured to process the sensor data as explained in <a href="#analysis-workflow-modules">Analysis workflow modules</a>.</p>
 </div>
+<h2 id="description-of-the-study-modeled-in-our-analysis-workflow-example">Description of the study modeled in our analysis workflow example<a class="headerlink" href="#description-of-the-study-modeled-in-our-analysis-workflow-example" title="Permanent link">&para;</a></h2>
+<p>Our example is based on a hypothetical study that recruited 2 participants that underwent surgery and collected mobile data for at least one week before and one week after the procedure. Participants wore a Fitbit device and installed the AWARE client in their personal Android and iOS smartphones to collect mobile data 24/7. In addition, participants completed daily severity ratings of 12 common symptoms on a scale from 0 to 10 that we summed up into a daily symptom burden score. </p>
+<p>The goal of this workflow is to find out if we can predict the daily symptom burden score of a participant. Thus, we framed this question as a binary classification problem with two classes, high and low symptom burden based on the scores above and below average of each participant. We also want to compare the performance of individual (personalized) models vs a population model. </p>
+<p>In total, our example workflow has nine steps that are in charge of sensor data preprocessing, feature extraction, feature cleaning, machine learning model training and model evaluation (see figure below). We ship this workflow with RAPIDS and share files with <a href="https://osf.io/wbg23/">test data</a> in an Open Science Framework repository. </p>
+<figure>
+  <img src="../../img/analysis_workflow.png" max-width="100%" />
+  <figcaption>Modules of RAPIDS example workflow, from raw data to model evaluation</figcaption>
+</figure>
+
+<h2 id="configure-and-run-the-analysis-workflow-example">Configure and run the analysis workflow example<a class="headerlink" href="#configure-and-run-the-analysis-workflow-example" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="../../setup/installation">Install</a> RAPIDS</li>
+<li>Unzip the CSV files inside <a href="https://osf.io/wbg23/">rapids_example_csv.zip</a> in <code>data/external/example_workflow/*.csv</code>.</li>
+<li>Create the participant files for this example by running:
+    <div class="highlight"><pre><span></span><code>./rapids -j1 create_example_participant_files
+</code></pre></div></li>
+<li>Run the example pipeline with:
+    <div class="highlight"><pre><span></span><code>./rapids -j1 --profile example_profile
+</code></pre></div></li>
+</ol>
+<p>Note you will see a lot of warning messages, you can ignore them since they happen because we ran ML algorithms with a small fake dataset.</p>
+<h2 id="modules-of-our-analysis-workflow-example">Modules of our analysis workflow example<a class="headerlink" href="#modules-of-our-analysis-workflow-example" title="Permanent link">&para;</a></h2>
 <details class="info">
-<summary>PHONE_ACCELEROMETER</summary>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>DOUBLE_VALUES_0</td>
-<td>double_values_0</td>
-</tr>
-<tr>
-<td>DOUBLE_VALUES_1</td>
-<td>double_values_1</td>
-</tr>
-<tr>
-<td>DOUBLE_VALUES_2</td>
-<td>double_values_2</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">IOS</label><div class="tabbed-content">
-<p>Same as ANDROID</p>
-</div>
-</div>
+<summary>1. Feature extraction</summary>
+<p>We extract daily behavioral features for data yield, received and sent messages, missed, incoming and outgoing calls, resample fused location data using Doryab provider, activity recognition, battery, Bluetooth, screen, light, applications foreground, conversations, Wi-Fi connected, Wi-Fi visible, Fitbit heart rate summary and intraday data, Fitbit sleep summary data, and Fitbit step summary and intraday data without excluding sleep periods with an active bout threshold of 10 steps. In total, we obtained 245 daily sensor features over 12 days per participant. </p>
 </details>
 <details class="info">
-<summary>PHONE_ACTIVITY_RECOGNITION</summary>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>ACTIVITY_NAME</td>
-<td>activity_name</td>
-</tr>
-<tr>
-<td>ACTIVITY_TYPE</td>
-<td>activity_type</td>
-</tr>
-<tr>
-<td>CONFIDENCE</td>
-<td>confidence</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">IOS</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>ACTIVITY_NAME</td>
-<td>FLAG_TO_MUTATE</td>
-</tr>
-<tr>
-<td>ACTIVITY_TYPE</td>
-<td>FLAG_TO_MUTATE</td>
-</tr>
-<tr>
-<td>CONFIDENCE</td>
-<td>FLAG_TO_MUTATE</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Script column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ACTIVITIES</td>
-<td>activities</td>
-</tr>
-<tr>
-<td>CONFIDENCE</td>
-<td>confidence</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>SCRIPTS</strong></li>
-</ul>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/phone/aware/activity_recogniton_ios_unification.R
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For RAPIDS columns of <code>ACTIVITY_NAME</code> and <code>ACTIVITY_TYPE</code>:</p>
-<ul>
-<li>if stream&rsquo;s <code>activities</code> field is automotive, set <code>ACTIVITY_NAME</code> = in_vehicle and <code>ACTIVITY_TYPE</code> = 0</li>
-<li>if stream&rsquo;s <code>activities</code> field is cycling, set <code>ACTIVITY_NAME</code> = on_bicycle and <code>ACTIVITY_TYPE</code> = 1</li>
-<li>if stream&rsquo;s <code>activities</code> field is walking, set <code>ACTIVITY_NAME</code> = walking and <code>ACTIVITY_TYPE</code> = 7</li>
-<li>if stream&rsquo;s <code>activities</code> field is running, set <code>ACTIVITY_NAME</code> = running and <code>ACTIVITY_TYPE</code> = 8</li>
-<li>if stream&rsquo;s <code>activities</code> field is stationary, set <code>ACTIVITY_NAME</code> = still and <code>ACTIVITY_TYPE</code> = 3</li>
-<li>if stream&rsquo;s <code>activities</code> field is unknown, set <code>ACTIVITY_NAME</code> = unknown and  <code>ACTIVITY_TYPE</code> = 4</li>
-</ul>
-<p>For RAPIDS <code>CONFIDENCE</code> column:</p>
-<ul>
-<li>if stream&rsquo;s <code>confidence</code> field is 0, set <code>CONFIDENCE</code> = 0</li>
-<li>if stream&rsquo;s <code>confidence</code> field is 1, set <code>CONFIDENCE</code> = 50</li>
-<li>if stream&rsquo;s <code>confidence</code> field is 2, set <code>CONFIDENCE</code> = 100</li>
-</ul>
-</div>
-</div>
-</div>
+<summary>2. Extract demographic data.</summary>
+<p>It is common to have demographic data in addition to mobile and target (ground truth) data. In this example we include participants’ age, gender and the number of days they spent in hospital after their surgery as features in our model. We extract these three columns from the <code>data/external/example_workflow/participant_info.csv</code> file. As these three features remain the same within participants, they are used only on the population model. Refer to the <code>demographic_features</code> rule in <code>rules/models.smk</code>.</p>
 </details>
 <details class="info">
-<summary>PHONE_APPLICATIONS_CRASHES</summary>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>PACKAGE_NAME</td>
-<td>package_name</td>
-</tr>
-<tr>
-<td>APPLICATION_NAME</td>
-<td>application_name</td>
-</tr>
-<tr>
-<td>APPLICATION_VERSION</td>
-<td>application_version</td>
-</tr>
-<tr>
-<td>ERROR_SHORT</td>
-<td>error_short</td>
-</tr>
-<tr>
-<td>ERROR_LONG</td>
-<td>error_long</td>
-</tr>
-<tr>
-<td>ERROR_CONDITION</td>
-<td>error_condition</td>
-</tr>
-<tr>
-<td>IS_SYSTEM_APP</td>
-<td>is_system_app</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">IOS</label><div class="tabbed-content">
-<p>This sensor is not supported by iOS devices.</p>
-</div>
-</div>
+<summary>3. Create target labels.</summary>
+<p>The two classes for our machine learning binary classification problem are high and low symptom burden. Target values are already stored in the <code>data/external/example_workflow/participant_target.csv</code> file. A new rule/script can be created if further manipulation is necessary. Refer to the <code>parse_targets</code> rule in <code>rules/models.smk</code>.</p>
 </details>
 <details class="info">
-<summary>PHONE_APPLICATIONS_FOREGROUND</summary>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>PACKAGE_NAME</td>
-<td>package_name</td>
-</tr>
-<tr>
-<td>APPLICATION_NAME</td>
-<td>application_name</td>
-</tr>
-<tr>
-<td>IS_SYSTEM_APP</td>
-<td>is_system_app</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">IOS</label><div class="tabbed-content">
-<p>This sensor is not supported by iOS devices.</p>
-</div>
-</div>
+<summary>4. Feature merging.</summary>
+<p>These daily features are stored on a CSV file per sensor, a CSV file per participant, and a CSV file including all features from all participants (in every case each column represents a feature and each row represents a day). Refer to the <code>merge_sensor_features_for_individual_participants</code> and <code>merge_sensor_features_for_all_participants</code> rules in <code>rules/features.smk</code>.</p>
 </details>
 <details class="info">
-<summary>PHONE_APPLICATIONS_NOTIFICATIONS</summary>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>PACKAGE_NAME</td>
-<td>package_name</td>
-</tr>
-<tr>
-<td>APPLICATION_NAME</td>
-<td>application_name</td>
-</tr>
-<tr>
-<td>TEXT</td>
-<td>text</td>
-</tr>
-<tr>
-<td>SOUND</td>
-<td>sound</td>
-</tr>
-<tr>
-<td>VIBRATE</td>
-<td>vibrate</td>
-</tr>
-<tr>
-<td>DEFAULTS</td>
-<td>defaults</td>
-</tr>
-<tr>
-<td>FLAGS</td>
-<td>flags</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">IOS</label><div class="tabbed-content">
-<p>This sensor is not supported by iOS devices.</p>
-</div>
-</div>
+<summary>5. Data visualization.</summary>
+<p>At this point the user can use the five plots RAPIDS provides (or implement new ones) to explore and understand the quality of the raw data and extracted features and decide what sensors, days, or participants to include and exclude. Refer to <code>rules/reports.smk</code> to find the rules that generate these plots.</p>
 </details>
 <details class="info">
-<summary>PHONE_BATTERY</summary>
-<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>BATTERY_STATUS</td>
-<td>battery_status</td>
-</tr>
-<tr>
-<td>BATTERY_LEVEL</td>
-<td>battery_level</td>
-</tr>
-<tr>
-<td>BATTERY_SCALE</td>
-<td>battery_scale</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">IOS Client V1</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>BATTERY_STATUS</td>
-<td>FLAG_TO_MUTATE</td>
-</tr>
-<tr>
-<td>BATTERY_LEVEL</td>
-<td>battery_level</td>
-</tr>
-<tr>
-<td>BATTERY_SCALE</td>
-<td>battery_scale</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Script column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BATTERY_STATUS</td>
-<td>battery_status</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>SCRIPTS</strong></li>
-</ul>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/phone/aware/battery_ios_unification.R
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For RAPIDS <code>BATTERY_STATUS</code> column:</p>
-<ul>
-<li>if stream&rsquo;s <code>battery_status</code> field is 3, set <code>BATTERY_STATUS</code> = 5 (full status)</li>
-<li>if stream&rsquo;s <code>battery_status</code> field is 1, set <code>BATTERY_STATUS</code> = 3 (discharge)</li>
-</ul>
-</div>
-</div>
-<input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><label for="__tabbed_6_3">IOS Client V2</label><div class="tabbed-content">
-<p>Same as ANDROID</p>
-</div>
-</div>
+<summary>6. Feature cleaning.</summary>
+<p>In this stage we perform four steps to clean our sensor feature file. First, we discard days with a data yield hour ratio less than or equal to 0.75, i.e. we include days with at least 18 hours of data. Second, we drop columns (features) with more than 30% of missing rows. Third, we drop columns with zero variance. Fourth, we drop rows (days) with more than 30% of missing columns (features). In this cleaning stage several parameters are created and exposed in <code>example_profile/example_config.yaml</code>. </p>
+<p>After this step, we kept 173 features over 11 days for the individual model of p01, 101 features over 12 days for the individual model of p02 and 117 features over 22 days for the population model. Note that the difference in the number of features between p01 and p02 is mostly due to iOS restrictions that stops researchers from collecting the same number of sensors than in Android phones. </p>
+<p>Feature cleaning for the individual models is done in the <code>clean_sensor_features_for_individual_participants</code> rule and for the population model in the <code>clean_sensor_features_for_all_participants</code> rule in <code>rules/models.smk</code>.</p>
 </details>
 <details class="info">
-<summary>PHONE_BLUETOOTH</summary>
-<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>BT_ADDRESS</td>
-<td>bt_address</td>
-</tr>
-<tr>
-<td>BT_NAME</td>
-<td>bt_name</td>
-</tr>
-<tr>
-<td>BT_RSSI</td>
-<td>bt_rssi</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">IOS</label><div class="tabbed-content">
-<p>Only old iOS versions supported this sensor (same mapping as Android).</p>
-</div>
-</div>
+<summary>7. Merge features and targets.</summary>
+<p>In this step we merge the cleaned features and target labels for our individual models in the <code>merge_features_and_targets_for_individual_model</code> rule in <code>rules/features.smk</code>. Additionally, we merge the cleaned features, target labels, and demographic features of our two participants for the population model in the <code>merge_features_and_targets_for_population_model</code> rule in <code>rules/features.smk</code>. These two merged files are the input for our individual and population models. </p>
 </details>
 <details class="info">
-<summary>PHONE_CALLS</summary>
-<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>CALL_TYPE</td>
-<td>call_type</td>
-</tr>
-<tr>
-<td>CALL_DURATION</td>
-<td>call_duration</td>
-</tr>
-<tr>
-<td>TRACE</td>
-<td>trace</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">IOS</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>CALL_TYPE</td>
-<td>FLAG_TO_MUTATE</td>
-</tr>
-<tr>
-<td>CALL_DURATION</td>
-<td>call_duration</td>
-</tr>
-<tr>
-<td>TRACE</td>
-<td>trace</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Script column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CALL_TYPE</td>
-<td>call_type</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>SCRIPTS</strong></li>
-</ul>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/phone/aware/calls_ios_unification.R
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We transform iOS call logs into Android&rsquo;s format. iOS stores call status: 1=incoming, 2=connected, 3=dialing, 4=disconnected, as opposed to Android&rsquo;s events: 1=incoming, 2=outgoing, 3=missed. </p>
-<p>We follow this algorithm to convert iOS call data (there are some inaccuracies in the way we handle sequences, see new rules below):</p>
-<ul>
-<li>Search for the disconnected (4) status as it is common to all calls</li>
-<li>Group all events that preceded every status 4</li>
-<li>We convert every 1,2,4 (or 2,1,4) sequence to an incoming call</li>
-<li>We convert every 3,2,4 (or 2,3,4) sequence to an outgoing call</li>
-<li>We convert every 1,4 or 3,4 sequence to a missed call (either incoming or outgoing)</li>
-<li>We set the duration of the call to be the sum of every status (dialing/ringing to hangup) as opposed to the duration of the last status (pick up to hang up)</li>
-</ul>
-<p><strong>Tested with an Android (OnePlus 7T) and an iPhone XR</strong></p>
-<table>
-<thead>
-<tr>
-<th>Call type</th>
-<th>Android (duration)</th>
-<th>iOS (duration)</th>
-<th>New Rule</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Outgoing missed ended by me</td>
-<td>2 (0)</td>
-<td>3,4 (0,X)</td>
-<td>3,4 is converted to 2 with duration 0</td>
-</tr>
-<tr>
-<td>Outgoing missed ended by them</td>
-<td>2(0)</td>
-<td>3,2,4 (0,X,X2)</td>
-<td>3,2,4 is converted to 2 with duration X2*</td>
-</tr>
-<tr>
-<td>Incoming missed ended by me</td>
-<td>NA**</td>
-<td>1,4 (0,X)</td>
-<td>1,4 is converted to 3 with duration 0</td>
-</tr>
-<tr>
-<td>Incoming missed ended by them</td>
-<td>3(0)</td>
-<td>1,4 (0,X)</td>
-<td>1,4 is converted to 3 with duration 0</td>
-</tr>
-<tr>
-<td>Outgoing answered</td>
-<td>2(X excluding dialing time)</td>
-<td>3,2,4 (0,X,X2)</td>
-<td>3,2,4 is converted to 2 with duration X2</td>
-</tr>
-<tr>
-<td>Incoming answered</td>
-<td>1(X excluding dialing time)</td>
-<td>1,2,4 (0,X,X2)</td>
-<td>1,2,4 is converted to 1 with duration X2</td>
-</tr>
-</tbody>
-</table>
-<p>.* There is no way to differentiate an outgoing missed call ended by them from an outgoing answered call because the phone goes directly to voice mail and it counts as call time (essentially the voice mail answered).</p>
-<p>.** Android does not record incoming missed calls ended by the participant, just those ended by the person calling or ignored by the participant.</p>
-</div>
-</div>
-</div>
+<summary>8. Modelling.</summary>
+<p>This stage has three phases: model building, training and evaluation. </p>
+<p>In the building phase we impute, normalize and oversample our dataset.  Missing numeric values in each column are imputed with their mean and we impute missing categorical values with their mode. We normalize each numeric column with one of three strategies (min-max, z-score, and scikit-learn package’s robust scaler) and we one-hot encode each categorial feature as a numerical array. We oversample our imbalanced dataset using SMOTE (Synthetic Minority Over-sampling Technique) or a Random Over sampler from scikit-learn. All these parameters are exposed in <code>example_profile/example_config.yaml</code>.</p>
+<p>In the training phase, we create eight models: logistic regression, k-nearest neighbors, support vector machine, decision tree, random forest, gradient boosting classifier, extreme gradient boosting classifier and a light gradient boosting machine. We cross-validate each model with an inner cycle to tune hyper-parameters based on the Macro F1 score and an outer cycle to predict the test set on a model with the best hyper-parameters. Both cross-validation cycles use a leave-one-out strategy. Parameters for each model like weights and learning rates are exposed in <code>example_profile/example_config.yaml</code>.</p>
+<p>Finally, in the evaluation phase we compute the accuracy, Macro F1, kappa, area under the curve and per class precision, recall and F1 score of all folds of the outer cross-validation cycle.</p>
+<p>Refer to the <code>modelling_for_individual_participants</code> rule for the individual modeling and to the <code>modelling_for_all_participants</code> rule for the population modeling, both in <code>rules/models.smk</code>.</p>
 </details>
 <details class="info">
-<summary>PHONE_CONVERSATION</summary>
-<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>DOUBLE_ENERGY</td>
-<td>double_energy</td>
-</tr>
-<tr>
-<td>INFERENCE</td>
-<td>inference</td>
-</tr>
-<tr>
-<td>DOUBLE_CONVO_START</td>
-<td>double_convo_start</td>
-</tr>
-<tr>
-<td>DOUBLE_CONVO_END</td>
-<td>double_convo_end</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">IOS</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>DOUBLE_ENERGY</td>
-<td>double_energy</td>
-</tr>
-<tr>
-<td>INFERENCE</td>
-<td>inference</td>
-</tr>
-<tr>
-<td>DOUBLE_CONVO_START</td>
-<td>FLAG_TO_MUTATE</td>
-</tr>
-<tr>
-<td>DOUBLE_CONVO_END</td>
-<td>FLAG_TO_MUTATE</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Script column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DOUBLE_CONVO_START</td>
-<td>double_convo_start</td>
-</tr>
-<tr>
-<td>DOUBLE_CONVO_END</td>
-<td>double_convo_end</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>SCRIPTS</strong></li>
-</ul>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/phone/aware/conversation_ios_timestamp.R
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For RAPIDS columns of <code>DOUBLE_CONVO_START</code> and <code>DOUBLE_CONVO_END</code>:</p>
-<ul>
-<li>if stream&rsquo;s <code>double_convo_start</code> field is smaller than 9999999999, it is in seconds instead of milliseconds. Set <code>DOUBLE_CONVO_START</code> = 1000 * <code>double_convo_start</code>.</li>
-<li>if stream&rsquo;s <code>double_convo_end</code> field is smaller than 9999999999, it is in seconds instead of milliseconds. Set <code>DOUBLE_CONVO_END</code> = 1000 * <code>double_convo_end</code>.</li>
-</ul>
-</div>
-</div>
-</div>
-</details>
-<details class="info">
-<summary>PHONE_KEYBOARD</summary>
-<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>PACKAGE_NAME</td>
-<td>package_name</td>
-</tr>
-<tr>
-<td>BEFORE_TEXT</td>
-<td>before_text</td>
-</tr>
-<tr>
-<td>CURRENT_TEXT</td>
-<td>current_text</td>
-</tr>
-<tr>
-<td>IS_PASSWORD</td>
-<td>is_password</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">IOS</label><div class="tabbed-content">
-<p>This sensor is not supported by iOS devices.</p>
-</div>
-</div>
-</details>
-<details class="info">
-<summary>PHONE_LIGHT</summary>
-<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>DOUBLE_LIGHT_LUX</td>
-<td>double_light_lux</td>
-</tr>
-<tr>
-<td>ACCURACY</td>
-<td>accuracy</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">IOS</label><div class="tabbed-content">
-<p>This sensor is not supported by iOS devices.</p>
-</div>
-</div>
-</details>
-<details class="info">
-<summary>PHONE_LOCATIONS</summary>
-<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>DOUBLE_LATITUDE</td>
-<td>double_latitude</td>
-</tr>
-<tr>
-<td>DOUBLE_LONGITUDE</td>
-<td>double_longitude</td>
-</tr>
-<tr>
-<td>DOUBLE_BEARING</td>
-<td>double_bearing</td>
-</tr>
-<tr>
-<td>DOUBLE_SPEED</td>
-<td>double_speed</td>
-</tr>
-<tr>
-<td>DOUBLE_ALTITUDE</td>
-<td>double_altitude</td>
-</tr>
-<tr>
-<td>PROVIDER</td>
-<td>provider</td>
-</tr>
-<tr>
-<td>ACCURACY</td>
-<td>accuracy</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">IOS</label><div class="tabbed-content">
-<p>Same as ANDROID</p>
-</div>
-</div>
-</details>
-<details class="info">
-<summary>PHONE_LOG</summary>
-<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>LOG_MESSAGE</td>
-<td>log_message</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">IOS</label><div class="tabbed-content">
-<p>Same as ANDROID</p>
-</div>
-</div>
-</details>
-<details class="info">
-<summary>PHONE_MESSAGES</summary>
-<div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>MESSAGE_TYPE</td>
-<td>message_type</td>
-</tr>
-<tr>
-<td>TRACE</td>
-<td>trace</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">IOS</label><div class="tabbed-content">
-<p>This sensor is not supported by iOS devices.</p>
-</div>
-</div>
-</details>
-<details class="info">
-<summary>PHONE_SCREEN</summary>
-<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>SCREEN_STATUS</td>
-<td>screen_status</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">IOS</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>SCREEN_STATUS</td>
-<td>FLAG_TO_MUTATE</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Script column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SCREEN_STATUS</td>
-<td>screen_status</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>SCRIPTS</strong></li>
-</ul>
-<div class="highlight"><pre><span></span><code>src/data/streams/mutations/phone/aware/screen_ios_unification.R
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For <code>SCREEN_STATUS</code> RAPIDS column:</p>
-<ul>
-<li>if stream&rsquo;s <code>screen_status</code> field is 2 (lock episode), set <code>SCREEN_STATUS</code> = 0 (off episode).</li>
-</ul>
-</div>
-</div>
-</div>
-</details>
-<details class="info">
-<summary>PHONE_WIFI_CONNECTED</summary>
-<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>MAC_ADDRESS</td>
-<td>mac_address</td>
-</tr>
-<tr>
-<td>SSID</td>
-<td>ssid</td>
-</tr>
-<tr>
-<td>BSSID</td>
-<td>bssid</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">IOS</label><div class="tabbed-content">
-<p>Same as ANDROID</p>
-</div>
-</div>
-</details>
-<details class="info">
-<summary>PHONE_WIFI_VISIBLE</summary>
-<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">ANDROID</label><div class="tabbed-content">
-<p><strong>RAPIDS_COLUMN_MAPPINGS</strong></p>
-<table>
-<thead>
-<tr>
-<th>RAPIDS column</th>
-<th>Stream column</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIMESTAMP</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>DEVICE_ID</td>
-<td>device_id</td>
-</tr>
-<tr>
-<td>SSID</td>
-<td>ssid</td>
-</tr>
-<tr>
-<td>BSSID</td>
-<td>bssid</td>
-</tr>
-<tr>
-<td>SECURITY</td>
-<td>security</td>
-</tr>
-<tr>
-<td>FREQUENCY</td>
-<td>frequency</td>
-</tr>
-<tr>
-<td>RSSI</td>
-<td>rssi</td>
-</tr>
-</tbody>
-</table>
-<p><strong>MUTATION</strong></p>
-<ul>
-<li><strong>COLUMN_MAPPINGS</strong> (None)</li>
-<li><strong>SCRIPTS</strong> (None)</li>
-</ul>
-</div>
-<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">IOS</label><div class="tabbed-content">
-<p>Only old iOS versions supported this sensor (same mapping as Android).</p>
-</div>
-</div>
+<summary>9. Compute model baselines.</summary>
+<p>We create three baselines to evaluate our classification models.</p>
+<p>First, a majority classifier that labels each test sample with the majority class of our training data. Second, a random weighted classifier that predicts each test observation sampling at random from a binomial distribution based on the ratio of our target labels. Third, a decision tree classifier based solely on the demographic features of each participant. As we do not have demographic features for individual model, this baseline is only available for population model. </p>
+<p>Our baseline metrics (e.g. accuracy, precision, etc.) are saved into a CSV file, ready to be compared to our modeling results. Refer to the <code>baselines_for_individual_model</code> rule for the individual model baselines and to the <code>baselines_for_population_model</code> rule for population model baselines, both in <code>rules/models.smk</code>.</p>
 </details>
                 
               
@@ -2969,6 +1998,39 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../data-cleaning/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Data Cleaning
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../developers/git-flow/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Git Flow
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
