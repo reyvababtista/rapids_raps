@@ -1918,48 +1918,48 @@
 <p>For example, every sensor like <code>[PHONE_ACCELEROMETER]</code> has one or more providers like <code>RAPIDS</code> and <code>PANDA</code>, these providers have some common properties like the <code>COMPUTE</code> flag or the <code>SRC_SCRIPT</code> string. Therefore we define a shared provider &ldquo;template&rdquo; that is used by every provider and extended with properties exclusive to each one of them. For example:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">provider definition (template)</label><div class="tabbed-content">
 <p>The <code>PROVIDER</code> definition will be used later on different <code>properties</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PROVIDER</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
-    <span class="nt">required</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">COMPUTE</span><span class="p p-Indicator">,</span> <span class="nv">SRC_SCRIPT</span><span class="p p-Indicator">,</span> <span class="nv">FEATURES</span><span class="p p-Indicator">]</span>
-    <span class="nt">properties</span><span class="p">:</span>
-    <span class="nt">COMPUTE</span><span class="p">:</span>
-        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
-    <span class="nt">FEATURES</span><span class="p">:</span>
-        <span class="nt">type</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">array</span><span class="p p-Indicator">,</span> <span class="nv">object</span><span class="p p-Indicator">]</span>
-    <span class="nt">SRC_SCRIPT</span><span class="p">:</span>
-        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
-        <span class="nt">pattern</span><span class="p">:</span> <span class="s">&quot;^.*\\.(py|R)$&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PROVIDER</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">COMPUTE</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">SRC_SCRIPT</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">FEATURES</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">COMPUTE</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w"></span>
+<span class="w">    </span><span class="nt">FEATURES</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">array</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">object</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SRC_SCRIPT</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^.*\\.(py|R)$&quot;</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">provider reusing and extending the template</label><div class="tabbed-content">
 <p>Notice that <code>RAPIDS</code> (a provider) uses and extends the <code>PROVIDER</code> template in this example. The <code>FEATURES</code> key is overriding the <code>FEATURES</code> key from the <code>#/definitions/PROVIDER</code> template but is keeping the validation for <code>COMPUTE</code>, and <code>SRC_SCRIPT</code>. For more details about reusing properties, go to this <a href="http://json-schema.org/understanding-json-schema/structuring.html#reuse">link</a></p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
-     <span class="l l-Scalar l-Scalar-Plain"># .. other properties</span>
-    <span class="nt">PROVIDERS</span><span class="p">:</span>
-        <span class="nt">type</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;null&quot;</span><span class="p p-Indicator">,</span> <span class="nv">object</span><span class="p p-Indicator">]</span>
-        <span class="nt">properties</span><span class="p">:</span>
-        <span class="nt">RAPIDS</span><span class="p">:</span>
-            <span class="nt">allOf</span><span class="p">:</span>
-<span class="hll">            <span class="p p-Indicator">-</span> <span class="nt">$ref</span><span class="p">:</span> <span class="s">&quot;#/definitions/PROVIDER&quot;</span>
-</span><span class="hll">            <span class="p p-Indicator">-</span> <span class="nt">properties</span><span class="p">:</span>
-</span>                <span class="nt">FEATURES</span><span class="p">:</span> 
-                    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
-                    <span class="nt">uniqueItems</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-                    <span class="nt">items</span><span class="p">:</span>
-                    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
-                    <span class="nt">enum</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;maxmagnitude&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;minmagnitude&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;avgmagnitude&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;medianmagnitude&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;stdmagnitude&quot;</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain"># .. other properties</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PROVIDERS</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;null&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">object</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">RAPIDS</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">allOf</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/definitions/PROVIDER&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+</span><span class="w">                </span><span class="nt">FEATURES</span><span class="p">:</span><span class="w"> </span>
+<span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">uniqueItems</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;maxmagnitude&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;minmagnitude&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;avgmagnitude&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;medianmagnitude&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;stdmagnitude&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
 <h3 id="properties">properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h3>
 <p><code>properties</code> are nested key/values that describe the different components of our <code>config.yaml</code> file. Values can be of one or more primitive types like <code>string</code>, <code>number</code>, <code>array</code>, <code>boolean</code> and <code>null</code>. Values can also be another key/value pair (of type <code>object</code>) that are similar to a dictionary in Python.</p>
 <p>For example, the following property validates the <code>PIDS</code> of our <code>config.yaml</code>. It checks that <code>PIDS</code> is an <code>array</code> with unique items of type <code>string</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PIDS</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
-    <span class="nt">uniqueItems</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="nt">items</span><span class="p">:</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PIDS</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
+<span class="w">    </span><span class="nt">uniqueItems</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">    </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
 </code></pre></div>
 <h2 id="modifying-the-schema">Modifying the schema<a class="headerlink" href="#modifying-the-schema" title="Permanent link">&para;</a></h2>
 <div class="admonition hint">
@@ -1970,68 +1970,68 @@
 <p>You can validate different aspects of each key/value in our <code>config.yaml</code> file:</p>
 <div class="tabbed-set" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">number/integer</label><div class="tabbed-content">
 <p>Including min and max values
-<div class="highlight"><pre><span></span><code><span class="nt">MINUTE_RATIO_THRESHOLD_FOR_VALID_YIELDED_HOURS</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
-    <span class="nt">minimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
-    <span class="nt">maximum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MINUTE_RATIO_THRESHOLD_FOR_VALID_YIELDED_HOURS</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span><span class="w"></span>
+<span class="w">    </span><span class="nt">minimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">maximum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
 
-<span class="nt">FUSED_RESAMPLED_CONSECUTIVE_THRESHOLD</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integer</span>
-    <span class="nt">exclusiveMinimum</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">FUSED_RESAMPLED_CONSECUTIVE_THRESHOLD</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span><span class="w"></span>
+<span class="w">    </span><span class="nt">exclusiveMinimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
 </code></pre></div></p>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">string</label><div class="tabbed-content">
 <p>Including valid values (<code>enum</code>)
-<div class="highlight"><pre><span></span><code><span class="nt">items</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
-    <span class="nt">enum</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;count&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;maxlux&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;minlux&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;avglux&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;medianlux&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;stdlux&quot;</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">    </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;count&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;maxlux&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;minlux&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;avglux&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;medianlux&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;stdlux&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </code></pre></div></p>
 </div>
 <input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">boolean</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nt">MINUTES_DATA_USED</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MINUTES_DATA_USED</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><label for="__tabbed_2_4">array</label><div class="tabbed-content">
 <p>Including whether or not it should have unique values, the type of the array&rsquo;s elements (<code>strings</code>, <code>numbers</code>) and valid values (<code>enum</code>).
-<div class="highlight"><pre><span></span><code><span class="nt">MESSAGES_TYPES</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
-    <span class="nt">uniqueItems</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="nt">items</span><span class="p">:</span>
-        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
-        <span class="nt">enum</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;received&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;sent&quot;</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MESSAGES_TYPES</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
+<span class="w">    </span><span class="nt">uniqueItems</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">    </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;received&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;sent&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
 </code></pre></div></p>
 </div>
 <input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><label for="__tabbed_2_5">object</label><div class="tabbed-content">
 <p><code>PARENT</code> is an object that has two properties. <code>KID1</code> is one of those properties that are, in turn, another object that will reuse the  <code>"#/definitions/PROVIDER"</code> <code>definition</code> <strong>AND</strong> also include (extend) two extra properties <code>GRAND_KID1</code> of type <code>array</code> and <code>GRAND_KID2</code> of type <code>number</code>. <code>KID2</code> is another property of <code>PARENT</code> of type <code>boolean</code>.</p>
 <p>The schema validation looks like this
-<div class="highlight"><pre><span></span><code><span class="nt">PARENT</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
-    <span class="nt">properties</span><span class="p">:</span>
-      <span class="nt">KID1</span><span class="p">:</span>
-        <span class="nt">allOf</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="nt">$ref</span><span class="p">:</span> <span class="s">&quot;#/definitions/PROVIDER&quot;</span>
-          <span class="p p-Indicator">-</span> <span class="nt">properties</span><span class="p">:</span>
-              <span class="nt">GRAND_KID1</span><span class="p">:</span>
-                <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">array</span>
-                <span class="nt">uniqueItems</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-              <span class="nt">GRAND_KID2</span><span class="p">:</span>
-                <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number</span>
-      <span class="nt">KID2</span><span class="p">:</span>
-        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PARENT</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">KID1</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">allOf</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/definitions/PROVIDER&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">GRAND_KID1</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
+<span class="w">                </span><span class="nt">uniqueItems</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="w">              </span><span class="nt">GRAND_KID2</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span><span class="w"></span>
+<span class="w">      </span><span class="nt">KID2</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w"></span>
 </code></pre></div></p>
 <p>The <code>config.yaml</code> key that the previous schema validates looks like this:
-<div class="highlight"><pre><span></span><code><span class="nt">PARENT</span><span class="p">:</span>
-    <span class="nt">KID1</span><span class="p">:</span>
-        <span class="c1"># These four come from the `PROVIDER` definition (template)</span>
-        <span class="nt">COMPUTE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-        <span class="nt">FEATURES</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">x</span><span class="p p-Indicator">,</span> <span class="nv">y</span><span class="p p-Indicator">]</span> <span class="c1"># an array</span>
-        <span class="nt">SRC_SCRIPT</span><span class="p">:</span> <span class="s">&quot;a</span><span class="nv"> </span><span class="s">path</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">py</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">R</span><span class="nv"> </span><span class="s">script&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PARENT</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">KID1</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># These four come from the `PROVIDER` definition (template)</span><span class="w"></span>
+<span class="w">        </span><span class="nt">COMPUTE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
+<span class="w">        </span><span class="nt">FEATURES</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">x</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">y</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># an array</span><span class="w"></span>
+<span class="w">        </span><span class="nt">SRC_SCRIPT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a</span><span class="nv"> </span><span class="s">path</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">py</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">R</span><span class="nv"> </span><span class="s">script&quot;</span><span class="w"></span>
 
-        <span class="c1"># This two come from the extension</span>
-        <span class="nt">GRAND_KID1</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">a</span><span class="p p-Indicator">,</span> <span class="nv">b</span><span class="p p-Indicator">]</span> <span class="c1"># an array</span>
-        <span class="nt">GRAND_KID2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.1</span> <span class="c1"># an number</span>
-    <span class=" -Error"> </span><span class="nt">KID2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span> <span class="c1"># a boolean</span>
+<span class="w">        </span><span class="c1"># This two come from the extension</span><span class="w"></span>
+<span class="w">        </span><span class="nt">GRAND_KID1</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">a</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">b</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># an array</span><span class="w"></span>
+<span class="w">        </span><span class="nt">GRAND_KID2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.1</span><span class="w"> </span><span class="c1"># an number</span><span class="w"></span>
+<span class="w">    </span><span class="w w-Error"> </span><span class="nt">KID2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"> </span><span class="c1"># a boolean</span><span class="w"></span>
 </code></pre></div></p>
 </div>
 </div>

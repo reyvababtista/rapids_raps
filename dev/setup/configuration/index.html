@@ -2003,7 +2003,7 @@
 <details class="important">
 <summary>Remember to modify the <code>config.yaml</code> file with your PIDS</summary>
 <p>The list <code>PIDS</code> in <code>config.yaml</code> needs to have the participant file names of the people you want to process. For example, if you created <code>p01.yaml</code>, <code>p02.yaml</code> and <code>p03.yaml</code> files in <code>/data/external/participant_files/</code>, then <code>PIDS</code> should be:
-<div class="highlight"><pre><span></span><code><span class="nt">PIDS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">p01</span><span class="p p-Indicator">,</span> <span class="nv">p02</span><span class="p p-Indicator">,</span> <span class="nv">p03</span><span class="p p-Indicator">]</span> 
+<div class="highlight"><pre><span></span><code><span class="nt">PIDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">p01</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">p02</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">p03</span><span class="p p-Indicator">]</span><span class="w"> </span>
 </code></pre></div></p>
 </details>
 <details class="info">
@@ -2017,22 +2017,22 @@
 <summary>Example of the structure of a participant file</summary>
 <p>In this example, the participant used an android phone, an ios phone, a Fitbit device, and an Empatica device throughout the study between April 23<sup>rd</sup>, 2020, and October 28<sup>th</sup>, 2020</p>
 <p>If your participants didn&rsquo;t use a <code>[PHONE]</code>, <code>[FITBIT]</code> or <code>[EMPATICA]</code> device, it is not necessary to include that section in their participant file. In other words, you can analyze data from 1 or more devices per participant.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE</span><span class="p">:</span>
-  <span class="nt">DEVICE_IDS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">a748ee1a-1d0b-4ae9-9074-279a2b6ba524</span><span class="p p-Indicator">,</span> <span class="nv">dsadas-2324-fgsf-sdwr-gdfgs4rfsdf43</span><span class="p p-Indicator">]</span>
-  <span class="nt">PLATFORMS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">android</span><span class="p p-Indicator">,</span><span class="nv">ios</span><span class="p p-Indicator">]</span>
-  <span class="nt">LABEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test01</span>
-  <span class="nt">START_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-23</span>
-  <span class="nt">END_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-10-28</span>
-<span class="nt">FITBIT</span><span class="p">:</span>
-  <span class="nt">DEVICE_IDS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">fitbit1</span><span class="p p-Indicator">]</span>
-  <span class="nt">LABEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test01</span>
-  <span class="nt">START_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-23</span>
-  <span class="nt">END_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-10-28</span>
-<span class="nt">EMPATICA</span><span class="p">:</span>
-  <span class="nt">DEVICE_IDS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">empatica1</span><span class="p p-Indicator">]</span>
-  <span class="nt">LABEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test01</span>
-  <span class="nt">START_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-04-23</span>
-  <span class="nt">END_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-10-28</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">DEVICE_IDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">a748ee1a-1d0b-4ae9-9074-279a2b6ba524</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">dsadas-2324-fgsf-sdwr-gdfgs4rfsdf43</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">PLATFORMS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">android</span><span class="p p-Indicator">,</span><span class="nv">ios</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">LABEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test01</span><span class="w"></span>
+<span class="w">  </span><span class="nt">START_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-04-23</span><span class="w"></span>
+<span class="w">  </span><span class="nt">END_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-10-28</span><span class="w"></span>
+<span class="nt">FITBIT</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">DEVICE_IDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">fitbit1</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">LABEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test01</span><span class="w"></span>
+<span class="w">  </span><span class="nt">START_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-04-23</span><span class="w"></span>
+<span class="w">  </span><span class="nt">END_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-10-28</span><span class="w"></span>
+<span class="nt">EMPATICA</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">DEVICE_IDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">empatica1</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">LABEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test01</span><span class="w"></span>
+<span class="w">  </span><span class="nt">START_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-04-23</span><span class="w"></span>
+<span class="w">  </span><span class="nt">END_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-10-28</span><span class="w"></span>
 </code></pre></div>
 </details>
 <div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">[PHONE]</label><div class="tabbed-content">
@@ -2129,7 +2129,7 @@
 <details>
 <summary><code>AWARE_DEVICE_TABLE</code> was deprecated</summary>
 <p>In previous versions of RAPIDS, you could create participant files automatically using the <code>aware_device</code> table. We deprecated this option, but you can still achieve the same results if you export the output of the following SQL query as a CSV file and follow the instructions below:</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">device_id</span><span class="p">,</span> <span class="n">device_id</span> <span class="k">as</span> <span class="n">fitbit_id</span><span class="p">,</span> <span class="n">CONCAT</span><span class="p">(</span><span class="ss">&quot;p&quot;</span><span class="p">,</span> <span class="n">_id</span><span class="p">)</span> <span class="k">as</span> <span class="n">empatica_id</span><span class="p">,</span> <span class="n">CONCAT</span><span class="p">(</span><span class="ss">&quot;p&quot;</span><span class="p">,</span> <span class="n">_id</span><span class="p">)</span> <span class="k">as</span> <span class="n">pid</span><span class="p">,</span> <span class="k">if</span><span class="p">(</span><span class="n">brand</span> <span class="o">=</span> <span class="ss">&quot;iPhone&quot;</span><span class="p">,</span> <span class="ss">&quot;ios&quot;</span><span class="p">,</span> <span class="ss">&quot;android&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">platform</span><span class="p">,</span> <span class="n">CONCAT</span><span class="p">(</span><span class="ss">&quot;p&quot;</span><span class="p">,</span> <span class="n">_id</span><span class="p">)</span>  <span class="k">as</span> <span class="n">label</span><span class="p">,</span> <span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FROM_UNIXTIME</span><span class="p">((</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">-</span> <span class="mi">86400</span><span class="p">),</span> <span class="ss">&quot;%Y-%m-%d&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">start_date</span><span class="p">,</span> <span class="k">CURRENT_DATE</span> <span class="k">as</span> <span class="n">end_date</span> <span class="k">from</span> <span class="n">aware_device</span> <span class="k">order</span> <span class="k">by</span> <span class="n">_id</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fitbit_id</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="ss">&quot;p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">empatica_id</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="ss">&quot;p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;iPhone&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;ios&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;android&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">platform</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="ss">&quot;p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_id</span><span class="p">)</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FROM_UNIXTIME</span><span class="p">((</span><span class="k">timestamp</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">-</span><span class="w"> </span><span class="mi">86400</span><span class="p">),</span><span class="w"> </span><span class="ss">&quot;%Y-%m-%d&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">end_date</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">aware_device</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">_id</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>In your <code>config.yaml</code>:</p>
@@ -2137,17 +2137,17 @@
 <li>Set <code>CSV_FILE_PATH</code> to a CSV file path that complies with the specs described below</li>
 <li>Set the devices (<code>PHONE</code>, <code>FITBIT</code>, <code>EMPATICA</code>) <code>[ADD]</code> flag to <code>TRUE</code> depending on what devices you used in your study.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nt">CREATE_PARTICIPANT_FILES</span><span class="p">:</span>
-  <span class="nt">CSV_FILE_PATH</span><span class="p">:</span> <span class="s">&quot;your_path/to_your.csv&quot;</span>
-  <span class="nt">PHONE_SECTION</span><span class="p">:</span>
-    <span class="nt">ADD</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TRUE</span> <span class="c1"># or FALSE</span>
-    <span class="nt">IGNORED_DEVICE_IDS</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
-  <span class="nt">FITBIT_SECTION</span><span class="p">:</span>
-    <span class="nt">ADD</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TRUE</span> <span class="c1"># or FALSE</span>
-    <span class="nt">IGNORED_DEVICE_IDS</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
-  <span class="nt">EMPATICA_SECTION</span><span class="p">:</span>
-    <span class="nt">ADD</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TRUE</span> <span class="c1"># or FALSE</span>
-    <span class="nt">IGNORED_DEVICE_IDS</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">CREATE_PARTICIPANT_FILES</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">CSV_FILE_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your_path/to_your.csv&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">PHONE_SECTION</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ADD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRUE</span><span class="w"> </span><span class="c1"># or FALSE</span><span class="w"></span>
+<span class="w">    </span><span class="nt">IGNORED_DEVICE_IDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">FITBIT_SECTION</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ADD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRUE</span><span class="w"> </span><span class="c1"># or FALSE</span><span class="w"></span>
+<span class="w">    </span><span class="nt">IGNORED_DEVICE_IDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">EMPATICA_SECTION</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ADD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRUE</span><span class="w"> </span><span class="c1"># or FALSE</span><span class="w"></span>
+<span class="w">    </span><span class="nt">IGNORED_DEVICE_IDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
 </code></pre></div>
 <p>Your CSV file (<code>[CSV_FILE_PATH]</code>) should have the following columns (headers), but the values within each column can be empty:</p>
 <table>
@@ -2208,10 +2208,10 @@ a748ee1a-1d0b-4ae9-9074-279a2b6ba524;dsadas-2324-fgsf-sdwr-gdfgs4rfsdf43 ,fitbit
 <p>Time segments (or epochs) are the time windows on which you want to extract behavioral features. For example, you might want to process data every day, every morning, or only during weekends. RAPIDS offers three categories of time segments that are flexible enough to cover most use cases: <strong>frequency</strong> (short time windows every day), <strong>periodic</strong> (arbitrary time windows on any day), and <strong>event</strong> (arbitrary time windows around events of interest). See also our <a href="#segment-examples">examples</a>.</p>
 <div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Frequency Segments</label><div class="tabbed-content">
 <p>These segments are computed every day, and all have the same duration (for example, 30 minutes). Set the following keys in your <code>config.yaml</code></p>
-<div class="highlight"><pre><span></span><code><span class="nt">TIME_SEGMENTS</span><span class="p">:</span> <span class="nl">&amp;time_segments</span>
-  <span class="nt">TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FREQUENCY</span>
-  <span class="nt">FILE</span><span class="p">:</span> <span class="s">&quot;data/external/your_frequency_segments.csv&quot;</span>
-  <span class="nt">INCLUDE_PAST_PERIODIC_SEGMENTS</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FALSE</span>
+<div class="highlight"><pre><span></span><code><span class="nt">TIME_SEGMENTS</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;time_segments</span><span class="w"></span>
+<span class="w">  </span><span class="nt">TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FREQUENCY</span><span class="w"></span>
+<span class="w">  </span><span class="nt">FILE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data/external/your_frequency_segments.csv&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">INCLUDE_PAST_PERIODIC_SEGMENTS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FALSE</span><span class="w"></span>
 </code></pre></div>
 <p>The file pointed by <code>[TIME_SEGMENTS][FILE]</code> should have the following format and only have 1 row.</p>
 <table>
@@ -2249,10 +2249,10 @@ thirtyminutes,30
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Periodic Segments</label><div class="tabbed-content">
 <p>These segments can be computed every day or on specific days of the week, month, quarter, and year. Their minimum duration is 1 minute, but they can be as long as you want. Set the following keys in your <code>config.yaml</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">TIME_SEGMENTS</span><span class="p">:</span> <span class="nl">&amp;time_segments</span>
-  <span class="nt">TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PERIODIC</span>
-  <span class="nt">FILE</span><span class="p">:</span> <span class="s">&quot;data/external/your_periodic_segments.csv&quot;</span>
-  <span class="nt">INCLUDE_PAST_PERIODIC_SEGMENTS</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FALSE</span> <span class="c1"># or TRUE</span>
+<div class="highlight"><pre><span></span><code><span class="nt">TIME_SEGMENTS</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;time_segments</span><span class="w"></span>
+<span class="w">  </span><span class="nt">TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PERIODIC</span><span class="w"></span>
+<span class="w">  </span><span class="nt">FILE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data/external/your_periodic_segments.csv&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">INCLUDE_PAST_PERIODIC_SEGMENTS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FALSE</span><span class="w"> </span><span class="c1"># or TRUE</span><span class="w"></span>
 </code></pre></div>
 <p>If <code>[INCLUDE_PAST_PERIODIC_SEGMENTS]</code> is set to <code>TRUE</code>, RAPIDS will consider instances of your segments back enough in the past to include the first row of data of each participant. For example, if the first row of data from a participant happened on Saturday, March 7<sup>th</sup>, 2020, and the requested segment duration is 7 days starting on every Sunday, the first segment to be considered would begin on Sunday, March 1<sup>st</sup> if <code>[INCLUDE_PAST_PERIODIC_SEGMENTS]</code> is <code>TRUE</code> or on Sunday, March 8<sup>th</sup> if <code>FALSE</code>.</p>
 <p>The file pointed by <code>[TIME_SEGMENTS][FILE]</code> should have the following format and can have multiple rows.</p>
@@ -2300,10 +2300,10 @@ night,00:00:00,5H 59M 59S,every_day,0
 </div>
 <input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Event segments</label><div class="tabbed-content">
 <p>These segments can be computed before or after an event of interest (defined as any UNIX timestamp). Their minimum duration is 1 minute, but they can be as long as you want. The start of each segment can be shifted backward or forwards from the specified timestamp. Set the following keys in your <code>config.yaml</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">TIME_SEGMENTS</span><span class="p">:</span> <span class="nl">&amp;time_segments</span>
-  <span class="nt">TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">EVENT</span>
-  <span class="nt">FILE</span><span class="p">:</span> <span class="s">&quot;data/external/your_event_segments.csv&quot;</span>
-  <span class="nt">INCLUDE_PAST_PERIODIC_SEGMENTS</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FALSE</span> <span class="c1"># or TRUE</span>
+<div class="highlight"><pre><span></span><code><span class="nt">TIME_SEGMENTS</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;time_segments</span><span class="w"></span>
+<span class="w">  </span><span class="nt">TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EVENT</span><span class="w"></span>
+<span class="w">  </span><span class="nt">FILE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data/external/your_event_segments.csv&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">INCLUDE_PAST_PERIODIC_SEGMENTS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FALSE</span><span class="w"> </span><span class="c1"># or TRUE</span><span class="w"></span>
 </code></pre></div>
 <p>The file pointed by <code>[TIME_SEGMENTS][FILE]</code> should have the following format and can have multiple rows.</p>
 <table>
@@ -2423,23 +2423,23 @@ survey2,1584291600000,2H,1H,-1,klj34oi2-8frk-2343-21kk-324ljklewlr3
 <h2 id="timezone-of-your-study">Timezone of your study<a class="headerlink" href="#timezone-of-your-study" title="Permanent link">&para;</a></h2>
 <h3 id="single-timezone">Single timezone<a class="headerlink" href="#single-timezone" title="Permanent link">&para;</a></h3>
 <p>If your study only happened in a single time zone or you want to ignore short trips of your participants to different time zones, select the appropriate code from this <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">list</a> and change the following config key. Double-check your timezone code pick; for example, US Eastern Time is <code>America/New_York</code>, not <code>EST</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">TIMEZONE</span><span class="p">:</span> 
-    <span class="nt">TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SINGLE</span>
-    <span class="nt">TZCODE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">America/New_York</span>
+<div class="highlight"><pre><span></span><code><span class="nt">TIMEZONE</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SINGLE</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TZCODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">America/New_York</span><span class="w"></span>
 </code></pre></div>
 <h3 id="multiple-timezones">Multiple timezones<a class="headerlink" href="#multiple-timezones" title="Permanent link">&para;</a></h3>
 <p>If your participants lived in different time zones or they traveled across time zones, and you know when participants&rsquo; devices were in a specific time zone, RAPIDS can use this data to process your data streams with the correct date-time. You need to provide RAPIDS with the time zone data in a CSV file (<code>[TZCODES_FILE]</code>) in the format described below.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">TIMEZONE</span><span class="p">:</span> 
-    <span class="nt">TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MULTIPLE</span>
-    <span class="nt">SINGLE</span><span class="p">:</span>
-      <span class="nt">TZCODE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">America/New_York</span>
-    <span class="nt">MULTIPLE</span><span class="p">:</span>
-      <span class="nt">TZCODES_FILE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">path_to/time_zones_csv.file</span>
-      <span class="nt">IF_MISSING_TZCODE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">STOP</span>
-      <span class="nt">DEFAULT_TZCODE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">America/New_York</span>
-      <span class="nt">FITBIT</span><span class="p">:</span> 
-        <span class="nt">ALLOW_MULTIPLE_TZ_PER_DEVICE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-        <span class="nt">INFER_FROM_SMARTPHONE_TZ</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+<div class="highlight"><pre><span></span><code><span class="nt">TIMEZONE</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MULTIPLE</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SINGLE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">TZCODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">America/New_York</span><span class="w"></span>
+<span class="w">    </span><span class="nt">MULTIPLE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">TZCODES_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path_to/time_zones_csv.file</span><span class="w"></span>
+<span class="w">      </span><span class="nt">IF_MISSING_TZCODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STOP</span><span class="w"></span>
+<span class="w">      </span><span class="nt">DEFAULT_TZCODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">America/New_York</span><span class="w"></span>
+<span class="w">      </span><span class="nt">FITBIT</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">ALLOW_MULTIPLE_TZ_PER_DEVICE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
+<span class="w">        </span><span class="nt">INFER_FROM_SMARTPHONE_TZ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
 </code></pre></div>
 <p>Parameters for <code>[TIMEZONE]</code></p>
 <table>
@@ -2564,15 +2564,15 @@ fitbit999, Europe/Amsterdam,     0
 <p>Modify the following keys in your <code>config.yaml</code> depending on the <a href="../../datastreams/data-streams-introduction">data stream</a> you want to process.</p>
 <div class="tabbed-set" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Phone</label><div class="tabbed-content">
 <p>Set <code>[PHONE_DATA_STREAMS][TYPE]</code> to the smartphone data stream you want to process (e.g. <code>aware_mysql</code>) and configure its parameters (e.g. <code>[DATABASE_GROUP]</code>). Ignore the parameters of streams you are not using (e.g. <code>[FOLDER]</code> of <code>aware_csv</code>).</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_DATA_STREAMS</span><span class="p">:</span>
-  <span class="nt">USE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aware_mysql</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_DATA_STREAMS</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">USE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aware_mysql</span><span class="w"></span>
 
-  <span class="c1"># AVAILABLE:</span>
-  <span class="nt">aware_mysql</span><span class="p">:</span>
-    <span class="nt">DATABASE_GROUP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span>
+<span class="w">  </span><span class="c1"># AVAILABLE:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">aware_mysql</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">DATABASE_GROUP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span><span class="w"></span>
 
-  <span class="nt">aware_csv</span><span class="p">:</span>
-    <span class="nt">FOLDER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/external/aware_csv</span>
+<span class="w">  </span><span class="nt">aware_csv</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">FOLDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/external/aware_csv</span><span class="w"></span>
 </code></pre></div>
 <div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">aware_mysql</label><div class="tabbed-content">
 <table>
@@ -2597,12 +2597,12 @@ fitbit999, Europe/Amsterdam,     0
 </li>
 <li>
 <p>Add the following lines to <code>credentials.yaml</code> and replace your database-specific credentials (user, password, host, and database):</p>
-<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span>
-  <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span>
-  <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_HOST</span>
-  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span>
-  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
-  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_USER</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_HOST</span><span class="w"></span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_USER</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -2627,21 +2627,21 @@ fitbit999, Europe/Amsterdam,     0
 <li>
 <p>Migrate your credentials by hand:</p>
 <div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">change .env format</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">MY_GROUP</span><span class="p p-Indicator">]</span>
-<span class="l l-Scalar l-Scalar-Plain">user=MY_USER</span>
-<span class="l l-Scalar l-Scalar-Plain">password=MY_PASSWORD</span>
-<span class="l l-Scalar l-Scalar-Plain">host=MY_HOST</span>
-<span class="l l-Scalar l-Scalar-Plain">port=3306</span>
-<span class="l l-Scalar l-Scalar-Plain">database=MY_DATABASE</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">MY_GROUP</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">user=MY_USER</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">password=MY_PASSWORD</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">host=MY_HOST</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">port=3306</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">database=MY_DATABASE</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">to credentials.yaml format</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span>
-  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_USER</span>
-  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span>
-  <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_HOST</span>
-  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
-  <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_USER</span><span class="w"></span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_HOST</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -2683,25 +2683,25 @@ fitbit999, Europe/Amsterdam,     0
 <p class="admonition-title">Warning</p>
 <p>You will probably have to tell RAPIDS the name of the columns where you stored your Fitbit data. To do this, modify your chosen stream&rsquo;s <code>format.yaml</code> column mappings to match your raw data column names.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="nt">FITBIT_DATA_STREAMS</span><span class="p">:</span>
-  <span class="nt">USE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fitbitjson_mysql</span>
+<div class="highlight"><pre><span></span><code><span class="nt">FITBIT_DATA_STREAMS</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">USE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fitbitjson_mysql</span><span class="w"></span>
 
-  <span class="c1"># AVAILABLE:</span>
-  <span class="nt">fitbitjson_mysql</span><span class="p">:</span>
-    <span class="nt">DATABASE_GROUP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span>
-    <span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">660</span>
+<span class="w">  </span><span class="c1"># AVAILABLE:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">fitbitjson_mysql</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">DATABASE_GROUP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">660</span><span class="w"></span>
 
-  <span class="nt">fitbitjson_csv</span><span class="p">:</span>
-    <span class="nt">FOLDER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/external/fitbit_csv</span>
-    <span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">660</span>
+<span class="w">  </span><span class="nt">fitbitjson_csv</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">FOLDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/external/fitbit_csv</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">660</span><span class="w"></span>
 
-  <span class="nt">fitbitparsed_mysql</span><span class="p">:</span>
-    <span class="nt">DATABASE_GROUP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span>
-    <span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">660</span>
+<span class="w">  </span><span class="nt">fitbitparsed_mysql</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">DATABASE_GROUP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">660</span><span class="w"></span>
 
-  <span class="nt">fitbitparsed_csv</span><span class="p">:</span>
-    <span class="nt">FOLDER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/external/fitbit_csv</span>
-    <span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">660</span>
+<span class="w">  </span><span class="nt">fitbitparsed_csv</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">FOLDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/external/fitbit_csv</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SLEEP_SUMMARY_LAST_NIGHT_END</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">660</span><span class="w"></span>
 </code></pre></div>
 <div class="tabbed-set" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">fitbitjson_mysql</label><div class="tabbed-content">
 <p>This data stream processes Fitbit data inside a JSON column obtained from the Fitbit API and stored in a MySQL database. Read more about its column mappings and mutations in <a href="../../datastreams/fitbitjson-mysql#format"><code>fitbitjson_mysql</code></a>.</p>
@@ -2731,12 +2731,12 @@ fitbit999, Europe/Amsterdam,     0
 </li>
 <li>
 <p>Add the following lines to <code>credentials.yaml</code> and replace your database-specific credentials (user, password, host, and database):</p>
-<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span>
-  <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span>
-  <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_HOST</span>
-  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span>
-  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
-  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_USER</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_HOST</span><span class="w"></span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_USER</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -2761,21 +2761,21 @@ fitbit999, Europe/Amsterdam,     0
 <li>
 <p>Migrate your credentials by hand:</p>
 <div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">change .env format</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">MY_GROUP</span><span class="p p-Indicator">]</span>
-<span class="l l-Scalar l-Scalar-Plain">user=MY_USER</span>
-<span class="l l-Scalar l-Scalar-Plain">password=MY_PASSWORD</span>
-<span class="l l-Scalar l-Scalar-Plain">host=MY_HOST</span>
-<span class="l l-Scalar l-Scalar-Plain">port=3306</span>
-<span class="l l-Scalar l-Scalar-Plain">database=MY_DATABASE</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">MY_GROUP</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">user=MY_USER</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">password=MY_PASSWORD</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">host=MY_HOST</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">port=3306</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">database=MY_DATABASE</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">to credentials.yaml format</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span>
-  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_USER</span>
-  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span>
-  <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_HOST</span>
-  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
-  <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_USER</span><span class="w"></span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_HOST</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -2842,12 +2842,12 @@ fitbit999, Europe/Amsterdam,     0
 </li>
 <li>
 <p>Add the following lines to <code>credentials.yaml</code> and replace your database-specific credentials (user, password, host, and database):</p>
-<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span>
-  <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span>
-  <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_HOST</span>
-  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span>
-  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
-  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_USER</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_HOST</span><span class="w"></span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_USER</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -2872,21 +2872,21 @@ fitbit999, Europe/Amsterdam,     0
 <li>
 <p>Migrate your credentials by hand:</p>
 <div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">change .env format</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">MY_GROUP</span><span class="p p-Indicator">]</span>
-<span class="l l-Scalar l-Scalar-Plain">user=MY_USER</span>
-<span class="l l-Scalar l-Scalar-Plain">password=MY_PASSWORD</span>
-<span class="l l-Scalar l-Scalar-Plain">host=MY_HOST</span>
-<span class="l l-Scalar l-Scalar-Plain">port=3306</span>
-<span class="l l-Scalar l-Scalar-Plain">database=MY_DATABASE</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">MY_GROUP</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">user=MY_USER</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">password=MY_PASSWORD</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">host=MY_HOST</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">port=3306</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">database=MY_DATABASE</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">to credentials.yaml format</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span>
-  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_USER</span>
-  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span>
-  <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_HOST</span>
-  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
-  <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_USER</span><span class="w"></span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_HOST</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -2929,12 +2929,12 @@ fitbit999, Europe/Amsterdam,     0
 </div>
 <input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><label for="__tabbed_4_3">Empatica</label><div class="tabbed-content">
 <p>Set <code>[USE]</code> to the Empatica data stream you want to use; see the table in <a href="../../datastreams/data-streams-introduction">introduction to data streams</a>. Configure any parameters as indicated below.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">EMPATICA_DATA_STREAMS</span><span class="p">:</span>
-  <span class="nt">USE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">empatica_zip</span>
+<div class="highlight"><pre><span></span><code><span class="nt">EMPATICA_DATA_STREAMS</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">USE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">empatica_zip</span><span class="w"></span>
 
-  <span class="c1"># AVAILABLE:</span>
-  <span class="nt">empatica_zip</span><span class="p">:</span> 
-    <span class="nt">FOLDER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/external/empatica</span>
+<span class="w">  </span><span class="c1"># AVAILABLE:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">empatica_zip</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">FOLDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/external/empatica</span><span class="w"></span>
 </code></pre></div>
 <div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">empatica_zip</label><div class="tabbed-content">
 <table>

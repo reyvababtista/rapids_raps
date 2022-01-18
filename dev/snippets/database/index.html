@@ -1733,12 +1733,12 @@
 </li>
 <li>
 <p>Add the following lines to <code>credentials.yaml</code> and replace your database-specific credentials (user, password, host, and database):</p>
-<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span>
-  <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span>
-  <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_HOST</span>
-  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span>
-  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
-  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_USER</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_HOST</span><span class="w"></span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_USER</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -1763,21 +1763,21 @@
 <li>
 <p>Migrate your credentials by hand:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">change .env format</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">MY_GROUP</span><span class="p p-Indicator">]</span>
-<span class="l l-Scalar l-Scalar-Plain">user=MY_USER</span>
-<span class="l l-Scalar l-Scalar-Plain">password=MY_PASSWORD</span>
-<span class="l l-Scalar l-Scalar-Plain">host=MY_HOST</span>
-<span class="l l-Scalar l-Scalar-Plain">port=3306</span>
-<span class="l l-Scalar l-Scalar-Plain">database=MY_DATABASE</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">MY_GROUP</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">user=MY_USER</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">password=MY_PASSWORD</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">host=MY_HOST</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">port=3306</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">database=MY_DATABASE</span><span class="w"></span>
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">to credentials.yaml format</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span>
-  <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_USER</span>
-  <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span>
-  <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_HOST</span>
-  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
-  <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span>
+<div class="highlight"><pre><span></span><code><span class="nt">MY_GROUP</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_USER</span><span class="w"></span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_PASSWORD</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_HOST</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span><span class="w"></span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_DATABASE</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>

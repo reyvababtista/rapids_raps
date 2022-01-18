@@ -1900,14 +1900,14 @@
 <h2 id="implement-a-container">Implement a Container<a class="headerlink" href="#implement-a-container" title="Permanent link">&para;</a></h2>
 <p>The <code>container</code> script of a data stream can be implemented in R (strongly recommended) or python. This script must have two functions if you are implementing a stream for phone data or one function otherwise. The script can contain other auxiliary functions.</p>
 <p>First of all, add any parameters your script might need in <code>config.yaml</code> under <code>(device)_DATA_STREAMS</code>. These parameters will be available in the <code>stream_parameters</code> argument of the one or two functions you implement.  For example, if you are adding support for <code>Beiwe</code> data stored in <code>PostgreSQL</code> and your container needs a set of credentials to connect to a database, your new data stream configuration would be:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_DATA_STREAMS</span><span class="p">:</span>
-  <span class="nt">USE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aware_python</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_DATA_STREAMS</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">USE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aware_python</span><span class="w"></span>
 
-  <span class="c1"># AVAILABLE:</span>
-  <span class="nt">aware_mysql</span><span class="p">:</span> 
-    <span class="nt">DATABASE_GROUP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span>
-<span class="hll">  <span class="nt">beiwe_postgresql</span><span class="p">:</span> 
-</span><span class="hll">    <span class="nt">DATABASE_GROUP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span> <span class="c1"># users define this group (user, password, host, etc.) in credentials.yaml</span>
+<span class="w">  </span><span class="c1"># AVAILABLE:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">aware_mysql</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">DATABASE_GROUP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">beiwe_postgresql</span><span class="p">:</span><span class="w"> </span>
+</span><span class="hll"><span class="w">    </span><span class="nt">DATABASE_GROUP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_GROUP</span><span class="w"> </span><span class="c1"># users define this group (user, password, host, etc.) in credentials.yaml</span><span class="w"></span>
 </span></code></pre></div>
 <p>Then implement one or both of the following functions:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">pull_data</label><div class="tabbed-content">
@@ -2035,17 +2035,17 @@
 <p class="admonition-title">Hint</p>
 <p><code>[RAPIDS_COLUMN_MAPPINGS]</code> and <code>[MUTATE][COLUMN_MAPPINGS]</code> have a <code>key</code> (left-hand side string) and a <code>value</code> (right-hand side string). The <code>values</code> are the names used to pulled columns from a container (e.g., columns in a database table). All <code>values</code> are renamed to their <code>keys</code> in lower case. The renamed columns are sent to every mutation script within the <code>data</code> argument, and the final output is the input RAPIDS process further.</p>
 <p>For example, let&rsquo;s assume we are implementing <code>beiwe_mysql</code> and defining the following format for <code>PHONE_FAKESENSOR</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_FAKESENSOR</span><span class="p">:</span>
-    <span class="nt">ANDROID</span><span class="p">:</span>
-        <span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span>
-            <span class="nt">TIMESTAMP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_timestamp</span>
-            <span class="nt">DEVICE_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_deviceID</span>
-            <span class="nt">MAGNITUDE_SQUARED</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span>
-        <span class="nt">MUTATE</span><span class="p">:</span>
-            <span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span>
-                <span class="nt">MAGNITUDE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_value</span>
-            <span class="nt">SCRIPTS</span><span class="p">:</span>
-              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">src/data/streams/mutations/phone/square_magnitude.py</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_FAKESENSOR</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ANDROID</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">TIMESTAMP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_timestamp</span><span class="w"></span>
+<span class="w">            </span><span class="nt">DEVICE_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_deviceID</span><span class="w"></span>
+<span class="w">            </span><span class="nt">MAGNITUDE_SQUARED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span><span class="w"></span>
+<span class="w">        </span><span class="nt">MUTATE</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">MAGNITUDE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_value</span><span class="w"></span>
+<span class="w">            </span><span class="nt">SCRIPTS</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/data/streams/mutations/phone/square_magnitude.py</span><span class="w"></span>
 </code></pre></div>
 <p>RAPIDS will:</p>
 <ol>
@@ -2060,31 +2060,31 @@
 <p>Let&rsquo;s explain in more depth this column mapping with examples.</p>
 <h3 id="name-mapping">Name mapping<a class="headerlink" href="#name-mapping" title="Permanent link">&para;</a></h3>
 <p>The mapping for some sensors is straightforward. For example, accelerometer data most of the time has a timestamp, three axes (x,y,z), and a device id that produced it. AWARE and a different sensing app like Beiwe likely logged accelerometer data in the same way but with different column names. In this case, we only need to match Beiwe data columns to RAPIDS columns one-to-one:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span>
-  <span class="nt">ANDROID</span><span class="p">:</span>
-    <span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span>
-<span class="hll">      <span class="nt">TIMESTAMP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_timestamp</span>
-</span><span class="hll">      <span class="nt">DEVICE_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_deviceID</span>
-</span><span class="hll">      <span class="nt">DOUBLE_VALUES_0</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_x</span>
-</span><span class="hll">      <span class="nt">DOUBLE_VALUES_1</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_y</span>
-</span><span class="hll">      <span class="nt">DOUBLE_VALUES_2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_z</span>
-</span>    <span class="nt">MUTATE</span><span class="p">:</span>
-      <span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span>
-      <span class="nt">SCRIPTS</span><span class="p">:</span> <span class="c1"># it&#39;s ok if this is empty</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ANDROID</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">      </span><span class="nt">TIMESTAMP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_timestamp</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">DEVICE_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_deviceID</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">DOUBLE_VALUES_0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_x</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">DOUBLE_VALUES_1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_y</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">DOUBLE_VALUES_2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_z</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">MUTATE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">SCRIPTS</span><span class="p">:</span><span class="w"> </span><span class="c1"># it&#39;s ok if this is empty</span><span class="w"></span>
 </code></pre></div>
 <h3 id="value-mapping">Value mapping<a class="headerlink" href="#value-mapping" title="Permanent link">&para;</a></h3>
 <p>For some sensors, we need to map column names and values. For example, screen data has ON and OFF events; let&rsquo;s suppose Beiwe represents an ON event with the number <code>1,</code> but RAPIDS identifies ON events with the number <code>2</code>. In this case, we need to mutate the raw data coming from Beiwe and replace all <code>1</code>s with <code>2</code>s.</p>
 <p>We do this by listing one or more R or Python scripts in <code>MUTATION_SCRIPTS</code> that will be executed in order. We usually store all mutation scripts under <code>src/data/streams/mutations/[device]/[platform]/</code> and they can be reused across data streams.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_SCREEN</span><span class="p">:</span>
-  <span class="nt">ANDROID</span><span class="p">:</span>
-    <span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span>
-      <span class="nt">TIMESTAMP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_timestamp</span>
-      <span class="nt">DEVICE_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_deviceID</span>
-      <span class="nt">EVENT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_event</span>
-    <span class=" -Error"> </span><span class="nt">MUTATE</span><span class="p">:</span>
-      <span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span>
-      <span class="nt">SCRIPTS</span><span class="p">:</span>
-<span class="hll">        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">src/data/streams/mutations/phone/beiwe/beiwe_screen_map.py</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_SCREEN</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ANDROID</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">TIMESTAMP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_timestamp</span><span class="w"></span>
+<span class="w">      </span><span class="nt">DEVICE_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_deviceID</span><span class="w"></span>
+<span class="w">      </span><span class="nt">EVENT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_event</span><span class="w"></span>
+<span class="w">    </span><span class="w w-Error"> </span><span class="nt">MUTATE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">SCRIPTS</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/data/streams/mutations/phone/beiwe/beiwe_screen_map.py</span><span class="w"></span>
 </span></code></pre></div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -2120,19 +2120,19 @@
 <p>For this, you mark the three axes columns RAPIDS needs in <code>[RAPIDS_COLUMN_MAPPINGS]</code> with the word <code>FLAG_TO_MUTATE</code>, map <code>acc_col</code> in <code>[MUTATION][COLUMN_MAPPINGS]</code>, and list a Python script under <code>[MUTATION][SCRIPTS]</code> with the code to split <code>acc_col</code>. See an example below.</p>
 <p>RAPIDS expects that every column mapped as <code>FLAG_TO_MUTATE</code> will be generated by your mutation script, so it won&rsquo;t try to retrieve them from your container (database, CSV file, etc.). </p>
 <p>In our example, <code>acc_col</code> will be fetched from the stream&rsquo;s container and renamed to <code>JOINED_AXES</code> because <code>beiwe_split_acc.py</code> will split it into <code>double_values_0</code>, <code>double_values_1</code>, and <code>double_values_2</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span>
-  <span class="nt">ANDROID</span><span class="p">:</span>
-    <span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span>
-      <span class="nt">TIMESTAMP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_timestamp</span>
-      <span class="nt">DEVICE_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">beiwe_deviceID</span>
-<span class="hll">      <span class="nt">DOUBLE_VALUES_0</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span>
-</span><span class="hll">      <span class="nt">DOUBLE_VALUES_1</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span>
-</span><span class="hll">      <span class="nt">DOUBLE_VALUES_2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span>
-</span>    <span class="nt">MUTATE</span><span class="p">:</span>
-      <span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span>
-<span class="hll">        <span class="nt">JOINED_AXES</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acc_col</span>
-</span>      <span class="nt">SCRIPTS</span><span class="p">:</span>
-<span class="hll">        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">src/data/streams/mutations/phone/beiwe/beiwe_split_acc.py</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ANDROID</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">TIMESTAMP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_timestamp</span><span class="w"></span>
+<span class="w">      </span><span class="nt">DEVICE_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beiwe_deviceID</span><span class="w"></span>
+<span class="hll"><span class="w">      </span><span class="nt">DOUBLE_VALUES_0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">DOUBLE_VALUES_1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">DOUBLE_VALUES_2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">MUTATE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">JOINED_AXES</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acc_col</span><span class="w"></span>
+</span><span class="w">      </span><span class="nt">SCRIPTS</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/data/streams/mutations/phone/beiwe/beiwe_split_acc.py</span><span class="w"></span>
 </span></code></pre></div>
 <p>This is a draft of <code>beiwe_split_acc.py</code> <code>MUTATION_SCRIPT</code>:
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -2147,30 +2147,30 @@
 <p>There is a special case for a complex mapping scenario for smartphone data streams. The Android and iOS sensor APIs return data in different formats for certain sensors (like screen, activity recognition, battery, among others). </p>
 <p>In case you didn&rsquo;t notice, the examples we have used so far are grouped under an <code>ANDROID</code> key, which means they will be applied to data collected by Android phones. Additionally, each sensor has an <code>IOS</code> key for a similar purpose. We use the complex mapping described above to transform iOS data into an Android format (it&rsquo;s always iOS to Android and any new phone data stream must do the same).</p>
 <p>For example, this is the <code>format.yaml</code> key for <code>PHONE_ACTVITY_RECOGNITION</code>. Note that the <code>ANDROID</code> mapping is simple (one-to-one) but the <code>IOS</code> mapping is complex with three <code>FLAG_TO_MUTATE</code> columns, two <code>[MUTATE][COLUMN_MAPPINGS]</code> mappings, and one <code>[MUTATION][SCRIPT]</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACTIVITY_RECOGNITION</span><span class="p">:</span>
-  <span class="nt">ANDROID</span><span class="p">:</span>
-    <span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span>
-      <span class="nt">TIMESTAMP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">timestamp</span>
-      <span class="nt">DEVICE_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">device_id</span>
-      <span class="nt">ACTIVITY_TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">activity_type</span>
-      <span class="nt">ACTIVITY_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">activity_name</span>
-      <span class="nt">CONFIDENCE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">confidence</span>
-    <span class="nt">MUTATION</span><span class="p">:</span>
-      <span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span>
-      <span class="nt">SCRIPTS</span><span class="p">:</span>
-  <span class="nt">IOS</span><span class="p">:</span>
-    <span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span>
-      <span class="nt">TIMESTAMP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">timestamp</span>
-      <span class="nt">DEVICE_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">device_id</span>
-<span class="hll">      <span class="nt">ACTIVITY_TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span>
-</span><span class="hll">      <span class="nt">ACTIVITY_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span>
-</span><span class="hll">      <span class="nt">CONFIDENCE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span>
-</span>    <span class="nt">MUTATION</span><span class="p">:</span>
-      <span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span>
-<span class="hll">        <span class="nt">ACTIVITIES</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">activities</span>
-</span><span class="hll">        <span class="nt">CONFIDENCE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">confidence</span>
-</span>      <span class="nt">SCRIPTS</span><span class="p">:</span>
-<span class="hll">        <span class="p p-Indicator">-</span> <span class="s">&quot;src/data/streams/mutations/phone/aware/activity_recogniton_ios_unification.R&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACTIVITY_RECOGNITION</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ANDROID</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">TIMESTAMP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">timestamp</span><span class="w"></span>
+<span class="w">      </span><span class="nt">DEVICE_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">device_id</span><span class="w"></span>
+<span class="w">      </span><span class="nt">ACTIVITY_TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">activity_type</span><span class="w"></span>
+<span class="w">      </span><span class="nt">ACTIVITY_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">activity_name</span><span class="w"></span>
+<span class="w">      </span><span class="nt">CONFIDENCE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">confidence</span><span class="w"></span>
+<span class="w">    </span><span class="nt">MUTATION</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">SCRIPTS</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">IOS</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">RAPIDS_COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">TIMESTAMP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">timestamp</span><span class="w"></span>
+<span class="w">      </span><span class="nt">DEVICE_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">device_id</span><span class="w"></span>
+<span class="hll"><span class="w">      </span><span class="nt">ACTIVITY_TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">ACTIVITY_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">CONFIDENCE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLAG_TO_MUTATE</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">MUTATION</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">COLUMN_MAPPINGS</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">ACTIVITIES</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">activities</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">CONFIDENCE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">confidence</span><span class="w"></span>
+</span><span class="w">      </span><span class="nt">SCRIPTS</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;src/data/streams/mutations/phone/aware/activity_recogniton_ios_unification.R&quot;</span><span class="w"></span>
 </span></code></pre></div>
 <details>
 <summary>Example activity_recogniton_ios_unification.R</summary>

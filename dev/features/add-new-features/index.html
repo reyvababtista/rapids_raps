@@ -1936,22 +1936,22 @@
 <p>In this step, you need to add your provider configuration section under the relevant sensor in <code>config.yaml</code>. See our example for our tutorial&rsquo;s <code>VEGA</code> provider for  <code>PHONE_ACCELEROMETER</code>:</p>
 <details class="example">
 <summary>Example configuration for a new accelerometer provider <code>VEGA</code></summary>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span>
-    <span class="nt">CONTAINER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">accelerometer</span>
-    <span class="nt">PROVIDERS</span><span class="p">:</span>
-        <span class="nt">RAPIDS</span><span class="p">:</span> <span class="c1"># this is a feature provider</span>
-            <span class="nt">COMPUTE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-            <span class="l l-Scalar l-Scalar-Plain">...</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_ACCELEROMETER</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">CONTAINER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accelerometer</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PROVIDERS</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">RAPIDS</span><span class="p">:</span><span class="w"> </span><span class="c1"># this is a feature provider</span><span class="w"></span>
+<span class="w">            </span><span class="nt">COMPUTE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
 
-        <span class="nt">PANDA</span><span class="p">:</span> <span class="c1"># this is another feature provider</span>
-            <span class="nt">COMPUTE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-            <span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">PANDA</span><span class="p">:</span><span class="w"> </span><span class="c1"># this is another feature provider</span><span class="w"></span>
+<span class="w">            </span><span class="nt">COMPUTE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
 
-<span class="hll">        <span class="nt">VEGA</span><span class="p">:</span> <span class="c1"># this is our new feature provider</span>
-</span><span class="hll">            <span class="nt">COMPUTE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-</span><span class="hll">            <span class="nt">FEATURES</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;feature1&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;feature2&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;feature3&quot;</span><span class="p p-Indicator">]</span>
-</span><span class="hll">            <span class="nt">MY_PARAMTER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">a_string</span>
-</span><span class="hll">            <span class="nt">SRC_SCRIPT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src/features/phone_accelerometer/vega/main.py</span>
+<span class="hll"><span class="w">        </span><span class="nt">VEGA</span><span class="p">:</span><span class="w"> </span><span class="c1"># this is our new feature provider</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">COMPUTE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">FEATURES</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;feature1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;feature2&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;feature3&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">MY_PARAMTER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a_string</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">SRC_SCRIPT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/features/phone_accelerometer/vega/main.py</span><span class="w"></span>
 </span></code></pre></div>
 </details>
 <table>

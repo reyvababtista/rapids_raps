@@ -2217,10 +2217,10 @@ ERROR: configuration failed <span class="k">for</span> package <span class="s1">
 <details class="done" open="open">
 <summary>Solution</summary>
 <p>You need to add or remove any leading whitespaces as needed on that line.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE_VALID_SENSED_BINS</span><span class="p">:</span>
-    <span class="nt">COMPUTE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span> <span class="c1"># This flag is automatically ignored (set to True) if you are extracting PHONE_VALID_SENSED_DAYS or screen or Barnett&#39;s location features</span>
-    <span class="nt">BIN_SIZE</span><span class="p">:</span> <span class="nl">&amp;bin_size</span> <span class="l l-Scalar l-Scalar-Plain">5</span> <span class="c1"># (in minutes)</span>
-    <span class="nt">PHONE_SENSORS</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE_VALID_SENSED_BINS</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">COMPUTE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span><span class="w"> </span><span class="c1"># This flag is automatically ignored (set to True) if you are extracting PHONE_VALID_SENSED_DAYS or screen or Barnett&#39;s location features</span><span class="w"></span>
+<span class="w">    </span><span class="nt">BIN_SIZE</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;bin_size</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"> </span><span class="c1"># (in minutes)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PHONE_SENSORS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
 </code></pre></div>
 </details>
 <hr />
@@ -2253,7 +2253,7 @@ ClobberError: This transaction has incompatible packages due to a shared path.
 <p>This problem is due to the way <code>RMariaDB</code> handles a mismatch between data types in R and MySQL (see <a href="https://github.com/r-dbi/RMariaDB/issues/121">this issue</a>). Since it seems this problem won&rsquo;t be handled by <code>RMariaDB</code>, you have two options:</p>
 <ol>
 <li>Remove the the null character from the conflictive table cell(s). You can adapt the following query on a MySQL server 8.0 or older
-    <div class="highlight"><pre><span></span><code><span class="k">update</span> <span class="n">YOUR_TABLE</span> <span class="k">set</span> <span class="n">YOUR_COLUMN</span> <span class="o">=</span> <span class="n">regexp_replace</span><span class="p">(</span><span class="n">YOUR_COLUMN</span><span class="p">,</span> <span class="s1">&#39;\0&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+    <div class="highlight"><pre><span></span><code><span class="k">update</span><span class="w"> </span><span class="n">YOUR_TABLE</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">YOUR_COLUMN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">regexp_replace</span><span class="p">(</span><span class="n">YOUR_COLUMN</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\0&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></li>
 <li>If it&rsquo;s not feasible to modify your data you can try swapping <code>RMariaDB</code> with <code>RMySQL</code>. Just have in mind you might have problems connecting to modern MySQL servers running in Linux:<ul>
 <li>Add <code>RMySQL</code> to the renv environment by running the following command in a terminal open on RAPIDS root folder

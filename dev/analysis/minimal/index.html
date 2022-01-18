@@ -1778,12 +1778,12 @@
 </li>
 <li>
 <p>Create a file in <code>data/external/participant_files/p01.yaml</code> with the following content:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE</span><span class="p">:</span>
-    <span class="nt">DEVICE_IDS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">a748ee1a-1d0b-4ae9-9074-279a2b6ba524</span><span class="p p-Indicator">]</span> <span class="c1"># the participant&#39;s AWARE device id</span>
-    <span class="nt">PLATFORMS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">android</span><span class="p p-Indicator">]</span> <span class="c1"># or ios</span>
-    <span class="nt">LABEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyTestP01</span> <span class="c1"># any string</span>
-    <span class="nt">START_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-01-01</span> <span class="c1"># this can also be empty</span>
-    <span class="nt">END_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2021-01-01</span> <span class="c1"># this can also be empty</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">DEVICE_IDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">a748ee1a-1d0b-4ae9-9074-279a2b6ba524</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># the participant&#39;s AWARE device id</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLATFORMS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">android</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># or ios</span><span class="w"></span>
+<span class="w">    </span><span class="nt">LABEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyTestP01</span><span class="w"> </span><span class="c1"># any string</span><span class="w"></span>
+<span class="w">    </span><span class="nt">START_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-01-01</span><span class="w"> </span><span class="c1"># this can also be empty</span><span class="w"></span>
+<span class="w">    </span><span class="nt">END_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-01-01</span><span class="w"> </span><span class="c1"># this can also be empty</span><span class="w"></span>
 </code></pre></div>
 </li>
 </ol>
@@ -1806,10 +1806,10 @@ night,00:00:00,5H 59M 59S,every_day,0
 <li>
 <p><strong>Choose the <a href="../../setup/configuration#timezone-of-your-study">timezone of your study</a>.</strong> </p>
 <p>We will use the default time zone settings since this example is processing data collected on the US East Coast (<code>America/New_York</code>)</p>
-<div class="highlight"><pre><span></span><code><span class="nt">TIMEZONE</span><span class="p">:</span> 
-    <span class="nt">TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SINGLE</span>
-    <span class="nt">SINGLE</span><span class="p">:</span>
-        <span class="nt">TZCODE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">America/New_York</span>
+<div class="highlight"><pre><span></span><code><span class="nt">TIMEZONE</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SINGLE</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SINGLE</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">TZCODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">America/New_York</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -1839,40 +1839,40 @@ night,00:00:00,5H 59M 59S,every_day,0
 <div class="admonition example">
 <p class="admonition-title">Example of the <code>config.yaml</code> sections after the changes outlined above</p>
 <p>This will be your <code>config.yaml</code> after following the instructions above. Click on the numbered markers to know more.</p>
-<div class="annotate highlight"><pre><span></span><code><span class="nt">PIDS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">p01</span><span class="p p-Indicator">]</span> <span class="c1"># (1)</span>
+<div class="annotate highlight"><pre><span></span><code><span class="nt">PIDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">p01</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># (1)</span><span class="w"></span>
 
-<span class="nt">TIMEZONE</span><span class="p">:</span>
-    <span class="nt">TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">SINGLE</span> <span class="c1"># (2)</span>
-    <span class="nt">SINGLE</span><span class="p">:</span>
-        <span class="nt">TZCODE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">America/New_York</span>
+<span class="nt">TIMEZONE</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SINGLE</span><span class="w"> </span><span class="c1"># (2)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">SINGLE</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">TZCODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">America/New_York</span><span class="w"></span>
 
-<span class="c1"># ... other irrelevant sections</span>
+<span class="c1"># ... other irrelevant sections</span><span class="w"></span>
 
-<span class="nt">TIME_SEGMENTS</span><span class="p">:</span> <span class="nl">&amp;time_segments</span>
-    <span class="nt">TYPE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PERIODIC</span> <span class="c1"># (3)</span>
-    <span class="nt">FILE</span><span class="p">:</span> <span class="s">&quot;data/external/timesegments_periodic.csv&quot;</span> <span class="c1"># (4)</span>
-    <span class="nt">INCLUDE_PAST_PERIODIC_SEGMENTS</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">FALSE</span>
+<span class="nt">TIME_SEGMENTS</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;time_segments</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TYPE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PERIODIC</span><span class="w"> </span><span class="c1"># (3)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">FILE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data/external/timesegments_periodic.csv&quot;</span><span class="w"> </span><span class="c1"># (4)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">INCLUDE_PAST_PERIODIC_SEGMENTS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FALSE</span><span class="w"></span>
 
-<span class="nt">PHONE_DATA_STREAMS</span><span class="p">:</span>
-    <span class="nt">USE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aware_csv</span> <span class="c1"># (5)</span>
+<span class="nt">PHONE_DATA_STREAMS</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">USE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aware_csv</span><span class="w"> </span><span class="c1"># (5)</span><span class="w"></span>
 
-    <span class="nt">aware_csv</span><span class="p">:</span>
-        <span class="nt">FOLDER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">data/external/aware_csv</span> <span class="c1"># (6)</span>
+<span class="w">    </span><span class="nt">aware_csv</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">FOLDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/external/aware_csv</span><span class="w"> </span><span class="c1"># (6)</span><span class="w"></span>
 
-<span class="c1"># ... other irrelevant sections</span>
+<span class="c1"># ... other irrelevant sections</span><span class="w"></span>
 
-<span class="c1">############## PHONE ###########################################################</span>
-<span class="c1">################################################################################</span>
+<span class="c1">############## PHONE ###########################################################</span><span class="w"></span>
+<span class="c1">################################################################################</span><span class="w"></span>
 
-<span class="c1"># ... other irrelevant sections</span>
+<span class="c1"># ... other irrelevant sections</span><span class="w"></span>
 
-<span class="c1"># Communication call features config, TYPES and FEATURES keys need to match</span>
-<span class="nt">PHONE_CALLS</span><span class="p">:</span>
-    <span class="nt">CONTAINER</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">calls.csv</span>  <span class="c1"># (7) </span>
-    <span class="nt">PROVIDERS</span><span class="p">:</span>
-        <span class="nt">RAPIDS</span><span class="p">:</span>
-            <span class="nt">COMPUTE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span> <span class="c1"># (8)</span>
-            <span class="nt">CALL_TYPES</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="c1"># Communication call features config, TYPES and FEATURES keys need to match</span><span class="w"></span>
+<span class="nt">PHONE_CALLS</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">CONTAINER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calls.csv</span><span class="w">  </span><span class="c1"># (7) </span><span class="w"></span>
+<span class="w">    </span><span class="nt">PROVIDERS</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">RAPIDS</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">COMPUTE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"> </span><span class="c1"># (8)</span><span class="w"></span>
+<span class="w">            </span><span class="nt">CALL_TYPES</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
 </code></pre></div>
 <ol>
 <li>
@@ -1880,12 +1880,12 @@ night,00:00:00,5H 59M 59S,every_day,0
     <div class="highlight"><pre><span></span><code>data/external/participant_files/p01.yaml
 </code></pre></div></p>
 <p>With the following content:
-<div class="highlight"><pre><span></span><code><span class="nt">PHONE</span><span class="p">:</span>
-    <span class="nt">DEVICE_IDS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">a748ee1a-1d0b-4ae9-9074-279a2b6ba524</span><span class="p p-Indicator">]</span> <span class="c1"># the participant&#39;s AWARE device id</span>
-    <span class="nt">PLATFORMS</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">android</span><span class="p p-Indicator">]</span> <span class="c1"># or ios</span>
-    <span class="nt">LABEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyTestP01</span> <span class="c1"># any string</span>
-    <span class="nt">START_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2020-01-01</span> <span class="c1"># this can also be empty</span>
-    <span class="nt">END_DATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2021-01-01</span> <span class="c1"># this can also be empty</span>
+<div class="highlight"><pre><span></span><code><span class="nt">PHONE</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">DEVICE_IDS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">a748ee1a-1d0b-4ae9-9074-279a2b6ba524</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># the participant&#39;s AWARE device id</span><span class="w"></span>
+<span class="w">    </span><span class="nt">PLATFORMS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">android</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># or ios</span><span class="w"></span>
+<span class="w">    </span><span class="nt">LABEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyTestP01</span><span class="w"> </span><span class="c1"># any string</span><span class="w"></span>
+<span class="w">    </span><span class="nt">START_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2020-01-01</span><span class="w"> </span><span class="c1"># this can also be empty</span><span class="w"></span>
+<span class="w">    </span><span class="nt">END_DATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-01-01</span><span class="w"> </span><span class="c1"># this can also be empty</span><span class="w"></span>
 </code></pre></div></p>
 </li>
 <li>
