@@ -1843,9 +1843,9 @@
 <p>We tested these instructions in Catalina and Big Sur</p>
 <details class="info">
 <summary>M1 Macs</summary>
-<p>RAPIDS can run on M1 Macs, the only changes as of Feb 21, 2021 are:</p>
+<p>RAPIDS can run on M1 Macs, the only changes as of Mar 17, 2022 are:</p>
 <ul>
-<li>R needs to be installed via brew under Rosetta (x86 arch) due to incompatibility issues with some R libraries. To do this, run your terminal <a href="https://www.youtube.com/watch?v=nv2ylxro7rM&amp;t=138s">via Rosetta</a>, then proceed with the usual brew installation command. Use x86 brew to install R and restore RAPIDS&rsquo; packages (<code>snakemake -j1 renv_install &amp; snakemake -j1 renv_restore</code>). </li>
+<li>Brew and everything installed with it needs to be setup under Rosetta (x86 arch) due to incompatibility issues with some R libraries and python packages. To do this, run your terminal <a href="https://www.youtube.com/watch?v=nv2ylxro7rM&amp;t=138s">via Rosetta</a>, then proceed with our installation commands. </li>
 <li>There is a bug related to timezone codes. We set the correct <code>TZ_DIR</code> in <code>renv/activate.R</code> (line #19) <code>Sys.setenv("TZDIR" = file.path(R.home(), "share", "zoneinfo"))</code> (RAPIDS does this automatically).</li>
 </ul>
 </details>
@@ -1868,7 +1868,7 @@ Rscript --vanilla -e <span class="s1">&#39;install.packages(&quot;rmarkdown&quot
 </li>
 <li>
 <p>Install miniconda (restart your terminal afterwards)</p>
-<div class="highlight"><pre><span></span><code>brew cask install miniconda
+<div class="highlight"><pre><span></span><code>brew install --cask miniconda
 conda init zsh <span class="c1"># (or conda init bash)</span>
 </code></pre></div>
 </li>
