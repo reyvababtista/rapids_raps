@@ -1850,7 +1850,30 @@
 - data/processed/features/<span class="o">{</span>pid<span class="o">}</span>/phone_keyboard.csv
 </code></pre></div>
 </div>
-<p>Features description for <code>[PHONE_KEYBOARD]</code>:</p>
+<p>Parameters description for <code>[PHONE_KEYBOARD][PROVIDERS][RAPIDS]</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[COMPUTE]</code></td>
+<td>Set to <code>True</code> to extract <code>PHONE_KEYBOARD</code> features from the <code>RAPIDS</code> provider</td>
+</tr>
+<tr>
+<td><code>[FEATURES]</code></td>
+<td>Features to be computed, see table below</td>
+</tr>
+<tr>
+<td><code>[TYPING_SESSION_DURATION]</code></td>
+<td>Minimum seconds to detect the end of a typing session. A session begins with any keypress and finishes until <code>TYPING_SESSION_DURATION</code> seconds (by default, 5 seconds) have elapsed since the last key was pressed or the application that the user was typing on changes.</td>
+</tr>
+</tbody>
+</table>
+<p>Features description for <code>[PHONE_KEYBOARD][PROVIDERS][RAPIDS]</code>:</p>
 <table>
 <thead>
 <tr>
@@ -1863,7 +1886,7 @@
 <tr>
 <td>sessioncount</td>
 <td>-</td>
-<td>Number of typing sessions in a time segment. A session begins with any keypress and finishes until 5 seconds have elapsed since the last key was pressed or the application that the user was typing on changes.</td>
+<td>Number of typing sessions in a time segment. Type sesssions are detected based on <code>TYPING_SESSION_DURATION</code> parameter.</td>
 </tr>
 <tr>
 <td>averagesessionlength</td>
@@ -1914,7 +1937,10 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We did not find a reliable way to distinguish between AutoCorrect or AutoComplete changes, since both can be applied with a single touch or swipe event and can decrease or increase the length of the text by an arbitrary number of characters.</p>
+<ol>
+<li>We did not find a reliable way to distinguish between AutoCorrect or AutoComplete changes, since both can be applied with a single touch or swipe event and can decrease or increase the length of the text by an arbitrary number of characters.</li>
+<li>The default value (5 seconds) of <code>TYPING_SESSION_DURATION</code> parameter is based on empirical tests with our datasets. It could be updated as needed. Vesel et al. (check this <a href="https://academic.oup.com/jamia/article/27/7/1007/5848291">paper</a>) used 8 seconds instead.</li>
+</ol>
 </div>
                 
               
