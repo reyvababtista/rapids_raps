@@ -3615,7 +3615,7 @@ screen unlock session. In the screen unlock episode starting from Fri 05:56:51, 
 <h2 id="fitbit-step-intraday">Fitbit Step Intraday<a class="headerlink" href="#fitbit-step-intraday" title="Permanent link">&para;</a></h2>
 <p>Description</p>
 <ul>
-<li>The 4-day raw heartrate summary data is contained in <code>fitbit_steps_intraday_raw.csv</code></li>
+<li>The 4-day raw step summary data is contained in <code>fitbit_steps_intraday_raw.csv</code></li>
 <li>One episode for each daily segment (<code>night</code>, <code>morning</code>, <code>afternoon</code> and <code>evening</code>) on each day</li>
 <li>Two episodes within the same 30-min segment (<code>Fri 05:58:00</code> and <code>Fri 05:59:00</code>)</li>
 <li>A one-min episode at <code>2020-03-07 09:00:00</code> that will be converted to New York time <code>2020-03-07 12:00:00</code></li>
@@ -3680,8 +3680,11 @@ screen unlock session. In the screen unlock episode starting from Fri 05:56:51, 
 <h2 id="fitbit-step-summary">Fitbit Step Summary<a class="headerlink" href="#fitbit-step-summary" title="Permanent link">&para;</a></h2>
 <p>Description</p>
 <ul>
-<li>The 4-day raw heartrate summary data is contained in <code>fitbit_steps_summary_raw.csv</code>.</li>
-<li>As heartrate summary is periodic, it only generates results in periodic feature, there will be no result in frequency and event. </li>
+<li>The 4-day calculated step summary data is contained in <code>fitbit_steps_summary_raw.csv</code>.</li>
+<li>The 4-day calculated step volatility summary data is contained in<code>fitbit_steps_summary_raw.csv</code>.</li>
+<li>Step summary including max, min, median, mean and standard deviation value.</li>
+<li>Volatility summary including max, min, median, mean, standard deviation and annulized volatility value.</li>
+<li>As step summary is periodic, it only generates results in periodic feature, there will be no result in frequency and event. </li>
 </ul>
 <p>Checklist</p>
 <table>
