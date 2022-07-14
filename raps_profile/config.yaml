@@ -1,0 +1,3 @@
+directory: ./
+configfile: ./raps_profile/raps_config.yaml
+snakefile: ./raps_profile/Snakefile

@@ -1,0 +1,37 @@
+SURVEY_DATA_STREAMS:
+  ANDROID:
+    SURVEY_COLUMN_MAPPINGS:
+            IMPULSIVITY_1: imp1
+            IMPULSIVITY_2: imp2
+            IMPULSIVITY_3: imp3
+            IMPULSIVITY_4: imp4
+            PAIN: pain
+            ALCOHOL_USE: alcYN
+            CIGARETTE_USE: cigYN
+            CRAVING_1: mjcrave1
+            CRAVING_2: mjcrave2
+            MJ_POTENCY: mj_potency
+            CM_FEELING: cm.feeling
+
+    MUTATION:
+      COLUMN_MAPPINGS:
+      SCRIPTS:
+
+  IOS:
+    RAPIDS_COLUMN_MAPPINGS:
+            IMPULSIVITY_1: imp1
+            IMPULSIVITY_2: imp2
+            IMPULSIVITY_3: imp3
+            IMPULSIVITY_4: imp4
+            PAIN: pain
+            ALCOHOL_USE: alcYN
+            CIGARETTE_USE: cigYN
+            CRAVING_1: mjcrave1
+            CRAVING_2: mjcrave2
+            MJ_POTENCY: mj_potency
+            CM_FEELING: cm.feeling
+            
+    MUTATION: 
+      COLUMN_MAPPINGS:
+      SCRIPTS:
+            
