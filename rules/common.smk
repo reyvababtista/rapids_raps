@@ -55,7 +55,7 @@ def optional_steps_intraday_input(wildcards):
 def input_merge_sensor_features_for_individual_participants(wildcards):
     feature_files = []
     for config_key in config.keys():
-        if config_key.startswith(("PHONE", "FITBIT", "EMPATICA")) and "PROVIDERS" in config[config_key] and isinstance(config[config_key]["PROVIDERS"], dict):
+        if config_key.startswith(("PHONE", "FITBIT", "EMPATICA", "RAPS")) and "PROVIDERS" in config[config_key] and isinstance(config[config_key]["PROVIDERS"], dict):
             for provider_key, provider in config[config_key]["PROVIDERS"].items():
                 if "COMPUTE" in provider.keys() and provider["COMPUTE"]:
                     feature_files.append("data/processed/features/{pid}/" + config_key.lower() + ".csv")
@@ -154,5 +154,43 @@ def pull_wearable_data_input_with_mutation_scripts(wilcards):
             if not script.lower().endswith((".py", ".r")):
                 raise ValueError("Mutate scripts can only be Python or R scripts (.py, .R).\n   Instead we got {script} in [{sensor}] of {schema}".format(script=script, sensor=sensor, schema=input.get("stream_format")))
             input["mutationscript"+str(idx)] = script
+    return input
+
+def pull_raps_data_input_with_mutation_scripts(wilcards):
+    from pathlib import Path
+    import yaml
+    input = dict()
+    raps_stream = config["RAPS_DATA_STREAMS"]["USE"]
+
+    input["participant_file"] = "data/external/participant_files/{pid}.yaml"
+    input["rapids_schema_file"] = "src/data/streams/rapids_columns.yaml"
+    input["stream_format"] = "src/data/streams/" + raps_stream + "/format.yaml"
+
+    if Path("src/data/streams/"+ raps_stream + "/container.R").exists():
+        input["stream_container"] = "src/data/streams/"+ raps_stream + "/container.R"
+    elif Path("src/data/streams/"+ raps_stream + "/container.py").exists():
+        input["stream_container"] = "src/data/streams/"+ raps_stream + "/container.py"
+    else:
+        raise ValueError("The container script for {stream} is missing: src/data/streams/{stream}/container.[py|R]".format(stream=empatica_stream))
+
+    schema = yaml.load(open(input.get("stream_format"), 'r'), Loader=yaml.FullLoader)
+    sensor = ("raps_" + wilcards.sensor).upper()
+    if sensor not in schema:
+        raise ValueError("{sensor} is not defined in the schema {schema}".format(sensor=sensor, schema=input.get("stream_format")))
+
+    for device_os in schema[sensor].keys():
+        if "MUTATION" not in schema[sensor][device_os]:
+            raise ValueError("MUTATION is missing from [{sensor}][{device_os}] of {schema}".format(sensor=sensor, device_os=device_os,schema=input.get("stream_format")))
+        if "COLUMN_MAPPINGS" not in schema[sensor][device_os]["MUTATION"]:
+            raise ValueError("COLUMN_MAPPINGS is missing from [{sensor}][{device_os}][MUTATION] of {schema}".format(sensor=sensor, device_os=device_os, schema=input.get("stream_format")))
+        if "SCRIPTS" not in schema[sensor][device_os]["MUTATION"]:
+            raise ValueError("SCRIPTS is missing from [{sensor}][{device_os}][MUTATION] of {schema}".format(sensor=sensor, device_os=device_os, schema=input.get("stream_format")))
+
+        scripts = schema[sensor][device_os]["MUTATION"]["SCRIPTS"]
+        if isinstance(scripts, list):
+            for idx, script in enumerate(scripts):
+                if not script.lower().endswith((".py", ".r")):
+                    raise ValueError("Mutate scripts can only be Python or R scripts (.py, .R).\n   Instead we got {script} in \n   [{sensor}][{device_os}] of {schema}".format(script=script, sensor=sensor, device_os=device_os, schema=input.get("stream_format")))
+                input["mutationscript"+str(idx)] = script
     return input
 
