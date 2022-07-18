@@ -3,7 +3,7 @@
 ########################################################################################################################
 
 # See https://www.rapids.science/latest/setup/configuration/#participant-files
-PIDS: [1001, 1002]
+PIDS: [e1001, e1002]
 
 # See https://www.rapids.science/latest/setup/configuration/#time-segments
 TIME_SEGMENTS: &time_segments
@@ -43,7 +43,7 @@ RAPS_SURVEY:
   PROVIDERS:
     REY:
       COMPUTE: True 
-      FEATURES: ["feat1", "feat2"]
+      FEATURES: ["max_impulsivity_1", "max_impulsivity_2"]
       SRC_SCRIPT: src/features/raps_survey/rey/main.py
 
 ########################################################################################################################
