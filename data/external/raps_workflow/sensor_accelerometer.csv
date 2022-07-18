@@ -1,0 +1,2 @@
+"_id","timestamp","device_id","double_sensor_maximum_range","double_sensor_minimum_delay","sensor_name","double_sensor_power_ma","double_sensor_resolution","sensor_type","sensor_vendor","sensor_version"
+1,1587648781026,"a748ee1a-1d0b-4ae9-9074-279a2b6ba524",78.453201293945,2404,"lsm6dsm Accelerometer Non-wakeup",0.15000000596046,0.002392822643742,"1","STMicro","140554"

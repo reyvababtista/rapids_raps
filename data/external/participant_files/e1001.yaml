@@ -1,0 +1,7 @@
+RAPS:
+    DEVICE_IDS: [d1001] # the participant's AWARE device id
+    PLATFORMS: [ios] # or ios
+    LABEL: Participant1001 # any string
+    START_DATE: 2019-10-09 # this can also be empty
+    END_DATE: 2019-10-25 # this can also be empty
+

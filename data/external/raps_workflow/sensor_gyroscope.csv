@@ -1,0 +1,2 @@
+"_id","timestamp","device_id","double_sensor_maximum_range","double_sensor_minimum_delay","sensor_name","double_sensor_power_ma","double_sensor_resolution","sensor_type","sensor_vendor","sensor_version"
+1,1587648782027,"a748ee1a-1d0b-4ae9-9074-279a2b6ba524",34.905555725098,2404,"lsm6dsm Gyroscope Non-wakeup",0.55500000715256,0.0012216945178807,"4","STMicro","140554"

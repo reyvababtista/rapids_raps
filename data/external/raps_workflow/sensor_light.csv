@@ -1,0 +1,2 @@
+"_id","timestamp","device_id","double_sensor_maximum_range","double_sensor_minimum_delay","sensor_name","double_sensor_power_ma","double_sensor_resolution","sensor_type","sensor_vendor","sensor_version"
+1,1587648782133,"a748ee1a-1d0b-4ae9-9074-279a2b6ba524",1,0,"OnePlus Fusion Light Sensor",1.7049999237061,1,"5","OnePlus","1"

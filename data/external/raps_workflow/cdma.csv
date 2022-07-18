@@ -1,0 +1,1 @@
+"_id","timestamp","device_id","base_station_id","double_base_station_latitude","double_base_station_longitude","network_id","system_id","signal_strength","cdma_ecio","evdo_dbm","evdo_ecio","evdo_snr"

@@ -93,6 +93,8 @@ packrat/*
 
 # exclude data from source control by default
 data/external/*
+!/data/external/participant_files
+!/data/external/raps_workflow
 !/data/external/.gitkeep
 !/data/external/stachl_application_genre_catalogue.csv
 !/data/external/timesegments*.csv
