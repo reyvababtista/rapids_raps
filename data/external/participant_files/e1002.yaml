@@ -1,5 +1,5 @@
 RAPS:
-    DEVICE_IDS: [d1002] # the participant's AWARE device id
+    DEVICE_IDS: [1002] # the participant's AWARE device id
     PLATFORMS: [ios] # or ios
     LABEL: Participant1002 # any string
     START_DATE: 2019-10-08 # this can also be empty
