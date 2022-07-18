@@ -1,6 +1,8 @@
 RAPS_SURVEY:
   ANDROID:
     SURVEY_COLUMN_MAPPINGS:
+            TIMESTAMP: timestamp
+            DEVICE_ID: device_id
             IMPULSIVITY_1: imp1
             IMPULSIVITY_2: imp2
             IMPULSIVITY_3: imp3
@@ -19,6 +21,8 @@ RAPS_SURVEY:
 
   IOS:
     RAPIDS_COLUMN_MAPPINGS:
+            TIMESTAMP: timestamp
+            DEVICE_ID: device_id
             IMPULSIVITY_1: imp1
             IMPULSIVITY_2: imp2
             IMPULSIVITY_3: imp3
