@@ -2,11 +2,11 @@ library(readr)
 
 pull_data <- function(stream_parameters, sensor_container, device, columns) {	
   if(!dir.exists(stream_parameters$FOLDER))
-    stop("[PHONE_DATA_STREAMS][aware_csv][FOLDER] does not exist: ", stream_parameters$FOLDER)
+    stop("[RAPS_DATA_STREAMS][raps_csv][FOLDER] does not exist: ", stream_parameters$FOLDER)
   data_file <- file.path(stream_parameters$FOLDER, sensor_container)
 
   if(!file.exists(data_file))
-    stop("The CSV file with ",sensor," data does not exist: '", data_file, "'. In config.yaml, configure [",sensor,"][CONTAINER] with the name of your CSV file including its '.csv' extension (you set the folder name in [PHONE_DATA_STREAMS][aware_csv]")
+    stop("The CSV file with ",sensor," data does not exist: '", data_file, "'. In config.yaml, configure [",sensor,"][CONTAINER] with the name of your CSV file including its '.csv' extension (you set the folder name in [RAPS_DATA_STREAMS][raps_csv]")
 
   if(!endsWith(data_file, ".csv"))
     stop("The data container should be a CSV file: ", data_file)
