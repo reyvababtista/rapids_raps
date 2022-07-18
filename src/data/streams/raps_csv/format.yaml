@@ -20,7 +20,7 @@ RAPS_SURVEY:
       SCRIPTS:
 
   IOS:
-    RAPIDS_COLUMN_MAPPINGS:
+    RAPS_COLUMN_MAPPINGS:
             TIMESTAMP: timestamp
             DEVICE_ID: device_id
             IMPULSIVITY_1: imp1
