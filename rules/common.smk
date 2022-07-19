@@ -171,7 +171,7 @@ def pull_raps_data_input_with_mutation_scripts(wilcards):
     elif Path("src/data/streams/"+ raps_stream + "/container.py").exists():
         input["stream_container"] = "src/data/streams/"+ raps_stream + "/container.py"
     else:
-        raise ValueError("The container script for {stream} is missing: src/data/streams/{stream}/container.[py|R]".format(stream=empatica_stream))
+        raise ValueError("The container script for {stream} is missing: src/data/streams/{stream}/container.[py|R]".format(stream=raps_stream))
 
     schema = yaml.load(open(input.get("stream_format"), 'r'), Loader=yaml.FullLoader)
     sensor = ("raps_" + wilcards.sensor).upper()

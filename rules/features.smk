@@ -2,7 +2,7 @@ rule join_features_from_providers:
     input:
         sensor_features = find_features_files
     wildcard_constraints:
-        sensor_key = '(phone|fitbit|empatica).*'
+        sensor_key = '(phone|fitbit|empatica|raps).*'
     output:
         "data/processed/features/{pid}/{sensor_key}.csv"
     script:
@@ -940,6 +940,32 @@ rule empatica_tags_r_features:
         sensor_key = "empatica_tags"
     output:
         "data/interim/{pid}/empatica_tags_features/empatica_tags_r_{provider_key}.csv"
+    script:
+        "../src/features/entry.R"
+
+rule raps_survey_python_features:
+    input:
+        sensor_data = "data/raw/{pid}/raps_survey_raw.csv",
+        time_segments_labels = "data/interim/time_segments/{pid}_time_segments_labels.csv"
+    params:
+        provider = lambda wildcards: config["RAPS_SURVEY"]["PROVIDERS"][wildcards.provider_key.upper()],
+        provider_key = "{provider_key}",
+        sensor_key = "raps_survey"
+    output:
+        "data/interim/{pid}/raps_survey_features/raps_survey_python_{provider_key}.csv"
+    script:
+        "../src/features/entry.py"
+
+rule raps_survey_r_features:
+    input:
+        sensor_data = "data/raw/{pid}/raps_survey_raw.csv",
+        time_segments_labels = "data/interim/time_segments/{pid}_time_segments_labels.csv"
+    params:
+        provider = lambda wildcards: config["RAPS_SURVEY"]["PROVIDERS"][wildcards.provider_key.upper()],
+        provider_key = "{provider_key}",
+        sensor_key = "raps_survey"
+    output:
+        "data/interim/{pid}/raps_survey_features/raps_survey_r_{provider_key}.csv"
     script:
         "../src/features/entry.R"
 

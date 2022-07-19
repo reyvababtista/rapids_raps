@@ -23,6 +23,17 @@ rule pull_phone_data:
     script:
         "../src/data/streams/pull_phone_data.R"
 
+rule pull_raps_data:
+    input: unpack(pull_raps_data_input_with_mutation_scripts)
+    params:
+        data_configuration = config["RAPS_DATA_STREAMS"][config["RAPS_DATA_STREAMS"]["USE"]],
+        sensor = "raps_" + "{sensor}",
+        tables = lambda wildcards: config["RAPS_" + str(wildcards.sensor).upper()]["CONTAINER"],
+    output:
+        "data/raw/{pid}/raps_{sensor}_raw.csv"
+    script:
+        "../src/data/streams/pull_raps_data.R"
+
 rule process_time_segments:
     input: 
         segments_file = config["TIME_SEGMENTS"]["FILE"],
