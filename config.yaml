@@ -38,6 +38,28 @@ TIMEZONE:
         INFER_FROM_SMARTPHONE_TZ: False
 
 ########################################################################################################################
+#                                                 RAPS                                                                 #
+########################################################################################################################
+
+# See https://www.rapids.science/latest/setup/configuration/#data-stream-configuration
+RAPS_DATA_STREAMS:
+  USE: raps_csv
+  
+  # AVAILABLE:
+  raps_csv:
+    FOLDER: data/external/raps_workflow
+  
+# Sensors ------
+
+RAPS_SURVEY:
+  CONTAINER: cannabis_survey.csv
+  PROVIDERS:
+    REY:
+      COMPUTE: True 
+      FEATURES: ["max_impulsivity_1", "max_impulsivity_2"]
+      SRC_SCRIPT: src/features/raps_survey/rey/main.py
+
+########################################################################################################################
 #                                                 PHONE                                                                #
 ########################################################################################################################
 

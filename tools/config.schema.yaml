@@ -31,6 +31,8 @@ required:
   - FITBIT_SLEEP_INTRADAY
   - FITBIT_STEPS_SUMMARY
   - FITBIT_STEPS_INTRADAY
+  - RAPS_DATA_STREAMS
+  - RAPS_SURVEY
   - HISTOGRAM_PHONE_DATA_YIELD
   - HEATMAP_PHONE_DATA_YIELD_PER_PARTICIPANT_PER_TIME_SEGMENT
   - HEATMAP_SENSORS_PER_MINUTE_PER_TIME_SEGMENT
@@ -215,6 +217,40 @@ properties:
         pattern: "^.*\\.csv$"
       INCLUDE_PAST_PERIODIC_SEGMENTS: 
         type: boolean
+
+  RAPS_DATA_STREAMS:
+      type: object
+      properties:
+        USE:
+          type: string
+        raps_csv:
+          type: object
+          required: [FOLDER]
+          properties:
+            FOLDER:
+              type: string
+
+  RAPS_SURVEY:
+    type: object
+    required: [CONTAINER, PROVIDERS]
+    properties:
+      CONTAINER:
+        type: string
+      PROVIDERS:
+        type: ["null", object]
+        properties:
+          REY:
+            allOf:
+              - $ref: "#/definitions/FEATURES_PROVIDER"
+              - properties:
+                  FEATURES: 
+                    type: array
+                    uniqueItems: True
+                    items:
+                      type: string
+                      enum: ["max_impulsivity_1", "max_impulsivity_2"]
+        additionalProperties: 
+            $ref: "#/definitions/FEATURES_PROVIDER"
 
   PHONE_DATA_STREAMS:
       type: object
