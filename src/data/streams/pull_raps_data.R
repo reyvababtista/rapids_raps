@@ -185,4 +185,4 @@ pull_raps_data <- function(){
   write_csv(participant_data, output_data_file)
 }
 
-pull_phone_data()
+pull_raps_data()
