@@ -3,7 +3,7 @@
 ########################################################################################################################
 
 # See https://www.rapids.science/latest/setup/configuration/#participant-files
-PIDS: [test01]
+PIDS: [p01]
 
 # See https://www.rapids.science/latest/setup/configuration/#automatic-creation-of-participant-files
 CREATE_PARTICIPANT_FILES:

@@ -14,6 +14,14 @@ files_to_compute = []
 if len(config["PIDS"]) == 0:
     raise ValueError("Add participants IDs to PIDS in config.yaml. Remember to create their participant files in data/external")
 
+for provider in config["RAPS_SURVEY"]["PROVIDERS"].keys():
+    if config["RAPS_SURVEY"]["PROVIDERS"][provider]["COMPUTE"]:
+        files_to_compute.extend(expand("data/raw/{pid}/raps_survey_raw.csv", pid=config["PIDS"]))
+        files_to_compute.extend(expand("data/interim/{pid}/raps_survey_features/raps_survey_{language}_{provider_key}.csv", pid=config["PIDS"], language=get_script_language(config["RAPS_SURVEY"]["PROVIDERS"][provider]["SRC_SCRIPT"]), provider_key=provider.lower()))
+        files_to_compute.extend(expand("data/processed/features/{pid}/raps_survey.csv", pid=config["PIDS"]))
+        files_to_compute.extend(expand("data/processed/features/{pid}/all_sensor_features.csv", pid=config["PIDS"]))
+        files_to_compute.append("data/processed/features/all_participants/all_sensor_features.csv")
+
 for provider in config["PHONE_DATA_YIELD"]["PROVIDERS"].keys():
     if config["PHONE_DATA_YIELD"]["PROVIDERS"][provider]["COMPUTE"]:
         
@@ -373,15 +381,6 @@ if isinstance(config["EMPATICA_TAGS"]["PROVIDERS"], dict):
             files_to_compute.extend(expand("data/processed/features/{pid}/empatica_tags.csv", pid=config["PIDS"]))
             files_to_compute.extend(expand("data/processed/features/{pid}/all_sensor_features.csv", pid=config["PIDS"]))
             files_to_compute.append("data/processed/features/all_participants/all_sensor_features.csv")
-
-for provider in config["RAPS_SURVEY"]["PROVIDERS"].keys():
-    if config["RAPS_SURVEY"]["PROVIDERS"][provider]["COMPUTE"]:
-        files_to_compute.extend(expand("data/raw/{pid}/raps_survey_raw.csv", pid=config["PIDS"]))
-        files_to_compute.extend(expand("data/raw/{pid}/raps_survey_with_datetime.csv", pid=config["PIDS"]))
-        files_to_compute.extend(expand("data/interim/{pid}/raps_survey_features/raps_survey_{language}_{provider_key}.csv", pid=config["PIDS"], language=get_script_language(config["RAPS_SURVEY"]["PROVIDERS"][provider]["SRC_SCRIPT"]), provider_key=provider.lower()))
-        files_to_compute.extend(expand("data/processed/features/{pid}/raps_survey.csv", pid=config["PIDS"]))
-        files_to_compute.extend(expand("data/processed/features/{pid}/all_sensor_features.csv", pid=config["PIDS"]))
-        files_to_compute.append("data/processed/features/all_participants/all_sensor_features.csv")
 
 # Visualization for Data Exploration
 if config["HISTOGRAM_PHONE_DATA_YIELD"]["PLOT"]:
