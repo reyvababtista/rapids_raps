@@ -945,7 +945,7 @@ rule empatica_tags_r_features:
 
 rule raps_survey_python_features:
     input:
-        sensor_data = "data/raw/{pid}/raps_survey_raw.csv",
+        sensor_data = "data/raw/{pid}/raps_survey_with_datetime.csv",
         time_segments_labels = "data/interim/time_segments/{pid}_time_segments_labels.csv"
     params:
         provider = lambda wildcards: config["RAPS_SURVEY"]["PROVIDERS"][wildcards.provider_key.upper()],
@@ -958,7 +958,7 @@ rule raps_survey_python_features:
 
 rule raps_survey_r_features:
     input:
-        sensor_data = "data/raw/{pid}/raps_survey_raw.csv",
+        sensor_data = "data/raw/{pid}/raps_survey_with_datetime.csv",
         time_segments_labels = "data/interim/time_segments/{pid}_time_segments_labels.csv"
     params:
         provider = lambda wildcards: config["RAPS_SURVEY"]["PROVIDERS"][wildcards.provider_key.upper()],
