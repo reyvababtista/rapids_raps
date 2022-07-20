@@ -72,7 +72,8 @@ validate_expected_columns_mapping <- function(schema, rapids_schema, sensor, rap
   }
 
   if("IOS" %in% schema[[sensor]]){
-    ios_columns <- names(schema[[sensor]][["IOS"]][["REY_COLUMN_MAPPINGS"]]) if(length(setdiff(rapids_columns, ios_columns)) > 0)
+    ios_columns <- names(schema[[sensor]][["IOS"]][["REY_COLUMN_MAPPINGS"]])
+  if(length(setdiff(rapids_columns, ios_columns)) > 0)
       stop(paste(sensor," mappings are missing one or more mandatory columns for IOS. The missing column mappings are for ", paste(setdiff(rapids_columns, ios_columns), collapse=","),"in", stream_format, " (the mappings are case sensitive)"))
     if(length(setdiff(ios_columns, rapids_columns)) > 0)
       stop(paste(sensor," mappings have one or more columns than required for IOS. The extra column mappings are for ", paste(setdiff(ios_columns, rapids_columns), collapse=","),"in", stream_format, " (the mappings are case sensitive)"))
