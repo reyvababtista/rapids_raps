@@ -10,7 +10,7 @@ participant_file <- snakemake@input[["participant_file"]]
 sensor_file <- snakemake@output[[1]]
 
 participant <- read_yaml(participant_file)
-record_id <- participant$PHONE$LABEL
+record_id <- participant$RAPS$LABEL
 
 target_data <- read.csv(snakemake@input[["data"]])
 target_data <- target_data[target_data$record_id == record_id, ]

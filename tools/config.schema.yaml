@@ -41,6 +41,7 @@ required:
   - ALL_CLEANING_INDIVIDUAL
   - ALL_CLEANING_OVERALL
 
+
 definitions:
   FEATURES_PROVIDER:
     type: object
@@ -64,7 +65,6 @@ definitions:
         type: string
         pattern: "^.*\\.(py|R)$"
       
-
   DORYAB_BLUETOOTH_FEATURE:
     type: object
     required: [DEVICES, SCANS_MOST_FREQUENT_DEVICE, SCANS_LEAST_FREQUENT_DEVICE]
@@ -124,8 +124,8 @@ definitions:
           VALUE:
             type: string
     
-properties:
 
+properties:
   TIMEZONE:
     type: object
     required: [TYPE, SINGLE, MULTIPLE]
