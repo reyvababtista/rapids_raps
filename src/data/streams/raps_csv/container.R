@@ -17,6 +17,7 @@ pull_data <- function(stream_parameters, device, sensor, sensor_container, colum
   sensor_data <- read_delim_chunked(data_file, escape_backslash = TRUE, delim = ",", escape_double = FALSE,
     callback = DataFrameCallback$new(function(x, pos) x[x[[columns$DEVICE_ID]] == device, unlist(columns, use.names = FALSE)] ), progress = T, chunk_size = 50000)
     # callback = DataFrameCallback$new(function(x, pos) subset(x,x[[columns$DEVICE_ID]] == device, select = unlist(columns))), progress = T, chunk_size = 50000)
+  message(columns)
   if(is.null(sensor_data)) # emtpy file
     sensor_data <- read.csv(data_file) %>% select(unlist(columns, use.names = FALSE))
 
