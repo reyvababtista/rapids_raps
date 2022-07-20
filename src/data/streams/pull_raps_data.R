@@ -146,9 +146,10 @@ pull_raps_data <- function(){
     return()
   }
 
-  container_functions <- load_container_script(stream_container)
+  #container_functions <- load_container_script(stream_container)
   #infer_device_os_container <- container_functions$infer_device_os
-  pull_data_container <- container_functions$pull_data
+  #pull_data_container <- container_functions$pull_data
+  pull_data_container <- load_container_script(stream_container)
 
   for(idx in seq_along(devices)){ 
     
