@@ -34,6 +34,24 @@ rule pull_raps_data:
     script:
         "../src/data/streams/pull_raps_data.R"
 
+rule raps_readable_datetime:
+    input:
+        sensor_input = "data/raw/{pid}/raps_{sensor}_raw.csv",
+        time_segments = "data/interim/time_segments/{pid}_time_segments.csv",
+        pid_file = "data/external/participant_files/{pid}.yaml",
+        tzcodes_file = input_tzcodes_file,
+    params:
+        device_type = "raps",
+        timezone_parameters = config["TIMEZONE"],
+        pid = "{pid}",
+        time_segments_type = config["TIME_SEGMENTS"]["TYPE"],
+        include_past_periodic_segments = config["TIME_SEGMENTS"]["INCLUDE_PAST_PERIODIC_SEGMENTS"]
+    output:
+        sensor_with_datetime = "data/raw/{pid}/raps_{sensor}_with_datetime.csv",
+        flag_file = touch("data/raw/{pid}/raps_{sensor}_with_datetime.done")
+    script:
+        "../src/data/datetime/readable_datetime.R"
+
 rule process_time_segments:
     input: 
         segments_file = config["TIME_SEGMENTS"]["FILE"],
