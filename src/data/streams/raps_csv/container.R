@@ -1,6 +1,6 @@
 library(readr)
 
-pull_data <- function(stream_parameters, sensor_container, device, columns) {	
+pull_data <- function(stream_parameters, device, sensor, sensor_container, columns){
   if(!dir.exists(stream_parameters$FOLDER))
     stop("[RAPS_DATA_STREAMS][raps_csv][FOLDER] does not exist: ", stream_parameters$FOLDER)
   data_file <- file.path(stream_parameters$FOLDER, sensor_container)
@@ -23,4 +23,4 @@ pull_data <- function(stream_parameters, sensor_container, device, columns) {
   if(nrow(sensor_data) == 0)
     warning("The device '", device,"' did not have data in ", sensor_container)
   return(sensor_data)
-}	
+}
