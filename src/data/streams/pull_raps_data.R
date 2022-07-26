@@ -115,9 +115,9 @@ validate_participant_file_without_device_ids <- function(participant_file){
 pull_raps_data <- function(){
   participant_file <- snakemake@input[["participant_file"]]
   rapids_schema_file <- snakemake@input[["rapids_schema_file"]]
+  data_configuration <- snakemake@params[["data_configuration"]]
   stream_format <- snakemake@input[["stream_format"]]
   stream_container <- snakemake@input[["stream_container"]]
-  data_configuration <- snakemake@params[["data_configuration"]]
   sensor <- toupper(snakemake@params[["sensor"]])
   tables <- snakemake@params[["tables"]]
   device_type <- "survey"
@@ -125,8 +125,8 @@ pull_raps_data <- function(){
 
   validate_participant_file_without_device_ids(participant_file)
   participant_data <- read_yaml(participant_file)
-  stream_schema <- read_yaml(stream_format)
   rapids_schema <- read_yaml(rapids_schema_file)
+  stream_schema <- read_yaml(stream_format)
   devices <- participant_data$RAPS$DEVICE_IDS
   device_oss <- participant_data$RAPS$PLATFORMS
   device_oss <- replace(device_oss, device_oss == "multiple", "infer") # support multiple for retro compatibility
@@ -152,10 +152,9 @@ pull_raps_data <- function(){
   pull_data_container <- load_container_script(stream_container)
 
   for(idx in seq_along(devices)){ 
-    
     device <- devices[idx]
     message(paste0("\nProcessing ", sensor, " for ", device))
-    device_os <- ifelse(device_oss[idx] == "infer", infer_device_os_container(data_configuration, device), device_oss[idx])
+    device_os <- device_oss[idx]
     validate_inferred_os(basename(stream_container), participant_file, device, device_os)
     
     if(!toupper(device_os) %in% names(stream_schema[[sensor]])){ # the current sensor is only available in a single OS (like PHONE_MESSAGES)
@@ -164,13 +163,12 @@ pull_raps_data <- function(){
     }
 
     os_table <- ifelse(length(tables) > 1, tables[[toupper(device_os)]], tables) # some sensor tables have a different name for android and ios    
-
     columns_to_download <- c(stream_schema[[sensor]][[toupper(device_os)]][["REY_COLUMN_MAPPINGS"]], stream_schema[[sensor]][[toupper(device_os)]][["MUTATION"]][["COLUMN_MAPPINGS"]])
     columns_to_download <- columns_to_download[(columns_to_download != "FLAG_TO_MUTATE")]
     data <- pull_data_container(data_configuration, device, sensor, os_table, columns_to_download)
     
     if(!setequal(columns_to_download, colnames(data)))
-      stop(paste0("The pulled data for ", device, " does not have the expected columns (including [REY_COLUMN_MAPPINGS] and [MUTATE][COLUMN_MAPPINGS]). The container script returned [", paste(colnames(data), collapse=","),"] but the format mappings expected [",paste(columns_to_download, collapse=","), "]. The conainer script is: ", stream_container))
+      stop(paste0("The pulled data for ", device, " does not have the expected columns (including [REY_COLUMN_MAPPINGS] and [MUTATE][COLUMN_MAPPINGS]). The container script returned [", paste(colnames(data), collapse=","),"] but the format mappings expected [",paste(columns_to_download, collapse=","), "]. The container script is: ", stream_container))
     
     renamed_data <- rename_columns(columns_to_download, data)
     
