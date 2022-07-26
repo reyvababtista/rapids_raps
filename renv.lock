@@ -611,13 +611,6 @@
       "Repository": "CRAN",
       "Hash": "64778782a89480e9a644f69aad9a2877"
     },
-    "jpeg": {
-      "Package": "jpeg",
-      "Version": "0.1-8.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "bc316c003aba520fc73d70ad53b5fc36"
-    },
     "jsonlite": {
       "Package": "jsonlite",
       "Version": "1.7.2",
@@ -795,7 +788,7 @@
     },
     "pillar": {
       "Package": "pillar",
-      "Version": "1.4.7",
+      "Version": "2.3.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "3b3dd89b2ee115a8b54e93a34cd546b4"

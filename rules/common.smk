@@ -70,7 +70,7 @@ def get_phone_sensor_names():
                     phone_sensor_names.append(config_key)
     return phone_sensor_names
 
-def pull_phone_data_input_with_mutation_scripts(wilcards):
+def pull_phone_data_input_with_mutation_scripts(wildcards):
     from pathlib import Path
     import yaml
     input = dict()
@@ -88,7 +88,7 @@ def pull_phone_data_input_with_mutation_scripts(wilcards):
         raise ValueError("The container script for {stream} is missing: src/data/streams/{stream}/container.[py|R]".format(stream=empatica_stream))
 
     schema = yaml.load(open(input.get("stream_format"), 'r'), Loader=yaml.FullLoader)
-    sensor = ("phone_" + wilcards.sensor).upper()
+    sensor = ("phone_" + wildcards.sensor).upper()
     if sensor not in schema:
         raise ValueError("{sensor} is not defined in the schema {schema}".format(sensor=sensor, schema=input.get("stream_format")))
 
@@ -108,7 +108,7 @@ def pull_phone_data_input_with_mutation_scripts(wilcards):
                 input["mutationscript"+str(idx)] = script
     return input
 
-def input_tzcodes_file(wilcards):
+def input_tzcodes_file(wildcards):
     from pathlib import Path
     if config["TIMEZONE"]["TYPE"] == "MULTIPLE":
         if not config["TIMEZONE"]["MULTIPLE"]["TZCODES_FILE"].lower().endswith(".csv"):
@@ -118,11 +118,11 @@ def input_tzcodes_file(wilcards):
         return [config["TIMEZONE"]["MULTIPLE"]["TZCODES_FILE"]]
     return []
 
-def pull_wearable_data_input_with_mutation_scripts(wilcards):
+def pull_wearable_data_input_with_mutation_scripts(wildcards):
     import yaml
     from pathlib import Path
     input = dict()
-    device = wilcards.device_type.upper()
+    device = wildcards.device_type.upper()
     device_stream = config[device+"_DATA_STREAMS"]["USE"]
 
     input["participant_file"] = "data/external/participant_files/{pid}.yaml"
@@ -137,7 +137,7 @@ def pull_wearable_data_input_with_mutation_scripts(wilcards):
         raise ValueError("The container script for {stream} is missing: src/data/streams/{stream}/container.[py|R]".format(stream=device_stream))
 
     schema = yaml.load(open(input.get("stream_format"), 'r'), Loader=yaml.FullLoader)
-    sensor = (device + "_" + wilcards.sensor).upper()
+    sensor = (device + "_" + wildcards.sensor).upper()
     if sensor not in schema:
         raise ValueError("{sensor} is not defined in the schema {schema}".format(sensor=sensor, schema=input.get("stream_format")))
     
@@ -156,7 +156,7 @@ def pull_wearable_data_input_with_mutation_scripts(wilcards):
             input["mutationscript"+str(idx)] = script
     return input
 
-def pull_raps_data_input_with_mutation_scripts(wilcards):
+def pull_raps_data_input_with_mutation_scripts(wildcards):
     from pathlib import Path
     import yaml
     input = dict()
@@ -174,7 +174,7 @@ def pull_raps_data_input_with_mutation_scripts(wilcards):
         raise ValueError("The container script for {stream} is missing: src/data/streams/{stream}/container.[py|R]".format(stream=raps_stream))
 
     schema = yaml.load(open(input.get("stream_format"), 'r'), Loader=yaml.FullLoader)
-    sensor = ("raps_" + wilcards.sensor).upper()
+    sensor = ("raps_" + wildcards.sensor).upper()
     if sensor not in schema:
         raise ValueError("{sensor} is not defined in the schema {schema}".format(sensor=sensor, schema=input.get("stream_format")))
 
